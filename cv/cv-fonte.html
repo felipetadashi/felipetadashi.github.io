@@ -1,0 +1,255 @@
+<!--
+  Fonte editável do currículo (assets/felipe-yoshida-cv.pdf).
+  Para editar: mude o texto/HTML abaixo à vontade.
+  Para gerar o PDF de novo depois de editar:
+    1. Abra este arquivo no Chrome (duplo clique).
+    2. Aperte Ctrl+P (ou Cmd+P no Mac) e escolha "Salvar como PDF".
+    3. Em "Mais configurações", marque "Gráficos de segundo plano" e margens "Nenhuma".
+    4. Salve substituindo o arquivo assets/felipe-yoshida-cv.pdf.
+-->
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Felipe Yoshida — Currículo</title>
+<style>
+  @page { size: A4; margin: 0; }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    color: #1c1e22;
+    font-size: 10.3pt;
+    line-height: 1.45;
+  }
+  .page {
+    width: 210mm;
+    min-height: 297mm;
+    display: flex;
+  }
+  /* ---------- Sidebar ---------- */
+  .sidebar {
+    width: 68mm;
+    background: #14101f;
+    background-image:
+      radial-gradient(circle at 15% 8%, #7c5cff55, transparent 45%),
+      radial-gradient(circle at 90% 85%, #4cc9a044, transparent 40%);
+    color: #eceaf5;
+    padding: 15mm 9mm 12mm;
+  }
+  .sidebar h1 {
+    font-size: 16.5pt;
+    margin: 0 0 2mm;
+    line-height: 1.2;
+    font-weight: 800;
+  }
+  .sidebar .role {
+    font-size: 8.6pt;
+    color: #c6bfff;
+    font-weight: 600;
+    margin-bottom: 9mm;
+    line-height: 1.4;
+  }
+  .side-block { margin-bottom: 8mm; }
+  .side-block h2 {
+    font-size: 8.2pt;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #a58cff;
+    margin: 0 0 3mm;
+    font-weight: 700;
+  }
+  .side-block p, .side-block li {
+    font-size: 8.8pt;
+    color: #d8d5e6;
+    margin: 0 0 1.6mm;
+  }
+  .side-block a { color: #d8d5e6; text-decoration: none; }
+  .side-block ul { list-style: none; padding: 0; margin: 0; }
+  .side-block ul.certs li {
+    padding-left: 3.2mm;
+    position: relative;
+  }
+  .side-block ul.certs li::before {
+    content: "";
+    position: absolute;
+    left: 0; top: 1.9mm;
+    width: 1.6mm; height: 1.6mm;
+    border-radius: 50%;
+    background: #7c5cff;
+  }
+  .skill-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.6mm;
+  }
+  .skill-tags span {
+    font-size: 7.9pt;
+    background: #ffffff14;
+    border: 1px solid #ffffff26;
+    color: #eceaf5;
+    padding: 1.1mm 2.6mm;
+    border-radius: 20px;
+  }
+  /* ---------- Main ---------- */
+  .main {
+    flex: 1;
+    padding: 15mm 12mm 12mm 11mm;
+  }
+  .main h2.section {
+    font-size: 10.2pt;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: #6a4fe0;
+    border-bottom: 1.4px solid #e7e3f5;
+    padding-bottom: 1.8mm;
+    margin: 0 0 4mm;
+    font-weight: 800;
+  }
+  .main .section-block { margin-bottom: 7.5mm; }
+  .summary {
+    font-size: 10pt;
+    color: #33353b;
+    margin: 0 0 8mm;
+  }
+  .job { margin-bottom: 5.5mm; }
+  .job:last-child { margin-bottom: 0; }
+  .job-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 6mm;
+  }
+  .job-title { font-size: 10.3pt; font-weight: 700; color: #16181c; }
+  .job-company { font-size: 9.4pt; font-weight: 600; color: #6a4fe0; }
+  .job-context { font-size: 8.7pt; color: #767b84; margin: 1.6mm 0 0; font-style: italic; }
+  .job-period { font-size: 8.6pt; color: #767b84; white-space: nowrap; }
+  .job ul {
+    margin: 2.4mm 0 0;
+    padding-left: 4mm;
+  }
+  .job li {
+    font-size: 9.3pt;
+    color: #3a3d44;
+    margin-bottom: 1.3mm;
+  }
+  .edu-item { margin-bottom: 3.5mm; }
+  .edu-item:last-child { margin-bottom: 0; }
+  .edu-title { font-size: 9.6pt; font-weight: 700; color: #16181c; }
+  .edu-sub { font-size: 8.8pt; color: #6a6f78; }
+  .closing {
+    margin-top: 10mm;
+    padding-top: 6mm;
+    border-top: 1.4px solid #e7e3f5;
+    font-size: 9.3pt;
+    color: #4d5058;
+  }
+  .closing strong { color: #16181c; }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <aside class="sidebar">
+    <h1>Felipe Yoshida</h1>
+    <p class="role">UX/UI Design &middot; Product Design &middot; Design Systems &middot; Figma</p>
+
+    <div class="side-block">
+      <h2>Contato</h2>
+      <p>felipeyoshi93@gmail.com</p>
+      <p>São Paulo, Brasil</p>
+      <p><a href="https://www.linkedin.com/in/felipe-yoshida">linkedin.com/in/felipe-yoshida</a></p>
+    </div>
+
+    <div class="side-block">
+      <h2>Idiomas</h2>
+      <p>Português — Nativo</p>
+      <p>Inglês — Fluente (profissional)</p>
+    </div>
+
+    <div class="side-block">
+      <h2>Certificações</h2>
+      <ul class="certs">
+        <li>UX Research — Fundamentos</li>
+        <li>Enterprise Design Thinking Practitioner</li>
+        <li>UX Research</li>
+        <li>UX &amp; Usabilidade</li>
+        <li>User Experience Design Fundamentals</li>
+      </ul>
+    </div>
+
+    <div class="side-block">
+      <h2>Formação acadêmica</h2>
+      <p style="margin-bottom:0.5mm; font-weight:600; color:#eceaf5;">Universidade Anhembi Morumbi</p>
+      <p style="margin-bottom:3mm;">Pós-graduação, Marketing (2016–2019)</p>
+      <p style="margin-bottom:0.5mm; font-weight:600; color:#eceaf5;">FATEC-SP</p>
+      <p>Tecnólogo em Gestão Empresarial (2013–2016)</p>
+    </div>
+
+    <div class="side-block">
+      <h2>Skills</h2>
+      <div class="skill-tags">
+        <span>Figma</span>
+        <span>UX Research</span>
+        <span>UI Design</span>
+        <span>Prototipação</span>
+        <span>Design Systems</span>
+        <span>UX Writing</span>
+        <span>Arquitetura de Informação</span>
+        <span>Testes de Usabilidade</span>
+      </div>
+    </div>
+  </aside>
+
+  <main class="main">
+    <div class="section-block">
+      <h2 class="section">Resumo</h2>
+      <p class="summary">
+        UX Designer com foco em produtos digitais, unindo pesquisa, arquitetura de informação e design de
+        interface para transformar problemas complexos em soluções simples e centradas em quem usa.
+        Design for simplicity and scale.
+      </p>
+    </div>
+
+    <div class="section-block">
+      <h2 class="section">Experiência profissional</h2>
+
+      <div class="job">
+        <div class="job-head">
+          <div>
+            <span class="job-title">UX Designer</span> &middot; <span class="job-company">smarters</span>
+          </div>
+          <span class="job-period">Nov 2023 — Atual</span>
+        </div>
+        <p class="job-context">Parceira oficial da Meta para WhatsApp, premiada globalmente (WhatsApp Flows Champion, CTWA Genius, Best-in-Class CPG Use Case) — atende marcas como Magalu, Visa e McDonald's.</p>
+        <ul>
+          <li>Desenha experiências de agentes inteligentes em canais conversacionais (WhatsApp), unindo UX, UX Writing e UI Design.</li>
+          <li>Conduz pesquisa com usuários (entrevistas, testes de usabilidade) para embasar decisões de produto.</li>
+          <li>Desenha fluxos, wireframes e protótipos de alta fidelidade no Figma, do conceito à entrega para desenvolvimento.</li>
+          <li>Contribui para a evolução do design system, mantendo consistência de componentes entre produtos.</li>
+          <li>Colabora com times de produto, engenharia e negócio para priorizar melhorias de experiência.</li>
+        </ul>
+      </div>
+
+      <div class="job">
+        <div class="job-head">
+          <div>
+            <span class="job-title">UX Designer</span> &middot; <span class="job-company">binds.co</span>
+          </div>
+          <span class="job-period">Set 2022 — Out 2023</span>
+        </div>
+        <ul>
+          <li>Desenhou interfaces e fluxos para produtos digitais, do wireframe ao protótipo navegável.</li>
+          <li>Realizou testes de usabilidade e entrevistas com usuários para validar hipóteses de design.</li>
+          <li>Trabalhou em squads multidisciplinares (produto, desenvolvimento, QA) em ciclos ágeis de entrega.</li>
+          <li>Contribuiu para a padronização de componentes de interface, apoiando a consistência do produto.</li>
+        </ul>
+      </div>
+    </div>
+
+    <p class="closing"><strong>Disponível</strong> para novos projetos e oportunidades — entre em contato pelo e-mail ou LinkedIn ao lado.</p>
+  </main>
+
+</div>
+</body>
+</html>
