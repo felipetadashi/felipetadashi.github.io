@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Time Brasil no WhatsApp — Case study — Felipe Yoshida</title>
+<meta name="description" content="Case study: UX Writing e engenharia de conversas para o Time Brasil, o chatbot oficial do COB e da Meta nos Jogos de Paris 2024. Projeto de UX Design por Felipe Yoshida.">
+
+<!-- TROQUE pela URL final do site quando publicar -->
+<link rel="canonical" href="https://www.felipeyoshida.com/trabalhos/projeto-05.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Time Brasil no WhatsApp — Case study — Felipe Yoshida">
+<meta property="og:description" content="UX Writing e engenharia de conversas para o chatbot oficial do COB e da Meta nos Jogos de Paris 2024.">
+<meta property="og:url" content="https://www.felipeyoshida.com/trabalhos/projeto-05.html">
+<meta property="og:image" content="https://www.felipeyoshida.com/assets/projects/projeto-05-card.jpg">
+<meta property="og:locale" content="pt_BR">
+<meta name="twitter:card" content="summary_large_image">
+
+<meta name="color-scheme" content="dark light">
+<meta name="theme-color" content="#0b0d10" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#f7f6f3" media="(prefers-color-scheme: light)">
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%237c5cff'/%3E%3Ctext x='16' y='22' font-family='sans-serif' font-size='16' font-weight='700' fill='%23ffffff' text-anchor='middle'%3EFY%3C/text%3E%3C/svg%3E">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body data-page="project5">
+
+<a class="skip-link" href="#main-content" data-i18n="skipLink">Pular para o conteúdo</a>
+<div class="scroll-progress" id="scroll-progress" aria-hidden="true"></div>
+<div class="noise-overlay" aria-hidden="true"></div>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="../index.html" class="logo">Felipe<span>Yoshida</span></a>
+    <div class="header-actions">
+      <a href="../index.html#trabalhos" class="btn btn-ghost case-back" data-i18n="caseBackLink">← Voltar aos trabalhos</a>
+      <div class="lang-toggle" role="group" data-i18n-aria="langToggleLabel" aria-label="Escolher idioma">
+        <button type="button" data-lang="pt" aria-pressed="true">PT</button>
+        <button type="button" data-lang="en" aria-pressed="false">EN</button>
+      </div>
+      <button class="theme-toggle" id="theme-toggle" data-i18n-aria="themeToggleLabel" aria-label="Alternar tema claro/escuro" type="button">
+        <svg class="icon icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+        <svg class="icon icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.8A9 9 0 1 1 11.2 3 7 7 0 0 0 21 12.8Z"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="main-content" tabindex="-1">
+
+  <section class="case-hero container">
+    <div class="case-hero-grid">
+      <div class="case-hero-text">
+        <p class="eyebrow reveal" data-i18n="caseEyebrow">Case study</p>
+        <h1 class="reveal" data-i18n="caseTitle">Time Brasil no WhatsApp</h1>
+        <p class="hero-sub reveal" data-i18n="caseHeroSub">
+          UX Writing e engenharia de conversas para o Time Brasil, o chatbot oficial do Comitê Olímpico do
+          Brasil (COB) em parceria com a Meta, com patrocínio da Powerade, levando os Jogos Olímpicos de
+          Paris 2024 direto pro WhatsApp.
+        </p>
+        <ul class="about-facts reveal">
+          <li><strong data-i18n="factRoleLabel">Função</strong><span data-i18n="factRoleValue">UX Writing &amp; Conversation Design</span></li>
+          <li><strong data-i18n="factDurationLabel">Duração</strong><span data-i18n="factDurationValue">Maio – Agosto/2024</span></li>
+          <li><strong data-i18n="factTeamLabel">Time</strong><span data-i18n="factTeamValue">Produto / Design Conversacional (smarters)</span></li>
+        </ul>
+      </div>
+
+      <div class="case-hero-visual reveal">
+        <img src="../assets/figma/cob/menu-principal.png" data-i18n-alt="heroShotAlt" alt="Print real do menu principal do Time Brasil no WhatsApp durante os Jogos, com as opções de Agenda e resultados, Quadro de medalhas, Sua torcida, Perfil atleta, Fan Fest/Casa Brasil, Quiz, Carteirinha e Pacote de stickers.">
+      </div>
+    </div>
+
+    <div class="pillar-grid reveal">
+      <article class="pillar-card">
+        <span class="service-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        </span>
+        <h3 data-i18n="pillar1Title">Conteúdo oficial dos Jogos</h3>
+        <p data-i18n="pillar1Desc">Agenda, resultados, quadro de medalhas e perfis de atletas, estruturados em linguagem clara pra conversa no WhatsApp.</p>
+      </article>
+      <article class="pillar-card">
+        <span class="service-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>
+        </span>
+        <h3 data-i18n="pillar2Title">Vários jeitos de buscar informação</h3>
+        <p data-i18n="pillar2Desc">Menu com múltiplos caminhos — do resultado do dia a curiosidades sobre os atletas — pensados pra intenções diferentes de quem usa.</p>
+      </article>
+      <article class="pillar-card">
+        <span class="service-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8 12h8M12 8v8"/></svg>
+        </span>
+        <h3 data-i18n="pillar3Title">Marca presente, torcedor no centro</h3>
+        <p data-i18n="pillar3Desc">Conteúdo patrocinado pela Powerade integrado à experiência sem interromper o fluxo principal de informação.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="section case-wide container">
+    <div class="section-head reveal">
+      <span class="section-num" data-i18n="caseContextNum">01 / Contexto</span>
+      <h2 data-i18n="caseContextTitle">Uma conversa, muitos interesses diferentes</h2>
+      <p class="section-lede" data-i18n="caseContextBody">
+        O desafio era entregar informação relevante sobre os Jogos — agenda, resultados, medalhas, atletas —
+        de forma clara dentro de um canal de mensagens, equilibrando atualização quase em tempo real durante
+        as competições com o conteúdo da marca patrocinadora, sem perder a clareza do fluxo principal.
+      </p>
+    </div>
+    <div class="callout reveal">
+      <h3 data-i18n="calloutTitle">💬 Por que WhatsApp?</h3>
+      <p data-i18n="calloutBody">Porque é o canal que a maioria das pessoas já usa todo dia — ninguém precisa baixar um app novo nem criar conta em outro lugar só pra acompanhar os Jogos. A informação chega onde a pessoa já está.</p>
+    </div>
+  </section>
+
+  <section class="section case-wide container">
+    <div class="section-head reveal">
+      <span class="section-num" data-i18n="caseFlowNum">02 / Estrutura</span>
+      <h2 data-i18n="caseFlowTitle">Da entrada ao conteúdo</h2>
+      <p class="section-lede" data-i18n="caseFlowBody">
+        Depois do cadastro e do opt-in, a pessoa chegava a um menu com os principais caminhos de informação
+        sobre os Jogos.
+      </p>
+    </div>
+
+    <div class="stepper reveal">
+      <div class="stepper-node">
+        <span class="stepper-line" aria-hidden="true"></span>
+        <span class="stepper-circle">01</span>
+        <span class="stepper-label" data-i18n="flow1Title">Cadastro</span>
+      </div>
+      <div class="stepper-node">
+        <span class="stepper-line" aria-hidden="true"></span>
+        <span class="stepper-circle">02</span>
+        <span class="stepper-label" data-i18n="flow2Title">Opt-in</span>
+      </div>
+      <div class="stepper-node">
+        <span class="stepper-line" aria-hidden="true"></span>
+        <span class="stepper-circle">03</span>
+        <span class="stepper-label" data-i18n="flow3Title">Preferências</span>
+      </div>
+      <div class="stepper-node">
+        <span class="stepper-circle">04</span>
+        <span class="stepper-label" data-i18n="flow4Title">Conteúdo</span>
+      </div>
+    </div>
+
+    <div class="decision-block reveal">
+      <p data-i18n="caseMenuBody">
+        A partir do menu principal, era possível consultar agenda e resultados, quadro de medalhas, perfis de
+        atletas, participar de quiz e curiosidades, encontrar os pontos oficiais de torcida e gerar um cartão
+        de torcedor personalizado pra compartilhar.
+      </p>
+      <p class="interact-hint">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11.5V6a1.5 1.5 0 0 1 3 0v4M12 6a1.5 1.5 0 0 1 3 0v5M15 6.5a1.5 1.5 0 0 1 3 0V13M18 10a1.5 1.5 0 0 1 3 0v4a6 6 0 0 1-6 6h-2a6 6 0 0 1-5-2.7l-3-4.3a1.4 1.4 0 0 1 2.1-1.8L9 14"/></svg>
+        <span data-i18n="interactHintTabs">Clique nas abas pra ver o tipo de conteúdo de cada caminho</span>
+      </p>
+    </div>
+
+    <div class="tabset reveal">
+      <input type="radio" name="menu-tab" id="tab-1" checked>
+      <input type="radio" name="menu-tab" id="tab-2">
+      <input type="radio" name="menu-tab" id="tab-3">
+      <input type="radio" name="menu-tab" id="tab-4">
+      <input type="radio" name="menu-tab" id="tab-5">
+      <input type="radio" name="menu-tab" id="tab-6">
+
+      <div class="tab-bar">
+        <label for="tab-1" data-i18n="tab1Label">Agenda e resultados</label>
+        <label for="tab-2" data-i18n="tab2Label">Medalhas</label>
+        <label for="tab-3" data-i18n="tab3Label">Atletas</label>
+        <label for="tab-4" data-i18n="tab4Label">Cartão de torcedor</label>
+        <label for="tab-5" data-i18n="tab5Label">Quiz &amp; curiosidades</label>
+        <label for="tab-6" data-i18n="tab6Label">Fan Fest</label>
+      </div>
+
+      <div class="tab-panels">
+        <div class="tab-panel" data-panel="1">
+          <div class="case-shot">
+            <img src="../assets/figma/cob/agenda.png" data-i18n-alt="tab1ShotAlt" alt="Print real da conversa mostrando a agenda e os resultados dos Jogos, com botão de acesso e mensagem de fechamento.">
+          </div>
+          <div class="tab-panel-copy">
+            <h3 data-i18n="tab1Title">Agenda e resultados</h3>
+            <p data-i18n="tab1Desc">Horários das competições do dia e o resultado de cada uma, resumidos em poucas linhas.</p>
+          </div>
+        </div>
+        <div class="tab-panel" data-panel="2">
+          <div class="case-shot">
+            <img src="../assets/figma/cob/medalhas.png" data-i18n-alt="tab2ShotAlt" alt="Print real da conversa mostrando o quadro de medalhas do Time Brasil nos Jogos.">
+          </div>
+          <div class="tab-panel-copy">
+            <h3 data-i18n="tab2Title">Quadro de medalhas</h3>
+            <p data-i18n="tab2Desc">Posição geral do Brasil e o detalhamento ouro/prata/bronze por modalidade.</p>
+          </div>
+        </div>
+        <div class="tab-panel" data-panel="3">
+          <div class="case-shot">
+            <img src="../assets/figma/cob/atletas.png" data-i18n-alt="tab3ShotAlt" alt="Print real da conversa mostrando o menu de perfis de atletas do Time Brasil.">
+          </div>
+          <div class="tab-panel-copy">
+            <h3 data-i18n="tab3Title">Atletas</h3>
+            <p data-i18n="tab3Desc">Perfis e curiosidades sobre os atletas brasileiros em cada modalidade.</p>
+          </div>
+        </div>
+        <div class="tab-panel" data-panel="4">
+          <div class="case-shot">
+            <img src="../assets/figma/cob/carteirinha.png" data-i18n-alt="tab4ShotAlt" alt="Print real da conversa mostrando a entrega da carteirinha de torcedor personalizada do Time Brasil.">
+          </div>
+          <div class="tab-panel-copy">
+            <h3 data-i18n="tab4Title">Cartão de torcedor</h3>
+            <p data-i18n="tab4Desc">Uma peça personalizada que a pessoa monta e compartilha, torcendo por uma modalidade.</p>
+          </div>
+        </div>
+        <div class="tab-panel" data-panel="5">
+          <div class="case-shot">
+            <img src="../assets/figma/cob/quiz.png" data-i18n-alt="tab5ShotAlt" alt="Print real da conversa mostrando a tela de boas-vindas do quiz sobre os Jogos.">
+          </div>
+          <div class="tab-panel-copy">
+            <h3 data-i18n="tab5Title">Quiz &amp; curiosidades</h3>
+            <p data-i18n="tab5Desc">Perguntas rápidas sobre as Olimpíadas, pra engajar quem gosta de um desafio enquanto acompanha os Jogos.</p>
+          </div>
+        </div>
+        <div class="tab-panel" data-panel="6">
+          <div class="case-shot">
+            <img src="../assets/figma/cob/fanfest.png" data-i18n-alt="tab6ShotAlt" alt="Print real da conversa convidando pra Fan Fest e Casa Brasil, com link e destaque visual do convite.">
+          </div>
+          <div class="tab-panel-copy">
+            <h3 data-i18n="tab6Title">Fan Fest</h3>
+            <p data-i18n="tab6Desc">Informações sobre os pontos oficiais de encontro pra torcer em grupo durante os Jogos.</p>
+          </div>
+        </div>
+      </div>
+      <p class="case-figcaption" data-i18n="tabsCaption">Prints reais, direto do protótipo em Figma do Time Brasil.</p>
+    </div>
+  </section>
+
+  <section class="section case-wide container">
+    <div class="section-head reveal">
+      <span class="section-num" data-i18n="caseBackstageNum">03 / Bastidores</span>
+      <h2 data-i18n="caseBackstageTitle">O que esse tipo de projeto costuma exigir</h2>
+      <p class="section-lede" data-i18n="caseBackstageBody">Trabalhar com conteúdo ao vivo, durante um evento internacional, trouxe desafios bem diferentes de um fluxo estático.</p>
+    </div>
+    <div class="scenario-grid reveal">
+      <article class="scenario-card">
+        <span class="scenario-tag" data-i18n="backstage1Tag">Tempo real</span>
+        <h3 data-i18n="backstage1Title">Resultado mudando a cada minuto</h3>
+        <p data-i18n="backstage1Body">Durante os dias de competição, agenda e medalhas precisavam ser atualizadas com frequência, sem deixar a conversa desorganizada ou confusa.</p>
+      </article>
+      <article class="scenario-card">
+        <span class="scenario-tag" data-i18n="backstage2Tag">Marca</span>
+        <h3 data-i18n="backstage2Title">Conciliar patrocínio com informação</h3>
+        <p data-i18n="backstage2Body">O conteúdo da Powerade precisava ter espaço garantido sem competir com o que o torcedor foi buscar no bot em primeiro lugar.</p>
+      </article>
+      <article class="scenario-card">
+        <span class="scenario-tag" data-i18n="backstage3Tag">Escala</span>
+        <h3 data-i18n="backstage3Title">Picos de uso durante as disputas</h3>
+        <p data-i18n="backstage3Body">Os dias de competição concentravam bem mais gente conversando com o bot ao mesmo tempo — isso pedia respostas previsíveis e fáceis de entender rápido.</p>
+      </article>
+      <article class="scenario-card">
+        <span class="scenario-tag" data-i18n="backstage4Tag">Aprovação</span>
+        <h3 data-i18n="backstage4Title">Várias mãos no mesmo texto</h3>
+        <p data-i18n="backstage4Body">Cada trecho de conteúdo oficial passava por aprovação de mais de uma parte envolvida no projeto — clareza e objetividade ajudavam a agilizar esse vai e vem.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="section case-wide container">
+    <div class="section-head reveal">
+      <span class="section-num" data-i18n="caseDecisionsNum">04 / Decisões</span>
+      <h2 data-i18n="caseDecisionsTitle">Decisões de conteúdo e fluxo</h2>
+    </div>
+
+    <details class="decision-acc reveal" open>
+      <summary>
+        <span data-i18n="decision1Title">Priorizar o que o torcedor queria saber</span>
+        <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+      </summary>
+      <div class="decision-body">
+        <p data-i18n="decision1Body">
+          A partir das preferências informadas no cadastro, o conteúdo era direcionado pros temas de maior
+          interesse de cada pessoa — resultado do dia, modalidade específica ou acompanhamento geral — em vez
+          de um só feed genérico pra todo mundo.
+        </p>
+      </div>
+    </details>
+
+    <details class="decision-acc reveal">
+      <summary>
+        <span data-i18n="decision2Title">Escrever pra mensagem curta, não pra tela</span>
+        <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+      </summary>
+      <div class="decision-body">
+        <p data-i18n="decision2Body">
+          Cada resposta precisava funcionar dentro do formato do WhatsApp — textos curtos, opções de menu
+          claras e botões que deixassem evidente o próximo passo, mesmo em fluxos com várias etapas (como o
+          cartão de torcedor personalizado).
+        </p>
+      </div>
+    </details>
+
+    <details class="decision-acc reveal">
+      <summary>
+        <span data-i18n="decision3Title">Marca e experiência do torcedor no mesmo fluxo</span>
+        <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+      </summary>
+      <div class="decision-body">
+        <p data-i18n="decision3Body">
+          Integramos o conteúdo patrocinado pela Powerade junto às informações que o torcedor já estava
+          buscando, mantendo a presença da marca sem transformar a conversa num espaço só de publicidade.
+        </p>
+      </div>
+    </details>
+
+    <details class="decision-acc reveal">
+      <summary>
+        <span data-i18n="decision4Title">Manter o conteúdo sempre atualizado, sem perder o padrão</span>
+        <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+      </summary>
+      <div class="decision-body">
+        <p data-i18n="decision4Body">
+          Como agenda, resultados e medalhas mudavam o tempo todo durante os Jogos, estruturamos o conteúdo em
+          blocos que podiam ser atualizados rapidamente sem reescrever o fluxo inteiro — o padrão da mensagem
+          ficava fixo, só a informação dentro dela mudava.
+        </p>
+      </div>
+    </details>
+  </section>
+
+  <section class="section case-wide container section-playful">
+    <div class="section-head reveal">
+      <span class="section-num" data-i18n="caseFunNum">05 / Curiosidades</span>
+      <h2 data-i18n="caseFunTitle">🏅 Curiosidades do Time Brasil</h2>
+      <p class="section-lede" data-i18n="caseFunBody">Clique nos cards pra virar e ver.</p>
+    </div>
+    <div class="flip-grid reveal">
+      <div class="flip-card">
+        <input type="checkbox" id="flip-tb-1">
+        <label for="flip-tb-1">
+          <div class="flip-inner">
+            <div class="flip-front">
+              <div class="flip-icon">🏅</div>
+              <span class="flip-label" data-i18n="flipTb1Front">Por que um cartão de torcedor?</span>
+              <span class="flip-cta" data-i18n="flipCta">Clique pra ver</span>
+            </div>
+            <div class="flip-back" data-i18n="flipTb1Back">Era uma forma de dar à pessoa algo pra levar da experiência além da informação — uma peça visual pra torcer e compartilhar nas redes.</div>
+          </div>
+        </label>
+      </div>
+      <div class="flip-card">
+        <input type="checkbox" id="flip-tb-2">
+        <label for="flip-tb-2">
+          <div class="flip-inner">
+            <div class="flip-front">
+              <div class="flip-icon">🤖</div>
+              <span class="flip-label" data-i18n="flipTb2Front">Como o bot decidia o que te mostrar?</span>
+              <span class="flip-cta" data-i18n="flipCta">Clique pra ver</span>
+            </div>
+            <div class="flip-back" data-i18n="flipTb2Back">A partir das preferências escolhidas no cadastro — resultado do dia, uma modalidade específica ou acompanhamento geral dos Jogos.</div>
+          </div>
+        </label>
+      </div>
+      <div class="flip-card">
+        <input type="checkbox" id="flip-tb-3">
+        <label for="flip-tb-3">
+          <div class="flip-inner">
+            <div class="flip-front">
+              <div class="flip-icon">🇧🇷</div>
+              <span class="flip-label" data-i18n="flipTb3Front">Por que WhatsApp e não um app?</span>
+              <span class="flip-cta" data-i18n="flipCta">Clique pra ver</span>
+            </div>
+            <div class="flip-back" data-i18n="flipTb3Back">Porque é o canal que as pessoas já usam todo dia — sem precisar baixar nada novo só pra acompanhar os Jogos.</div>
+          </div>
+        </label>
+      </div>
+    </div>
+  </section>
+
+  <section class="section case-wide container">
+    <div class="section-head reveal">
+      <span class="section-num" data-i18n="caseImpactNum">06 / Impacto</span>
+      <h2 data-i18n="caseImpactTitle">Levando os Jogos pro bolso do torcedor</h2>
+      <p class="section-lede" data-i18n="caseImpactBody">
+        O Time Brasil levou conteúdo oficial sobre os Jogos de Paris 2024 — agenda, resultados e medalhas —
+        direto pro WhatsApp de quem acompanhava a competição, com o cartão de torcedor personalizável se
+        tornando um dos pontos de maior engajamento espontâneo da experiência.
+      </p>
+      <p class="case-disclaimer" data-i18n="caseDisclaimer">Resultado descrito de forma qualitativa, com base na experiência publicada do projeto.</p>
+    </div>
+
+    <div class="case-more-grid reveal">
+      <a href="projeto-04.html" data-i18n="exploreDesignSystem">Design System →</a>
+      <a href="projeto-02.html" data-i18n="exploreDashboard">Dashboard Financeiro →</a>
+      <a href="../index.html#trabalhos" data-i18n="allWorkLabel">Ver todos os trabalhos</a>
+    </div>
+  </section>
+
+  <section class="section container contact-section">
+    <div class="contact-box reveal">
+      <h2 data-i18n="caseContactHeading">Gostou deste projeto?</h2>
+      <p data-i18n="contactSub">Entre em contato 👋</p>
+      <a href="mailto:felipeyoshi93@gmail.com" class="btn btn-primary btn-lg">felipeyoshi93@gmail.com</a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <div>
+      <p class="footer-name">Felipe Yoshida</p>
+      <p class="footer-role" data-i18n="footerRole">UX Designer</p>
+    </div>
+
+    <nav class="footer-nav" data-i18n-aria="footerNavAria" aria-label="Navegação do rodapé">
+      <a href="../index.html#sobre" data-i18n="navAbout">Sobre</a>
+      <a href="../index.html#servicos" data-i18n="navServices">Serviços</a>
+      <a href="../index.html#trabalhos" data-i18n="navWork">Trabalhos</a>
+      <a href="../index.html#contato" data-i18n="navContact">Contato</a>
+    </nav>
+
+    <div class="footer-social">
+      <a href="https://dribbble.com/felipe_yoshida" target="_blank" rel="noopener noreferrer">Dribbble</a>
+      <a href="https://www.instagram.com/felipe.tadashi" target="_blank" rel="noopener noreferrer">Instagram</a>
+      <a href="https://www.behance.net/felipeyoshida1" target="_blank" rel="noopener noreferrer">Behance</a>
+      <a href="https://www.linkedin.com/in/felipe-yoshida" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+    </div>
+  </div>
+  <div class="container footer-bottom">
+    <p>© <span id="year"></span> Felipe Yoshida. <span data-i18n="footerRights">Todos os direitos reservados.</span></p>
+  </div>
+</footer>
+
+<button id="back-to-top" class="back-to-top" data-i18n-aria="backToTopLabel" aria-label="Voltar ao topo" type="button" hidden>
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+</button>
+
+<script src="../js/i18n.js"></script>
+<script src="../js/script.js"></script>
+</body>
+</html>
