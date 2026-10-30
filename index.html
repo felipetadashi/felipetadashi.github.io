@@ -57,9 +57,9 @@
 }
 </script>
 </head>
-<body>
+<body data-page="index">
 
-<a class="skip-link" href="#main-content">Pular para o conteúdo</a>
+<a class="skip-link" href="#main-content" data-i18n="skipLink">Pular para o conteúdo</a>
 
 <div class="scroll-progress" id="scroll-progress" aria-hidden="true"></div>
 
@@ -69,19 +69,23 @@
   <div class="container header-inner">
     <a href="#top" class="logo">Felipe<span>Yoshida</span></a>
 
-    <nav class="main-nav" id="main-nav" aria-label="Navegação principal">
-      <a href="#sobre">Sobre</a>
-      <a href="#servicos">Serviços</a>
-      <a href="#trabalhos">Trabalhos</a>
-      <a href="#contato" class="nav-cta">Contato</a>
+    <nav class="main-nav" id="main-nav" data-i18n-aria="mainNavAria" aria-label="Navegação principal">
+      <a href="#sobre" data-i18n="navAbout">Sobre</a>
+      <a href="#servicos" data-i18n="navServices">Serviços</a>
+      <a href="#trabalhos" data-i18n="navWork">Trabalhos</a>
+      <a href="#contato" class="nav-cta" data-i18n="navContact">Contato</a>
     </nav>
 
     <div class="header-actions">
-      <button class="theme-toggle" id="theme-toggle" aria-label="Alternar tema claro/escuro" type="button">
+      <div class="lang-toggle" role="group" data-i18n-aria="langToggleLabel" aria-label="Escolher idioma">
+        <button type="button" data-lang="pt" aria-pressed="true">PT</button>
+        <button type="button" data-lang="en" aria-pressed="false">EN</button>
+      </div>
+      <button class="theme-toggle" id="theme-toggle" data-i18n-aria="themeToggleLabel" aria-label="Alternar tema claro/escuro" type="button">
         <svg class="icon icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
         <svg class="icon icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.8A9 9 0 1 1 11.2 3 7 7 0 0 0 21 12.8Z"/></svg>
       </button>
-      <button class="menu-toggle" id="menu-toggle" aria-label="Abrir menu" aria-expanded="false" type="button">
+      <button class="menu-toggle" id="menu-toggle" data-i18n-aria="menuToggleLabel" aria-label="Abrir menu" aria-expanded="false" type="button">
         <span></span><span></span><span></span>
       </button>
     </div>
@@ -130,28 +134,28 @@
       </svg>
     </div>
 
-    <p class="eyebrow reveal">Disponível para novos projetos</p>
-    <h1 class="reveal">
+    <p class="eyebrow reveal" data-i18n="availableBadge">Disponível para novos projetos</p>
+    <h1 class="reveal" data-i18n-html="heroTitle">
       Olá, sou <span class="highlight">Felipe Yoshida</span>.<br>
       Crio experiências digitais intuitivas e centradas em pessoas.
     </h1>
-    <p class="hero-sub reveal">
+    <p class="hero-sub reveal" data-i18n="heroSub">
       Como UX Designer, uso dados, empatia e criatividade para transformar problemas complexos
       em produtos simples de usar — do primeiro esboço à interface final.
     </p>
     <div class="hero-actions reveal">
-      <a href="#contato" class="btn btn-primary">Iniciar um projeto</a>
-      <a href="#trabalhos" class="btn btn-ghost">Ver trabalhos</a>
-      <a href="assets/felipe-yoshida-cv.pdf" download class="cv-link">
+      <a href="#contato" class="btn btn-primary" data-i18n="ctaStart">Iniciar um projeto</a>
+      <a href="#trabalhos" class="btn btn-ghost" data-i18n="ctaWork">Ver trabalhos</a>
+      <a href="assets/felipe-yoshida-cv.pdf" download class="cv-link" id="cv-download-link">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m0 0 4-4m-4 4-4-4"/><path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></svg>
-        Baixar CV
+        <span data-i18n="cvLabel">Baixar CV</span>
       </a>
     </div>
 
     <div class="hero-meta reveal">
       <a href="mailto:felipeyoshi93@gmail.com">felipeyoshi93@gmail.com</a>
       <span class="divider">·</span>
-      <span>São Paulo, Brasil</span>
+      <span data-i18n="heroLocation">São Paulo, Brasil</span>
     </div>
   </section>
 
@@ -163,13 +167,13 @@
       <span>UI Design</span><span class="marquee-dot">•</span>
       <span>UX Writing</span><span class="marquee-dot">•</span>
       <span>Design Systems</span><span class="marquee-dot">•</span>
-      <span>Prototipação</span><span class="marquee-dot">•</span>
+      <span data-i18n="marqueeProto">Prototipação</span><span class="marquee-dot">•</span>
       <span>UX Research</span><span class="marquee-dot">•</span>
       <span>Product Design</span><span class="marquee-dot">•</span>
       <span>UI Design</span><span class="marquee-dot">•</span>
       <span>UX Writing</span><span class="marquee-dot">•</span>
       <span>Design Systems</span><span class="marquee-dot">•</span>
-      <span>Prototipação</span><span class="marquee-dot">•</span>
+      <span data-i18n="marqueeProto">Prototipação</span><span class="marquee-dot">•</span>
     </div>
   </div>
 
@@ -177,16 +181,16 @@
   <section id="sobre" class="section container">
     <div class="section-head reveal">
       <span class="section-num">01</span>
-      <h2>Sobre mim</h2>
+      <h2 data-i18n="aboutHeading">Sobre mim</h2>
     </div>
     <div class="about-grid">
       <div class="about-photo-wrap reveal">
         <div class="about-photo">
-          <img src="assets/felipe-photo.jpg" alt="Retrato de Felipe Yoshida sorrindo" loading="lazy">
+          <img src="assets/felipe-photo.jpg" alt="Retrato de Felipe Yoshida sorrindo" data-i18n-alt="aboutPhotoAlt" loading="lazy">
         </div>
       </div>
       <div class="about-content">
-        <p class="about-text reveal">
+        <p class="about-text reveal" data-i18n-html="aboutText">
           Sou designer de São Paulo, Brasil. Meu objetivo é ser a ponte entre usuários e empresas,
           melhorando a experiência de produtos e serviços digitais através de pesquisa, empatia
           e decisões orientadas por dados.
@@ -196,50 +200,50 @@
           para transformar problemas complexos em soluções simples e centradas em quem usa.
         </p>
         <ul class="about-facts reveal">
-          <li><strong>Baseado em</strong><span>São Paulo, BR</span></li>
-          <li><strong>Foco</strong><span>UX/UI &amp; Product Design</span></li>
-          <li><strong>Disponibilidade</strong><span>Projetos &amp; freelas</span></li>
+          <li><strong data-i18n="factBasedLabel">Baseado em</strong><span>São Paulo, BR</span></li>
+          <li><strong data-i18n="factFocusLabel">Foco</strong><span>UX/UI &amp; Product Design</span></li>
+          <li><strong data-i18n="factAvailLabel">Disponibilidade</strong><span data-i18n="factAvailValue">Projetos &amp; freelas</span></li>
         </ul>
       </div>
     </div>
 
     <!-- EXPERIÊNCIA: dados extraídos do PDF exportado do LinkedIn -->
     <div class="experience">
-      <h3 class="experience-title reveal">Experiência profissional</h3>
+      <h3 class="experience-title reveal" data-i18n="experienceTitle">Experiência profissional</h3>
       <ul class="timeline">
         <li class="timeline-item reveal">
           <div class="timeline-marker" aria-hidden="true"></div>
           <div class="timeline-content">
             <div class="timeline-head">
               <strong>UX Designer</strong>
-              <span class="timeline-period">Novembro de 2023 — Atual</span>
+              <span class="timeline-period" data-i18n="exp1Period">Novembro de 2023 — Atual</span>
             </div>
-            <p>smarters — UX, UX Writing e UI Design para agentes inteligentes em canais conversacionais (WhatsApp)</p>
+            <p data-i18n="exp1Desc">smarters — UX, UX Writing e UI Design para agentes inteligentes em canais conversacionais (WhatsApp)</p>
 
             <div class="role-highlights">
               <div class="role-highlight">
                 <span class="role-highlight-icon" aria-hidden="true">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.5 8.5 0 0 1-8.5 8.5c-1.35 0-2.62-.32-3.74-.9L3 20l1.05-4.2A8.46 8.46 0 0 1 3 11.5 8.5 8.5 0 0 1 11.5 3h.6a8.5 8.5 0 0 1 8.9 8.5Z"/><path d="m8.5 12 2.2 2.2L16 9.5"/></svg>
                 </span>
-                <span>Parceiros oficiais da Meta para WhatsApp</span>
+                <span data-i18n="exp1H1">Parceiros oficiais da Meta para WhatsApp</span>
               </div>
               <div class="role-highlight">
                 <span class="role-highlight-icon" aria-hidden="true">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 21h8M12 17v4"/><path d="M7 4h10v6a5 5 0 0 1-10 0V4Z"/><path d="M7 6H4a3 3 0 0 0 3 5M17 6h3a3 3 0 0 1-3 5"/></svg>
                 </span>
-                <span>Pioneiros e líderes de reconhecimento no Bots Brasil Awards</span>
+                <span data-i18n="exp1H2">Pioneiros e líderes de reconhecimento no Bots Brasil Awards</span>
               </div>
               <div class="role-highlight">
                 <span class="role-highlight-icon" aria-hidden="true">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 14.5 8.5 21 9l-5 4.5L17.5 20 12 16.5 6.5 20 8 13.5 3 9l6.5-.5Z"/></svg>
                 </span>
-                <span>Destaque global Meta: WhatsApp Flows Champion, CTWA Genius e Best-in-Class CPG Use Case</span>
+                <span data-i18n="exp1H3">Destaque global Meta: WhatsApp Flows Champion, CTWA Genius e Best-in-Class CPG Use Case</span>
               </div>
               <div class="role-highlight">
                 <span class="role-highlight-icon" aria-hidden="true">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M3 12h18"/></svg>
                 </span>
-                <span>Projetos para marcas como Magalu, Visa e McDonald's</span>
+                <span data-i18n="exp1H4">Projetos para marcas como Magalu, Visa e McDonald's</span>
               </div>
             </div>
           </div>
@@ -249,9 +253,9 @@
           <div class="timeline-content">
             <div class="timeline-head">
               <strong>UX Designer</strong>
-              <span class="timeline-period">Setembro de 2022 — Outubro de 2023</span>
+              <span class="timeline-period" data-i18n="exp2Period">Setembro de 2022 — Outubro de 2023</span>
             </div>
-            <p>binds.co — São Paulo, Brasil</p>
+            <p data-i18n="exp2Desc">binds.co — São Paulo, Brasil</p>
           </div>
         </li>
       </ul>
@@ -259,11 +263,11 @@
 
     <!-- ESPECIALIDADES: lista extraída do PDF exportado do LinkedIn -->
     <div class="certifications">
-      <h3 class="experience-title reveal">Especialidades</h3>
+      <h3 class="experience-title reveal" data-i18n="specialtiesTitle">Especialidades</h3>
       <ul class="cert-list">
         <li class="cert-chip reveal">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="6"/><path d="M9 13.5 7 22l5-3 5 3-2-8.5"/></svg>
-          UX Research — Fundamentos
+          <span data-i18n="cert1">UX Research — Fundamentos</span>
         </li>
         <li class="cert-chip reveal">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="6"/><path d="M9 13.5 7 22l5-3 5 3-2-8.5"/></svg>
@@ -275,7 +279,7 @@
         </li>
         <li class="cert-chip reveal">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="6"/><path d="M9 13.5 7 22l5-3 5 3-2-8.5"/></svg>
-          UX &amp; Usabilidade
+          <span data-i18n="cert4">UX &amp; Usabilidade</span>
         </li>
         <li class="cert-chip reveal">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="6"/><path d="M9 13.5 7 22l5-3 5 3-2-8.5"/></svg>
@@ -291,8 +295,8 @@
     <div class="section-head section-head--split reveal">
       <div>
         <span class="section-num">02</span>
-        <h2>Serviços</h2>
-        <p class="section-lede">Do primeiro insight de pesquisa até a interface validada com quem usa.</p>
+        <h2 data-i18n="servicesHeading">Serviços</h2>
+        <p class="section-lede" data-i18n="servicesLede">Do primeiro insight de pesquisa até a interface validada com quem usa.</p>
       </div>
       <div class="section-visual" aria-hidden="true">
         <svg viewBox="0 0 260 200" xmlns="http://www.w3.org/2000/svg" role="img">
@@ -333,43 +337,43 @@
         <span class="service-icon" aria-hidden="true">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 2 7l10 5 10-5-10-5Z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
         </span>
-        <h3>Design de Produto</h3>
-        <p>Do conceito ao fluxo final, estruturando produtos digitais que fazem sentido para quem usa.</p>
+        <h3 data-i18n="service1Title">Design de Produto</h3>
+        <p data-i18n="service1Desc">Do conceito ao fluxo final, estruturando produtos digitais que fazem sentido para quem usa.</p>
       </article>
       <article class="service-card reveal">
         <span class="service-icon" aria-hidden="true">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
         </span>
         <h3>UX Research</h3>
-        <p>Entrevistas, testes de usabilidade e análise de dados para embasar decisões de design.</p>
+        <p data-i18n="service2Desc">Entrevistas, testes de usabilidade e análise de dados para embasar decisões de design.</p>
       </article>
       <article class="service-card reveal">
         <span class="service-icon" aria-hidden="true">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/><path d="M6.5 10v4a2 2 0 0 0 2 2H14M17.5 14v-4a2 2 0 0 0-2-2h-1.5"/></svg>
         </span>
         <h3>UX Design</h3>
-        <p>Arquitetura de informação, wireframes e fluxos pensados para reduzir fricção.</p>
+        <p data-i18n="service3Desc">Arquitetura de informação, wireframes e fluxos pensados para reduzir fricção.</p>
       </article>
       <article class="service-card reveal">
         <span class="service-icon" aria-hidden="true">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="M8 9h8M8 13h5"/></svg>
         </span>
         <h3>UX Writing</h3>
-        <p>Microcopy, mensagens de erro e textos de interface claros, que guiam o usuário e reforçam a voz do produto.</p>
+        <p data-i18n="service4Desc">Microcopy, mensagens de erro e textos de interface claros, que guiam o usuário e reforçam a voz do produto.</p>
       </article>
       <article class="service-card reveal">
         <span class="service-icon" aria-hidden="true">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 3a9 9 0 0 0 0 18M3 12h18"/></svg>
         </span>
         <h3>Visual &amp; UI Design</h3>
-        <p>Interfaces consistentes, acessíveis e com identidade visual própria.</p>
+        <p data-i18n="service5Desc">Interfaces consistentes, acessíveis e com identidade visual própria.</p>
       </article>
       <article class="service-card reveal">
         <span class="service-icon" aria-hidden="true">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M8 4v5"/></svg>
         </span>
         <h3>Web Design</h3>
-        <p>Sites e landing pages responsivos, rápidos e alinhados à marca.</p>
+        <p data-i18n="service6Desc">Sites e landing pages responsivos, rápidos e alinhados à marca.</p>
       </article>
     </div>
    </div>
@@ -379,8 +383,8 @@
   <section id="trabalhos" class="section container">
     <div class="section-head reveal">
       <span class="section-num">03</span>
-      <h2>Trabalhos selecionados</h2>
-      <p class="section-lede">Procuro construir designs inclusivos e acessíveis que resolvam problemas reais.</p>
+      <h2 data-i18n="workHeading">Trabalhos selecionados</h2>
+      <p class="section-lede" data-i18n="workLede">Procuro construir designs inclusivos e acessíveis que resolvam problemas reais.</p>
     </div>
 
     <div class="work-grid">
@@ -388,17 +392,17 @@
         <div class="work-thumb" style="background-image:url('assets/projects/projeto-01-card.jpg')" aria-hidden="true"></div>
         <div class="work-info">
           <h3>Single Page Survey</h3>
-          <p>Como trocar formulários de feedback em múltiplas páginas por uma pesquisa em página única, mais rápida e intuitiva para o cliente responder.</p>
-          <a href="trabalhos/projeto-01.html">Ver case study →</a>
+          <p data-i18n="work1Desc">Como trocar formulários de feedback em múltiplas páginas por uma pesquisa em página única, mais rápida e intuitiva para o cliente responder.</p>
+          <a href="trabalhos/projeto-01.html" data-i18n="workLinkLabel">Ver case study →</a>
         </div>
       </article>
 
       <article class="work-card reveal">
         <div class="work-thumb" style="background-image:url('assets/projects/projeto-02-card.jpg')" aria-hidden="true"></div>
         <div class="work-info">
-          <h3>Dashboard Financeiro</h3>
-          <p>Um dashboard que organiza métricas financeiras essenciais numa visão clara e acionável, para decisões mais rápidas e informadas.</p>
-          <a href="trabalhos/projeto-02.html">Ver case study →</a>
+          <h3 data-i18n="work2Title">Dashboard Financeiro</h3>
+          <p data-i18n="work2Desc">Um dashboard que organiza métricas financeiras essenciais numa visão clara e acionável, para decisões mais rápidas e informadas.</p>
+          <a href="trabalhos/projeto-02.html" data-i18n="workLinkLabel">Ver case study →</a>
         </div>
       </article>
 
@@ -406,14 +410,14 @@
         <div class="work-thumb" style="background-image:url('assets/projects/projeto-03-card.jpg')" aria-hidden="true"></div>
         <div class="work-info">
           <h3>Sidebar Menu</h3>
-          <p>Redesenho do menu lateral de um produto digital para tornar a navegação mais fluida, acessível e fácil de configurar.</p>
-          <a href="trabalhos/projeto-03.html">Ver case study →</a>
+          <p data-i18n="work3Desc">Redesenho do menu lateral de um produto digital para tornar a navegação mais fluida, acessível e fácil de configurar.</p>
+          <a href="trabalhos/projeto-03.html" data-i18n="workLinkLabel">Ver case study →</a>
         </div>
       </article>
     </div>
 
     <div class="work-all reveal">
-      <a href="https://dribbble.com/felipe_yoshida" target="_blank" rel="noopener noreferrer" class="btn btn-ghost">Ver todos os projetos no Dribbble</a>
+      <a href="https://dribbble.com/felipe_yoshida" target="_blank" rel="noopener noreferrer" class="btn btn-ghost" data-i18n="dribbbleLink">Ver todos os projetos no Dribbble</a>
     </div>
   </section>
 
@@ -423,8 +427,8 @@
     <div class="section-head section-head--split reveal">
       <div>
         <span class="section-num">04</span>
-        <h2>Figma no dia a dia</h2>
-        <p class="section-lede">Da ideia ao handoff, o Figma é minha ferramenta central em todas as etapas do processo de design.</p>
+        <h2 data-i18n="figmaHeading">Figma no dia a dia</h2>
+        <p class="section-lede" data-i18n="figmaLede">Da ideia ao handoff, o Figma é minha ferramenta central em todas as etapas do processo de design.</p>
       </div>
       <div class="section-visual" aria-hidden="true">
         <svg viewBox="0 0 260 200" xmlns="http://www.w3.org/2000/svg" role="img">
@@ -469,8 +473,8 @@
         <span class="figma-icon" aria-hidden="true">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="8" height="8" rx="2"/><rect x="13" y="3" width="8" height="8" rx="2"/><rect x="3" y="13" width="8" height="8" rx="2"/><rect x="13" y="13" width="8" height="8" rx="2"/></svg>
         </span>
-        <h3>Design systems &amp; componentes</h3>
-        <p>Construo e mantenho bibliotecas de componentes com variants e auto layout, garantindo consistência entre telas e produtos.</p>
+        <h3 data-i18n="figma1Title">Design systems &amp; componentes</h3>
+        <p data-i18n="figma1Desc">Construo e mantenho bibliotecas de componentes com variants e auto layout, garantindo consistência entre telas e produtos.</p>
       </article>
 
       <article class="figma-card reveal">
@@ -478,15 +482,15 @@
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 3v18M20 3v18"/><path d="M8 8h8M8 12h5M8 16h8"/></svg>
         </span>
         <h3>Auto layout</h3>
-        <p>Uso auto layout pra criar interfaces responsivas e fáceis de manter, sem precisar redesenhar cada estado manualmente.</p>
+        <p data-i18n="figma2Desc">Uso auto layout pra criar interfaces responsivas e fáceis de manter, sem precisar redesenhar cada estado manualmente.</p>
       </article>
 
       <article class="figma-card reveal">
         <span class="figma-icon" aria-hidden="true">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M10 8.5 15.5 12 10 15.5v-7Z"/></svg>
         </span>
-        <h3>Protótipos interativos</h3>
-        <p>Transformo wireframes em protótipos navegáveis, com transições e micro-interações, pra validar fluxos antes do desenvolvimento.</p>
+        <h3 data-i18n="figma3Title">Protótipos interativos</h3>
+        <p data-i18n="figma3Desc">Transformo wireframes em protótipos navegáveis, com transições e micro-interações, pra validar fluxos antes do desenvolvimento.</p>
       </article>
 
       <article class="figma-card reveal">
@@ -494,15 +498,15 @@
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18 3 12l6-6M15 6l6 6-6 6"/></svg>
         </span>
         <h3>Dev Mode &amp; handoff</h3>
-        <p>Entrego specs, tokens e medidas prontas direto do Figma, facilitando a implementação do time de engenharia.</p>
+        <p data-i18n="figma4Desc">Entrego specs, tokens e medidas prontas direto do Figma, facilitando a implementação do time de engenharia.</p>
       </article>
 
       <article class="figma-card reveal">
         <span class="figma-icon" aria-hidden="true">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="9" r="3"/><circle cx="17" cy="10" r="3"/><path d="M3.5 20c0-3.3 2.5-5.5 5.5-5.5s5.5 2.2 5.5 5.5M14 15c.5-.2 1-.3 1.5-.3 2.8 0 4.5 2.1 4.5 5.3"/></svg>
         </span>
-        <h3>Colaboração em tempo real</h3>
-        <p>Trabalho em arquivos compartilhados com PMs, devs e outros designers, com comentários e revisões direto na peça.</p>
+        <h3 data-i18n="figma5Title">Colaboração em tempo real</h3>
+        <p data-i18n="figma5Desc">Trabalho em arquivos compartilhados com PMs, devs e outros designers, com comentários e revisões direto na peça.</p>
       </article>
 
       <article class="figma-card reveal">
@@ -510,7 +514,7 @@
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1" transform="rotate(6 17.5 6.5)"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
         </span>
         <h3>FigJam &amp; workshops</h3>
-        <p>Uso o FigJam pra facilitar brainstorms, mapas de fluxo e dinâmicas de research em conjunto com o time.</p>
+        <p data-i18n="figma6Desc">Uso o FigJam pra facilitar brainstorms, mapas de fluxo e dinâmicas de research em conjunto com o time.</p>
       </article>
     </div>
    </div>
@@ -520,8 +524,8 @@
   <section id="contato" class="section container contact-section">
     <div class="contact-box reveal">
       <span class="section-num">05</span>
-      <h2>Tem uma ideia?<br>Posso ajudá-lo a começar.</h2>
-      <p>Entre em contato 👋</p>
+      <h2 data-i18n-html="contactHeading">Tem uma ideia?<br>Posso ajudá-lo a começar.</h2>
+      <p data-i18n="contactSub">Entre em contato 👋</p>
       <a href="mailto:felipeyoshi93@gmail.com" class="btn btn-primary btn-lg">felipeyoshi93@gmail.com</a>
     </div>
   </section>
@@ -532,14 +536,14 @@
   <div class="container footer-inner">
     <div>
       <p class="footer-name">Felipe Yoshida</p>
-      <p class="footer-role">UX Designer</p>
+      <p class="footer-role" data-i18n="footerRole">UX Designer</p>
     </div>
 
-    <nav class="footer-nav" aria-label="Navegação do rodapé">
-      <a href="#sobre">Sobre</a>
-      <a href="#servicos">Serviços</a>
-      <a href="#trabalhos">Trabalhos</a>
-      <a href="#contato">Contato</a>
+    <nav class="footer-nav" data-i18n-aria="footerNavAria" aria-label="Navegação do rodapé">
+      <a href="#sobre" data-i18n="navAbout">Sobre</a>
+      <a href="#servicos" data-i18n="navServices">Serviços</a>
+      <a href="#trabalhos" data-i18n="navWork">Trabalhos</a>
+      <a href="#contato" data-i18n="navContact">Contato</a>
     </nav>
 
     <div class="footer-social">
@@ -550,14 +554,15 @@
     </div>
   </div>
   <div class="container footer-bottom">
-    <p>© <span id="year"></span> Felipe Yoshida. Todos os direitos reservados.</p>
+    <p>© <span id="year"></span> Felipe Yoshida. <span data-i18n="footerRights">Todos os direitos reservados.</span></p>
   </div>
 </footer>
 
-<button id="back-to-top" class="back-to-top" aria-label="Voltar ao topo" type="button" hidden>
+<button id="back-to-top" class="back-to-top" data-i18n-aria="backToTopLabel" aria-label="Voltar ao topo" type="button" hidden>
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
 </button>
 
+<script src="js/i18n.js"></script>
 <script src="js/script.js"></script>
 </body>
 </html>

@@ -9,6 +9,7 @@ portfolio-felipe-yoshida/
 ├── index.html                     → página principal
 ├── css/style.css                   → visual, cores, tema claro/escuro, responsividade
 ├── js/script.js                     → menu mobile, tema, animações, scrollspy, etc.
+├── js/i18n.js                        → troca de idioma PT/EN (dicionários de texto + lógica do botão PT/EN)
 ├── robots.txt                        → instrução para buscadores (Google etc.) indexarem o site
 ├── sitemap.xml                        → mapa do site para buscadores
 ├── trabalhos/                          → páginas de case study de cada projeto
@@ -16,10 +17,12 @@ portfolio-felipe-yoshida/
 │   ├── projeto-02.html                  → Dashboard Financeiro
 │   └── projeto-03.html                  → Sidebar Menu
 ├── cv/
-│   └── cv-fonte.html                    → fonte editável do currículo (veja o item sobre o CV abaixo)
+│   ├── cv-fonte.html                    → fonte editável do currículo em português
+│   └── cv-fonte-en.html                 → fonte editável do currículo em inglês
 └── assets/
     ├── felipe-photo.jpg                 → sua foto, usada na seção "Sobre"
-    ├── felipe-yoshida-cv.pdf             → currículo em PDF, baixado pelo botão "Baixar CV" no Hero
+    ├── felipe-yoshida-cv.pdf             → currículo em PDF (PT), baixado pelo botão "Baixar CV" quando o site está em português
+    ├── felipe-yoshida-cv-en.pdf           → currículo em PDF (EN), baixado quando o site está em inglês
     └── projects/
         ├── projeto-0X-card.jpg           → recorte usado nos cards da home
         └── projeto-0X-full.jpg           → case study completo (páginas do Figma), usado na página de cada projeto
@@ -47,6 +50,7 @@ portfolio-felipe-yoshida/
 - SEO e compartilhamento: tags de Open Graph/Twitter Card (o link fica bonito quando compartilhado no WhatsApp/LinkedIn), dados estruturados (JSON-LD), `robots.txt` e `sitemap.xml` (incluindo as páginas de case study)
 - Botão "Baixar CV" no Hero, com um currículo em PDF pronto (`assets/felipe-yoshida-cv.pdf`) — veja o item 8 abaixo para detalhes e como editar
 - Destaques do trabalho na smarters (parceria oficial com a Meta, prêmios, clientes) na experiência da seção "Sobre" e no currículo — veja o item 8
+- **Botão de idioma (PT/EN)** no cabeçalho de todas as páginas: alterna todo o texto do site (incluindo meta tags de SEO e o link de download do CV, que passa a apontar pro currículo em inglês) sem recarregar a página. A escolha fica salva no navegador do visitante (`localStorage`) e o site abre em português por padrão. O texto de cada idioma fica centralizado em `js/i18n.js` — veja o item 9 abaixo para como editar
 
 ## O que você ainda pode personalizar
 
@@ -62,6 +66,7 @@ portfolio-felipe-yoshida/
 7. **"Figma no dia a dia"** — os 6 cards descrevem, de forma geral, como um UX/UI Designer com seu perfil costuma usar o Figma (design systems, auto layout, protótipos, Dev Mode, colaboração, FigJam). Procure por `<!-- FIGMA NO DIA A DIA -->` no `index.html` se quiser deixar mais específico (ex: citar um recurso que você usa bastante, ou um fluxo de trabalho particular seu).
 8. **Currículo (`assets/felipe-yoshida-cv.pdf`)** — montei um currículo de uma página com seus dados reais do LinkedIn (contato, cargos, datas, formação, certificações, idiomas). **Importante:** como eu não tenho acesso ao seu dia a dia real em cada empresa, escrevi as atribuições de cada cargo (as listas com bullet points) com base em responsabilidades típicas de um UX Designer com o perfil que você tem no LinkedIn (Figma, Design Systems, Product Design) — são um rascunho plausível, não fatos confirmados. Antes de usar o currículo em candidaturas de verdade, revise essas listas e ajuste para o que você realmente fez em cada lugar (projetos específicos, ferramentas exatas, resultados/métricas reais que teve). Para editar: abra `cv/cv-fonte.html` num editor de texto (ou no navegador), mude o que quiser, e siga as instruções no comentário no topo do arquivo para gerar o PDF de novo a partir do Chrome (Ctrl+P → Salvar como PDF).
    - **Destaques da smarters** — tanto na seção "Sobre" do site (embaixo do cargo "smarters" na timeline) quanto no currículo, adicionei destaques sobre a empresa com base no texto que você me passou: parceria oficial com a Meta para WhatsApp, prêmios (Bots Brasil Awards, WhatsApp Flows Champion, CTWA Genius, Best-in-Class CPG Use Case) e clientes como Magalu, Visa e McDonald's. São informações sobre a empresa, não conquistas pessoais específicas suas — se quiser destacar algo que você especificamente entregou nesses projetos, me passe os detalhes e eu ajusto o texto.
+9. **Textos em inglês (`js/i18n.js`)** — todo o texto do site em português e em inglês vive nesse arquivo, dentro de dois objetos (`COMMON`, compartilhado por todas as páginas, e `PAGES`, com um bloco por página: `index`, `project1`, `project2`, `project3`). Cada chave tem uma versão `pt` e uma `en` lado a lado — pra editar um texto (em qualquer idioma), procure a chave correspondente nos dois objetos. Textos com tags HTML dentro (como `<br>` ou `<span>`) usam `data-i18n-html` no HTML em vez de `data-i18n`; o restante é texto puro. As imagens dos case studies (os prints exportados do Figma em `assets/projects/`) continuam só em português, porque o texto está "gravado" na imagem — pra ficarem bilíngues de verdade, seria preciso recriar essas artes no Figma em inglês também.
 
 ## Como ver o site no seu computador
 
