@@ -14,10 +14,9 @@ portfolio-felipe-yoshida/
 ├── sitemap.xml                        → mapa do site para buscadores
 ├── trabalhos/                          → páginas de case study de cada projeto
 │   ├── projeto-01.html                  → Single Page Survey
-│   ├── projeto-02.html                  → Dashboard Financeiro
-│   ├── projeto-03.html                  → Sidebar Menu
 │   ├── projeto-04.html                  → Design System (texto, sem prints — ver item 10)
-│   └── projeto-05.html                  → Time Brasil no WhatsApp (texto, sem prints — ver item 10)
+│   ├── projeto-05.html                  → Time Brasil no WhatsApp (texto, sem prints — ver item 10)
+│   └── projeto-06.html                  → Workflow Builder
 ├── cv/
 │   ├── cv-fonte.html                    → fonte editável do currículo em português
 │   └── cv-fonte-en.html                 → fonte editável do currículo em inglês

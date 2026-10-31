@@ -137,4 +137,29 @@ document.addEventListener('DOMContentLoaded', () => {
     updateProgress();
   }
 
+  /* Tilt 3D sutil nos cards de projeto e nos prints da faixa, seguindo o
+     mouse — só em dispositivos com mouse de precisão e sem "reduzir
+     movimento" ligado. O CSS já define --tilt-x/--tilt-y/--lift com valor
+     0 por padrão; aqui só atualizamos --tilt-x/--tilt-y conforme a posição
+     do cursor dentro do card, e o :hover no CSS cuida do --lift. */
+  const prefersFinePointer = window.matchMedia('(pointer: fine)').matches;
+  if (prefersFinePointer && !prefersReducedMotion) {
+    const maxTiltDeg = 7;
+    document.querySelectorAll('.work-card, .shot-frame').forEach((card) => {
+      card.addEventListener('pointermove', (event) => {
+        const rect = card.getBoundingClientRect();
+        const relX = (event.clientX - rect.left) / rect.width;
+        const relY = (event.clientY - rect.top) / rect.height;
+        const tiltY = (relX - 0.5) * maxTiltDeg * 2;
+        const tiltX = (0.5 - relY) * maxTiltDeg * 2;
+        card.style.setProperty('--tilt-x', `${tiltX.toFixed(2)}deg`);
+        card.style.setProperty('--tilt-y', `${tiltY.toFixed(2)}deg`);
+      });
+      card.addEventListener('pointerleave', () => {
+        card.style.setProperty('--tilt-x', '0deg');
+        card.style.setProperty('--tilt-y', '0deg');
+      });
+    });
+  }
+
 });

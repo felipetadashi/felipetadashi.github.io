@@ -20,15 +20,15 @@
 <meta name="twitter:image" content="https://www.felipeyoshida.com/assets/felipe-photo.jpg">
 
 <meta name="color-scheme" content="dark light">
-<meta name="theme-color" content="#0b0d10" media="(prefers-color-scheme: dark)">
-<meta name="theme-color" content="#f7f6f3" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0c0c0b" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#efe8da" media="(prefers-color-scheme: light)">
 
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%237c5cff'/%3E%3Ctext x='16' y='22' font-family='sans-serif' font-size='16' font-weight='700' fill='%23ffffff' text-anchor='middle'%3EFY%3C/text%3E%3C/svg%3E">
 <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%237c5cff'/%3E%3Ctext x='16' y='22' font-family='sans-serif' font-size='16' font-weight='700' fill='%23ffffff' text-anchor='middle'%3EFY%3C/text%3E%3C/svg%3E">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700;9..144,900&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
 
 <link rel="stylesheet" href="css/style.css">
 
@@ -96,6 +96,7 @@
 
   <!-- HERO -->
   <section class="hero container">
+    <div class="postit postit--yellow postit--right postit--safe-top" style="--postit-rotate:-6deg;" aria-hidden="true"><p data-i18n="postitHeroText">Figma aberto o dia inteiro, quase todo dia 🎨</p></div>
     <div class="hero-visual" aria-hidden="true">
       <svg viewBox="0 0 320 260" xmlns="http://www.w3.org/2000/svg" role="img">
         <rect x="1" y="1" width="318" height="258" rx="18" fill="var(--bg-elevated)" stroke="var(--border)"/>
@@ -179,8 +180,9 @@
 
   <!-- SOBRE -->
   <section id="sobre" class="section container">
+    <div class="postit postit--pink postit--left" style="--postit-rotate:5deg;" aria-hidden="true"><p data-i18n="postitAboutText">Do binds.co pra smarters, sempre em UX 👋</p></div>
     <div class="section-head reveal">
-      <span class="section-num">01</span>
+      <span class="section-num" data-i18n="aboutNum">01 / Sobre</span>
       <h2 data-i18n="aboutHeading">Sobre mim</h2>
     </div>
     <div class="about-grid">
@@ -289,12 +291,523 @@
     </div>
   </section>
 
+  <!-- FAIXA DE PRINTS: capturas reais de projetos (Design System, Time Brasil e outros) — cada card leva ao case study correspondente -->
+  <div class="shot-strip" aria-label="Mais telas dos projetos">
+    <div class="shot-track">
+      <a class="shot-frame" href="trabalhos/projeto-04.html" data-i18n-aria="shotStripAria4" aria-label="Ver case study: Design System">
+        <span class="shot-frame-bar" aria-hidden="true">
+          <span class="shot-frame-dot"></span>
+          <span class="shot-frame-dot"></span>
+          <span class="shot-frame-dot"></span>
+        </span>
+        <span class="shot-frame-media">
+          <img src="assets/figma/ds/ds-composed-screen.png" alt="" loading="lazy">
+          <span class="shot-frame-caption">
+            <span class="shot-frame-caption-title" data-i18n="work4Title">Design System</span>
+            <span class="shot-frame-caption-cta" data-i18n="workLinkLabel">Ver case study →</span>
+          </span>
+        </span>
+      </a>
+      <a class="shot-frame" href="trabalhos/projeto-05.html" data-i18n-aria="shotStripAria5" aria-label="Ver case study: Time Brasil no WhatsApp">
+        <span class="shot-frame-bar" aria-hidden="true">
+          <span class="shot-frame-dot"></span>
+          <span class="shot-frame-dot"></span>
+          <span class="shot-frame-dot"></span>
+        </span>
+        <span class="shot-frame-media">
+          <img src="assets/figma/cob/menu-principal.png" alt="" loading="lazy">
+          <span class="shot-frame-caption">
+            <span class="shot-frame-caption-title" data-i18n="work5Title">Time Brasil no WhatsApp</span>
+            <span class="shot-frame-caption-cta" data-i18n="workLinkLabel">Ver case study →</span>
+          </span>
+        </span>
+      </a>
+      <a class="shot-frame" href="trabalhos/projeto-01.html" data-i18n-aria="shotStripAria1" aria-label="Ver case study: Single Page Survey">
+        <span class="shot-frame-bar" aria-hidden="true">
+          <span class="shot-frame-dot"></span>
+          <span class="shot-frame-dot"></span>
+          <span class="shot-frame-dot"></span>
+        </span>
+        <span class="shot-frame-media">
+          <img src="assets/projects/projeto-01-full.jpg" alt="" loading="lazy">
+          <span class="shot-frame-caption">
+            <span class="shot-frame-caption-title">Single Page Survey</span>
+            <span class="shot-frame-caption-cta" data-i18n="workLinkLabel">Ver case study →</span>
+          </span>
+        </span>
+      </a>
+      <a class="shot-frame" href="trabalhos/projeto-04.html" data-i18n-aria="shotStripAria4" aria-label="Ver case study: Design System">
+        <span class="shot-frame-bar" aria-hidden="true">
+          <span class="shot-frame-dot"></span>
+          <span class="shot-frame-dot"></span>
+          <span class="shot-frame-dot"></span>
+        </span>
+        <span class="shot-frame-media">
+          <img src="assets/figma/ds/ds-buttons.png" alt="" loading="lazy">
+          <span class="shot-frame-caption">
+            <span class="shot-frame-caption-title" data-i18n="work4Title">Design System</span>
+            <span class="shot-frame-caption-cta" data-i18n="workLinkLabel">Ver case study →</span>
+          </span>
+        </span>
+      </a>
+      <a class="shot-frame" href="trabalhos/projeto-05.html" data-i18n-aria="shotStripAria5" aria-label="Ver case study: Time Brasil no WhatsApp">
+        <span class="shot-frame-bar" aria-hidden="true">
+          <span class="shot-frame-dot"></span>
+          <span class="shot-frame-dot"></span>
+          <span class="shot-frame-dot"></span>
+        </span>
+        <span class="shot-frame-media">
+          <img src="assets/figma/cob/quiz.png" alt="" loading="lazy">
+          <span class="shot-frame-caption">
+            <span class="shot-frame-caption-title" data-i18n="work5Title">Time Brasil no WhatsApp</span>
+            <span class="shot-frame-caption-cta" data-i18n="workLinkLabel">Ver case study →</span>
+          </span>
+        </span>
+      </a>
+      <a class="shot-frame" href="trabalhos/projeto-06.html" data-i18n-aria="shotStripAria6" aria-label="Ver case study: Workflow Builder">
+        <span class="shot-frame-bar" aria-hidden="true">
+          <span class="shot-frame-dot"></span>
+          <span class="shot-frame-dot"></span>
+          <span class="shot-frame-dot"></span>
+        </span>
+        <span class="shot-frame-media">
+          <img src="assets/figma/wb/wb-hero-painel.png" alt="" loading="lazy">
+          <span class="shot-frame-caption">
+            <span class="shot-frame-caption-title" data-i18n="work6Title">Workflow Builder</span>
+            <span class="shot-frame-caption-cta" data-i18n="workLinkLabel">Ver case study →</span>
+          </span>
+        </span>
+      </a>
+      <a class="shot-frame" href="trabalhos/projeto-06.html" data-i18n-aria="shotStripAria6" aria-label="Ver case study: Workflow Builder">
+        <span class="shot-frame-bar" aria-hidden="true">
+          <span class="shot-frame-dot"></span>
+          <span class="shot-frame-dot"></span>
+          <span class="shot-frame-dot"></span>
+        </span>
+        <span class="shot-frame-media">
+          <img src="assets/figma/wb/wb-publish-1-destino.png" alt="" loading="lazy">
+          <span class="shot-frame-caption">
+            <span class="shot-frame-caption-title" data-i18n="work6Title">Workflow Builder</span>
+            <span class="shot-frame-caption-cta" data-i18n="workLinkLabel">Ver case study →</span>
+          </span>
+        </span>
+      </a>
+      <a class="shot-frame" href="trabalhos/projeto-06.html" data-i18n-aria="shotStripAria6" aria-label="Ver case study: Workflow Builder">
+        <span class="shot-frame-bar" aria-hidden="true">
+          <span class="shot-frame-dot"></span>
+          <span class="shot-frame-dot"></span>
+          <span class="shot-frame-dot"></span>
+        </span>
+        <span class="shot-frame-media">
+          <img src="assets/figma/wb/wb-view-jornadas.png" alt="" loading="lazy">
+          <span class="shot-frame-caption">
+            <span class="shot-frame-caption-title" data-i18n="work6Title">Workflow Builder</span>
+            <span class="shot-frame-caption-cta" data-i18n="workLinkLabel">Ver case study →</span>
+          </span>
+        </span>
+      </a>
+      <a class="shot-frame" href="trabalhos/projeto-04.html" data-i18n-aria="shotStripAria4" aria-label="Ver case study: Design System">
+        <span class="shot-frame-bar" aria-hidden="true">
+          <span class="shot-frame-dot"></span>
+          <span class="shot-frame-dot"></span>
+          <span class="shot-frame-dot"></span>
+        </span>
+        <span class="shot-frame-media">
+          <img src="assets/figma/ds/ds-typography.png" alt="" loading="lazy">
+          <span class="shot-frame-caption">
+            <span class="shot-frame-caption-title" data-i18n="work4Title">Design System</span>
+            <span class="shot-frame-caption-cta" data-i18n="workLinkLabel">Ver case study →</span>
+          </span>
+        </span>
+      </a>
+      <a class="shot-frame" href="trabalhos/projeto-05.html" data-i18n-aria="shotStripAria5" aria-label="Ver case study: Time Brasil no WhatsApp">
+        <span class="shot-frame-bar" aria-hidden="true">
+          <span class="shot-frame-dot"></span>
+          <span class="shot-frame-dot"></span>
+          <span class="shot-frame-dot"></span>
+        </span>
+        <span class="shot-frame-media">
+          <img src="assets/figma/cob/fanfest.png" alt="" loading="lazy">
+          <span class="shot-frame-caption">
+            <span class="shot-frame-caption-title" data-i18n="work5Title">Time Brasil no WhatsApp</span>
+            <span class="shot-frame-caption-cta" data-i18n="workLinkLabel">Ver case study →</span>
+          </span>
+        </span>
+      </a>
+      <a class="shot-frame" href="trabalhos/projeto-04.html" data-i18n-aria="shotStripAria4" aria-label="Ver case study: Design System">
+        <span class="shot-frame-bar" aria-hidden="true">
+          <span class="shot-frame-dot"></span>
+          <span class="shot-frame-dot"></span>
+          <span class="shot-frame-dot"></span>
+        </span>
+        <span class="shot-frame-media">
+          <img src="assets/figma/ds/ds-tags.png" alt="" loading="lazy">
+          <span class="shot-frame-caption">
+            <span class="shot-frame-caption-title" data-i18n="work4Title">Design System</span>
+            <span class="shot-frame-caption-cta" data-i18n="workLinkLabel">Ver case study →</span>
+          </span>
+        </span>
+      </a>
+      <a class="shot-frame" href="trabalhos/projeto-05.html" data-i18n-aria="shotStripAria5" aria-label="Ver case study: Time Brasil no WhatsApp">
+        <span class="shot-frame-bar" aria-hidden="true">
+          <span class="shot-frame-dot"></span>
+          <span class="shot-frame-dot"></span>
+          <span class="shot-frame-dot"></span>
+        </span>
+        <span class="shot-frame-media">
+          <img src="assets/figma/cob/carteirinha.png" alt="" loading="lazy">
+          <span class="shot-frame-caption">
+            <span class="shot-frame-caption-title" data-i18n="work5Title">Time Brasil no WhatsApp</span>
+            <span class="shot-frame-caption-cta" data-i18n="workLinkLabel">Ver case study →</span>
+          </span>
+        </span>
+      </a>
+      <a class="shot-frame" href="trabalhos/projeto-04.html" data-i18n-aria="shotStripAria4" aria-label="Ver case study: Design System">
+        <span class="shot-frame-bar" aria-hidden="true">
+          <span class="shot-frame-dot"></span>
+          <span class="shot-frame-dot"></span>
+          <span class="shot-frame-dot"></span>
+        </span>
+        <span class="shot-frame-media">
+          <img src="assets/figma/ds/ds-avatars.png" alt="" loading="lazy">
+          <span class="shot-frame-caption">
+            <span class="shot-frame-caption-title" data-i18n="work4Title">Design System</span>
+            <span class="shot-frame-caption-cta" data-i18n="workLinkLabel">Ver case study →</span>
+          </span>
+        </span>
+      </a>
+      <a class="shot-frame" href="trabalhos/projeto-05.html" data-i18n-aria="shotStripAria5" aria-label="Ver case study: Time Brasil no WhatsApp">
+        <span class="shot-frame-bar" aria-hidden="true">
+          <span class="shot-frame-dot"></span>
+          <span class="shot-frame-dot"></span>
+          <span class="shot-frame-dot"></span>
+        </span>
+        <span class="shot-frame-media">
+          <img src="assets/figma/cob/agenda.png" alt="" loading="lazy">
+          <span class="shot-frame-caption">
+            <span class="shot-frame-caption-title" data-i18n="work5Title">Time Brasil no WhatsApp</span>
+            <span class="shot-frame-caption-cta" data-i18n="workLinkLabel">Ver case study →</span>
+          </span>
+        </span>
+      </a>
+      <a class="shot-frame" href="trabalhos/projeto-04.html" data-i18n-aria="shotStripAria4" aria-label="Ver case study: Design System">
+        <span class="shot-frame-bar" aria-hidden="true">
+          <span class="shot-frame-dot"></span>
+          <span class="shot-frame-dot"></span>
+          <span class="shot-frame-dot"></span>
+        </span>
+        <span class="shot-frame-media">
+          <img src="assets/figma/ds/ds-glossary.png" alt="" loading="lazy">
+          <span class="shot-frame-caption">
+            <span class="shot-frame-caption-title" data-i18n="work4Title">Design System</span>
+            <span class="shot-frame-caption-cta" data-i18n="workLinkLabel">Ver case study →</span>
+          </span>
+        </span>
+      </a>
+      <a class="shot-frame" href="trabalhos/projeto-05.html" data-i18n-aria="shotStripAria5" aria-label="Ver case study: Time Brasil no WhatsApp">
+        <span class="shot-frame-bar" aria-hidden="true">
+          <span class="shot-frame-dot"></span>
+          <span class="shot-frame-dot"></span>
+          <span class="shot-frame-dot"></span>
+        </span>
+        <span class="shot-frame-media">
+          <img src="assets/figma/cob/atletas.png" alt="" loading="lazy">
+          <span class="shot-frame-caption">
+            <span class="shot-frame-caption-title" data-i18n="work5Title">Time Brasil no WhatsApp</span>
+            <span class="shot-frame-caption-cta" data-i18n="workLinkLabel">Ver case study →</span>
+          </span>
+        </span>
+      </a>
+      <a class="shot-frame" href="trabalhos/projeto-04.html" data-i18n-aria="shotStripAria4" aria-label="Ver case study: Design System">
+        <span class="shot-frame-bar" aria-hidden="true">
+          <span class="shot-frame-dot"></span>
+          <span class="shot-frame-dot"></span>
+          <span class="shot-frame-dot"></span>
+        </span>
+        <span class="shot-frame-media">
+          <img src="assets/figma/ds/ds-text-input.png" alt="" loading="lazy">
+          <span class="shot-frame-caption">
+            <span class="shot-frame-caption-title" data-i18n="work4Title">Design System</span>
+            <span class="shot-frame-caption-cta" data-i18n="workLinkLabel">Ver case study →</span>
+          </span>
+        </span>
+      </a>
+      <a class="shot-frame" href="trabalhos/projeto-05.html" data-i18n-aria="shotStripAria5" aria-label="Ver case study: Time Brasil no WhatsApp">
+        <span class="shot-frame-bar" aria-hidden="true">
+          <span class="shot-frame-dot"></span>
+          <span class="shot-frame-dot"></span>
+          <span class="shot-frame-dot"></span>
+        </span>
+        <span class="shot-frame-media">
+          <img src="assets/figma/cob/medalhas.png" alt="" loading="lazy">
+          <span class="shot-frame-caption">
+            <span class="shot-frame-caption-title" data-i18n="work5Title">Time Brasil no WhatsApp</span>
+            <span class="shot-frame-caption-cta" data-i18n="workLinkLabel">Ver case study →</span>
+          </span>
+        </span>
+      </a>
+      <a class="shot-frame" href="trabalhos/projeto-04.html" tabindex="-1" aria-hidden="true">
+        <span class="shot-frame-bar" aria-hidden="true">
+          <span class="shot-frame-dot"></span>
+          <span class="shot-frame-dot"></span>
+          <span class="shot-frame-dot"></span>
+        </span>
+        <span class="shot-frame-media">
+          <img src="assets/figma/ds/ds-composed-screen.png" alt="" loading="lazy">
+          <span class="shot-frame-caption">
+            <span class="shot-frame-caption-title" data-i18n="work4Title">Design System</span>
+            <span class="shot-frame-caption-cta" data-i18n="workLinkLabel">Ver case study →</span>
+          </span>
+        </span>
+      </a>
+      <a class="shot-frame" href="trabalhos/projeto-05.html" tabindex="-1" aria-hidden="true">
+        <span class="shot-frame-bar" aria-hidden="true">
+          <span class="shot-frame-dot"></span>
+          <span class="shot-frame-dot"></span>
+          <span class="shot-frame-dot"></span>
+        </span>
+        <span class="shot-frame-media">
+          <img src="assets/figma/cob/menu-principal.png" alt="" loading="lazy">
+          <span class="shot-frame-caption">
+            <span class="shot-frame-caption-title" data-i18n="work5Title">Time Brasil no WhatsApp</span>
+            <span class="shot-frame-caption-cta" data-i18n="workLinkLabel">Ver case study →</span>
+          </span>
+        </span>
+      </a>
+      <a class="shot-frame" href="trabalhos/projeto-01.html" tabindex="-1" aria-hidden="true">
+        <span class="shot-frame-bar" aria-hidden="true">
+          <span class="shot-frame-dot"></span>
+          <span class="shot-frame-dot"></span>
+          <span class="shot-frame-dot"></span>
+        </span>
+        <span class="shot-frame-media">
+          <img src="assets/projects/projeto-01-full.jpg" alt="" loading="lazy">
+          <span class="shot-frame-caption">
+            <span class="shot-frame-caption-title">Single Page Survey</span>
+            <span class="shot-frame-caption-cta" data-i18n="workLinkLabel">Ver case study →</span>
+          </span>
+        </span>
+      </a>
+      <a class="shot-frame" href="trabalhos/projeto-04.html" tabindex="-1" aria-hidden="true">
+        <span class="shot-frame-bar" aria-hidden="true">
+          <span class="shot-frame-dot"></span>
+          <span class="shot-frame-dot"></span>
+          <span class="shot-frame-dot"></span>
+        </span>
+        <span class="shot-frame-media">
+          <img src="assets/figma/ds/ds-buttons.png" alt="" loading="lazy">
+          <span class="shot-frame-caption">
+            <span class="shot-frame-caption-title" data-i18n="work4Title">Design System</span>
+            <span class="shot-frame-caption-cta" data-i18n="workLinkLabel">Ver case study →</span>
+          </span>
+        </span>
+      </a>
+      <a class="shot-frame" href="trabalhos/projeto-05.html" tabindex="-1" aria-hidden="true">
+        <span class="shot-frame-bar" aria-hidden="true">
+          <span class="shot-frame-dot"></span>
+          <span class="shot-frame-dot"></span>
+          <span class="shot-frame-dot"></span>
+        </span>
+        <span class="shot-frame-media">
+          <img src="assets/figma/cob/quiz.png" alt="" loading="lazy">
+          <span class="shot-frame-caption">
+            <span class="shot-frame-caption-title" data-i18n="work5Title">Time Brasil no WhatsApp</span>
+            <span class="shot-frame-caption-cta" data-i18n="workLinkLabel">Ver case study →</span>
+          </span>
+        </span>
+      </a>
+      <a class="shot-frame" href="trabalhos/projeto-06.html" tabindex="-1" aria-hidden="true">
+        <span class="shot-frame-bar" aria-hidden="true">
+          <span class="shot-frame-dot"></span>
+          <span class="shot-frame-dot"></span>
+          <span class="shot-frame-dot"></span>
+        </span>
+        <span class="shot-frame-media">
+          <img src="assets/figma/wb/wb-hero-painel.png" alt="" loading="lazy">
+          <span class="shot-frame-caption">
+            <span class="shot-frame-caption-title" data-i18n="work6Title">Workflow Builder</span>
+            <span class="shot-frame-caption-cta" data-i18n="workLinkLabel">Ver case study →</span>
+          </span>
+        </span>
+      </a>
+      <a class="shot-frame" href="trabalhos/projeto-06.html" tabindex="-1" aria-hidden="true">
+        <span class="shot-frame-bar" aria-hidden="true">
+          <span class="shot-frame-dot"></span>
+          <span class="shot-frame-dot"></span>
+          <span class="shot-frame-dot"></span>
+        </span>
+        <span class="shot-frame-media">
+          <img src="assets/figma/wb/wb-publish-1-destino.png" alt="" loading="lazy">
+          <span class="shot-frame-caption">
+            <span class="shot-frame-caption-title" data-i18n="work6Title">Workflow Builder</span>
+            <span class="shot-frame-caption-cta" data-i18n="workLinkLabel">Ver case study →</span>
+          </span>
+        </span>
+      </a>
+      <a class="shot-frame" href="trabalhos/projeto-06.html" tabindex="-1" aria-hidden="true">
+        <span class="shot-frame-bar" aria-hidden="true">
+          <span class="shot-frame-dot"></span>
+          <span class="shot-frame-dot"></span>
+          <span class="shot-frame-dot"></span>
+        </span>
+        <span class="shot-frame-media">
+          <img src="assets/figma/wb/wb-view-jornadas.png" alt="" loading="lazy">
+          <span class="shot-frame-caption">
+            <span class="shot-frame-caption-title" data-i18n="work6Title">Workflow Builder</span>
+            <span class="shot-frame-caption-cta" data-i18n="workLinkLabel">Ver case study →</span>
+          </span>
+        </span>
+      </a>
+      <a class="shot-frame" href="trabalhos/projeto-04.html" tabindex="-1" aria-hidden="true">
+        <span class="shot-frame-bar" aria-hidden="true">
+          <span class="shot-frame-dot"></span>
+          <span class="shot-frame-dot"></span>
+          <span class="shot-frame-dot"></span>
+        </span>
+        <span class="shot-frame-media">
+          <img src="assets/figma/ds/ds-typography.png" alt="" loading="lazy">
+          <span class="shot-frame-caption">
+            <span class="shot-frame-caption-title" data-i18n="work4Title">Design System</span>
+            <span class="shot-frame-caption-cta" data-i18n="workLinkLabel">Ver case study →</span>
+          </span>
+        </span>
+      </a>
+      <a class="shot-frame" href="trabalhos/projeto-05.html" tabindex="-1" aria-hidden="true">
+        <span class="shot-frame-bar" aria-hidden="true">
+          <span class="shot-frame-dot"></span>
+          <span class="shot-frame-dot"></span>
+          <span class="shot-frame-dot"></span>
+        </span>
+        <span class="shot-frame-media">
+          <img src="assets/figma/cob/fanfest.png" alt="" loading="lazy">
+          <span class="shot-frame-caption">
+            <span class="shot-frame-caption-title" data-i18n="work5Title">Time Brasil no WhatsApp</span>
+            <span class="shot-frame-caption-cta" data-i18n="workLinkLabel">Ver case study →</span>
+          </span>
+        </span>
+      </a>
+      <a class="shot-frame" href="trabalhos/projeto-04.html" tabindex="-1" aria-hidden="true">
+        <span class="shot-frame-bar" aria-hidden="true">
+          <span class="shot-frame-dot"></span>
+          <span class="shot-frame-dot"></span>
+          <span class="shot-frame-dot"></span>
+        </span>
+        <span class="shot-frame-media">
+          <img src="assets/figma/ds/ds-tags.png" alt="" loading="lazy">
+          <span class="shot-frame-caption">
+            <span class="shot-frame-caption-title" data-i18n="work4Title">Design System</span>
+            <span class="shot-frame-caption-cta" data-i18n="workLinkLabel">Ver case study →</span>
+          </span>
+        </span>
+      </a>
+      <a class="shot-frame" href="trabalhos/projeto-05.html" tabindex="-1" aria-hidden="true">
+        <span class="shot-frame-bar" aria-hidden="true">
+          <span class="shot-frame-dot"></span>
+          <span class="shot-frame-dot"></span>
+          <span class="shot-frame-dot"></span>
+        </span>
+        <span class="shot-frame-media">
+          <img src="assets/figma/cob/carteirinha.png" alt="" loading="lazy">
+          <span class="shot-frame-caption">
+            <span class="shot-frame-caption-title" data-i18n="work5Title">Time Brasil no WhatsApp</span>
+            <span class="shot-frame-caption-cta" data-i18n="workLinkLabel">Ver case study →</span>
+          </span>
+        </span>
+      </a>
+      <a class="shot-frame" href="trabalhos/projeto-04.html" tabindex="-1" aria-hidden="true">
+        <span class="shot-frame-bar" aria-hidden="true">
+          <span class="shot-frame-dot"></span>
+          <span class="shot-frame-dot"></span>
+          <span class="shot-frame-dot"></span>
+        </span>
+        <span class="shot-frame-media">
+          <img src="assets/figma/ds/ds-avatars.png" alt="" loading="lazy">
+          <span class="shot-frame-caption">
+            <span class="shot-frame-caption-title" data-i18n="work4Title">Design System</span>
+            <span class="shot-frame-caption-cta" data-i18n="workLinkLabel">Ver case study →</span>
+          </span>
+        </span>
+      </a>
+      <a class="shot-frame" href="trabalhos/projeto-05.html" tabindex="-1" aria-hidden="true">
+        <span class="shot-frame-bar" aria-hidden="true">
+          <span class="shot-frame-dot"></span>
+          <span class="shot-frame-dot"></span>
+          <span class="shot-frame-dot"></span>
+        </span>
+        <span class="shot-frame-media">
+          <img src="assets/figma/cob/agenda.png" alt="" loading="lazy">
+          <span class="shot-frame-caption">
+            <span class="shot-frame-caption-title" data-i18n="work5Title">Time Brasil no WhatsApp</span>
+            <span class="shot-frame-caption-cta" data-i18n="workLinkLabel">Ver case study →</span>
+          </span>
+        </span>
+      </a>
+      <a class="shot-frame" href="trabalhos/projeto-04.html" tabindex="-1" aria-hidden="true">
+        <span class="shot-frame-bar" aria-hidden="true">
+          <span class="shot-frame-dot"></span>
+          <span class="shot-frame-dot"></span>
+          <span class="shot-frame-dot"></span>
+        </span>
+        <span class="shot-frame-media">
+          <img src="assets/figma/ds/ds-glossary.png" alt="" loading="lazy">
+          <span class="shot-frame-caption">
+            <span class="shot-frame-caption-title" data-i18n="work4Title">Design System</span>
+            <span class="shot-frame-caption-cta" data-i18n="workLinkLabel">Ver case study →</span>
+          </span>
+        </span>
+      </a>
+      <a class="shot-frame" href="trabalhos/projeto-05.html" tabindex="-1" aria-hidden="true">
+        <span class="shot-frame-bar" aria-hidden="true">
+          <span class="shot-frame-dot"></span>
+          <span class="shot-frame-dot"></span>
+          <span class="shot-frame-dot"></span>
+        </span>
+        <span class="shot-frame-media">
+          <img src="assets/figma/cob/atletas.png" alt="" loading="lazy">
+          <span class="shot-frame-caption">
+            <span class="shot-frame-caption-title" data-i18n="work5Title">Time Brasil no WhatsApp</span>
+            <span class="shot-frame-caption-cta" data-i18n="workLinkLabel">Ver case study →</span>
+          </span>
+        </span>
+      </a>
+      <a class="shot-frame" href="trabalhos/projeto-04.html" tabindex="-1" aria-hidden="true">
+        <span class="shot-frame-bar" aria-hidden="true">
+          <span class="shot-frame-dot"></span>
+          <span class="shot-frame-dot"></span>
+          <span class="shot-frame-dot"></span>
+        </span>
+        <span class="shot-frame-media">
+          <img src="assets/figma/ds/ds-text-input.png" alt="" loading="lazy">
+          <span class="shot-frame-caption">
+            <span class="shot-frame-caption-title" data-i18n="work4Title">Design System</span>
+            <span class="shot-frame-caption-cta" data-i18n="workLinkLabel">Ver case study →</span>
+          </span>
+        </span>
+      </a>
+      <a class="shot-frame" href="trabalhos/projeto-05.html" tabindex="-1" aria-hidden="true">
+        <span class="shot-frame-bar" aria-hidden="true">
+          <span class="shot-frame-dot"></span>
+          <span class="shot-frame-dot"></span>
+          <span class="shot-frame-dot"></span>
+        </span>
+        <span class="shot-frame-media">
+          <img src="assets/figma/cob/medalhas.png" alt="" loading="lazy">
+          <span class="shot-frame-caption">
+            <span class="shot-frame-caption-title" data-i18n="work5Title">Time Brasil no WhatsApp</span>
+            <span class="shot-frame-caption-cta" data-i18n="workLinkLabel">Ver case study →</span>
+          </span>
+        </span>
+      </a>
+
+    </div>
+  </div>
+
   <!-- SERVIÇOS -->
   <section id="servicos" class="section section-tint">
    <div class="container">
     <div class="section-head section-head--split reveal">
       <div>
-        <span class="section-num">02</span>
+        <span class="section-num" data-i18n="servicesNum">02 / Serviços</span>
         <h2 data-i18n="servicesHeading">Serviços</h2>
         <p class="section-lede" data-i18n="servicesLede">Do primeiro insight de pesquisa até a interface validada com quem usa.</p>
       </div>
@@ -381,8 +894,9 @@
 
   <!-- TRABALHOS -->
   <section id="trabalhos" class="section container">
+    <div class="postit postit--mint postit--right" style="--postit-rotate:-4deg;" aria-hidden="true"><p data-i18n="postitWorkText">Prints reais dos produtos — sem mockup fake aqui 👀</p></div>
     <div class="section-head reveal">
-      <span class="section-num">03</span>
+      <span class="section-num" data-i18n="workNum">03 / Trabalhos</span>
       <h2 data-i18n="workHeading">Trabalhos selecionados</h2>
       <p class="section-lede" data-i18n="workLede">Procuro construir designs inclusivos e acessíveis que resolvam problemas reais.</p>
     </div>
@@ -391,6 +905,7 @@
       <article class="work-card reveal">
         <div class="work-thumb" style="background-image:url('assets/projects/projeto-01-card.jpg')" aria-hidden="true"></div>
         <div class="work-info">
+          <span class="work-num">01 · <span data-i18n="work1Cat">UX Research · Formulários</span></span>
           <h3>Single Page Survey</h3>
           <p data-i18n="work1Desc">Como trocar formulários de feedback em múltiplas páginas por uma pesquisa em página única, mais rápida e intuitiva para o cliente responder.</p>
           <a href="trabalhos/projeto-01.html" data-i18n="workLinkLabel">Ver case study →</a>
@@ -398,28 +913,9 @@
       </article>
 
       <article class="work-card reveal">
-        <div class="work-thumb" style="background-image:url('assets/projects/projeto-02-card.jpg')" aria-hidden="true"></div>
+        <div class="work-thumb" style="background-image:url('assets/projects/projeto-04-card.jpg')" aria-hidden="true"></div>
         <div class="work-info">
-          <h3 data-i18n="work2Title">Dashboard Financeiro</h3>
-          <p data-i18n="work2Desc">Um dashboard que organiza métricas financeiras essenciais numa visão clara e acionável, para decisões mais rápidas e informadas.</p>
-          <a href="trabalhos/projeto-02.html" data-i18n="workLinkLabel">Ver case study →</a>
-        </div>
-      </article>
-
-      <article class="work-card reveal">
-        <div class="work-thumb" style="background-image:url('assets/projects/projeto-03-card.jpg')" aria-hidden="true"></div>
-        <div class="work-info">
-          <h3>Sidebar Menu</h3>
-          <p data-i18n="work3Desc">Redesenho do menu lateral de um produto digital para tornar a navegação mais fluida, acessível e fácil de configurar.</p>
-          <a href="trabalhos/projeto-03.html" data-i18n="workLinkLabel">Ver case study →</a>
-        </div>
-      </article>
-
-      <article class="work-card reveal">
-        <div class="work-thumb is-illustrated is-ds" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 2 7l10 5 10-5-10-5Z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
-        </div>
-        <div class="work-info">
+          <span class="work-num">02 · <span data-i18n="work4Cat">Design Systems · Conversacional</span></span>
           <h3 data-i18n="work4Title">Design System</h3>
           <p data-i18n="work4Desc">Minha contribuição contínua para o Design System de experiências conversacionais da empresa — construído do zero com o time e usado no dia a dia.</p>
           <a href="trabalhos/projeto-04.html" data-i18n="workLinkLabel">Ver case study →</a>
@@ -427,13 +923,22 @@
       </article>
 
       <article class="work-card reveal">
-        <div class="work-thumb is-illustrated is-timebrasil" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-        </div>
+        <div class="work-thumb" style="background-image:url('assets/projects/projeto-05-card.jpg')" aria-hidden="true"></div>
         <div class="work-info">
+          <span class="work-num">03 · <span data-i18n="work5Cat">UX Writing · Conversacional</span></span>
           <h3 data-i18n="work5Title">Time Brasil no WhatsApp</h3>
           <p data-i18n="work5Desc">UX Writing e engenharia de conversas para o chatbot oficial do COB e da Meta nos Jogos de Paris 2024.</p>
           <a href="trabalhos/projeto-05.html" data-i18n="workLinkLabel">Ver case study →</a>
+        </div>
+      </article>
+
+      <article class="work-card reveal">
+        <div class="work-thumb" style="background-image:url('assets/projects/projeto-06-card.jpg')" aria-hidden="true"></div>
+        <div class="work-info">
+          <span class="work-num">04 · <span data-i18n="work6Cat">Product Design · Automação conversacional</span></span>
+          <h3 data-i18n="work6Title">Workflow Builder</h3>
+          <p data-i18n="work6Desc">Painel pra gerenciar jornadas, workflows, intenções e variáveis de automações no WhatsApp — da biblioteca de assets até a publicação segura em produção.</p>
+          <a href="trabalhos/projeto-06.html" data-i18n="workLinkLabel">Ver case study →</a>
         </div>
       </article>
     </div>
@@ -448,7 +953,7 @@
    <div class="container">
     <div class="section-head section-head--split reveal">
       <div>
-        <span class="section-num">04</span>
+        <span class="section-num" data-i18n="figmaNum">04 / Figma</span>
         <h2 data-i18n="figmaHeading">Figma no dia a dia</h2>
         <p class="section-lede" data-i18n="figmaLede">Da ideia ao handoff, o Figma é minha ferramenta central em todas as etapas do processo de design.</p>
       </div>
@@ -544,8 +1049,9 @@
 
   <!-- CONTATO -->
   <section id="contato" class="section container contact-section">
+    <div class="postit postit--blue postit--left" style="--postit-rotate:6deg;" aria-hidden="true"><p data-i18n="postitContactText">Costumo responder rapidinho 📬</p></div>
     <div class="contact-box reveal">
-      <span class="section-num">05</span>
+      <span class="section-num" data-i18n="contactNum">05 / Contato</span>
       <h2 data-i18n-html="contactHeading">Tem uma ideia?<br>Posso ajudá-lo a começar.</h2>
       <p data-i18n="contactSub">Entre em contato 👋</p>
       <a href="mailto:felipeyoshi93@gmail.com" class="btn btn-primary btn-lg">felipeyoshi93@gmail.com</a>

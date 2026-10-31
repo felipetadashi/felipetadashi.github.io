@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Workflow Builder — Case study — Felipe Yoshida</title>
+<meta name="description" content="Case study: painel interno pra gerenciar jornadas, workflows, intenções e variáveis de automações no WhatsApp, da busca de assets até a publicação segura em produção. Projeto de UX Design por Felipe Yoshida.">
+
+<!-- TROQUE pela URL final do site quando publicar -->
+<link rel="canonical" href="https://www.felipeyoshida.com/trabalhos/projeto-06.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Workflow Builder — Case study — Felipe Yoshida">
+<meta property="og:description" content="Painel interno pra gerenciar jornadas, workflows, intenções e variáveis de automações no WhatsApp, da busca de assets até a publicação segura em produção.">
+<meta property="og:url" content="https://www.felipeyoshida.com/trabalhos/projeto-06.html">
+<meta property="og:image" content="https://www.felipeyoshida.com/assets/figma/wb/wb-hero-painel.png">
+<meta property="og:locale" content="pt_BR">
+<meta name="twitter:card" content="summary_large_image">
+
+<meta name="color-scheme" content="dark light">
+<meta name="theme-color" content="#0c0c0b" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#efe8da" media="(prefers-color-scheme: light)">
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%237c5cff'/%3E%3Ctext x='16' y='22' font-family='sans-serif' font-size='16' font-weight='700' fill='%23ffffff' text-anchor='middle'%3EFY%3C/text%3E%3C/svg%3E">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700;9..144,900&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body data-page="project6">
+
+<a class="skip-link" href="#main-content" data-i18n="skipLink">Pular para o conteúdo</a>
+<div class="scroll-progress" id="scroll-progress" aria-hidden="true"></div>
+<div class="noise-overlay" aria-hidden="true"></div>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="../index.html" class="logo">Felipe<span>Yoshida</span></a>
+    <div class="header-actions">
+      <a href="../index.html#trabalhos" class="btn btn-ghost case-back" data-i18n="caseBackLink">← Voltar aos trabalhos</a>
+      <div class="lang-toggle" role="group" data-i18n-aria="langToggleLabel" aria-label="Escolher idioma">
+        <button type="button" data-lang="pt" aria-pressed="true">PT</button>
+        <button type="button" data-lang="en" aria-pressed="false">EN</button>
+      </div>
+      <button class="theme-toggle" id="theme-toggle" data-i18n-aria="themeToggleLabel" aria-label="Alternar tema claro/escuro" type="button">
+        <svg class="icon icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+        <svg class="icon icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.8A9 9 0 1 1 11.2 3 7 7 0 0 0 21 12.8Z"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="main-content" tabindex="-1">
+
+  <section class="case-hero container">
+    <div class="case-hero-grid">
+      <div class="case-hero-text">
+        <p class="eyebrow reveal" data-i18n="caseEyebrow">Case study</p>
+        <h1 class="reveal" data-i18n="caseTitle">Workflow Builder</h1>
+        <p class="hero-sub reveal" data-i18n="caseHeroSub">
+          Painel interno pra gerenciar jornadas, workflows, intenções e variáveis das automações de WhatsApp da empresa —
+          da busca de um asset específico até a publicação de uma nova versão seguindo um pipeline com aprovação e rollout controlado.
+        </p>
+        <ul class="about-facts reveal">
+          <li><strong data-i18n="factRoleLabel">Função</strong><span data-i18n="factRoleValue">UX &amp; Product Design</span></li>
+          <li><strong data-i18n="factDurationLabel">Duração</strong><span data-i18n="factDurationValue">2025 – atual (contínuo)</span></li>
+          <li><strong data-i18n="factTeamLabel">Time</strong><span data-i18n="factTeamValue">Produto / Automação Conversacional</span></li>
+        </ul>
+      </div>
+
+      <div class="case-hero-visual reveal">
+        <img src="../assets/figma/wb/wb-hero-painel.png" data-i18n-alt="heroShotAlt" alt="Print real do Workflow Builder: lista de agentes à esquerda com busca e filtro por Agentes, Jornadas e Workflows, e painel lateral à direita mostrando os workflows de um agente selecionado, organizados por ambiente (Dev, QA Interno, QA Externo, Produção).">
+        <p class="case-figcaption" data-i18n="heroShotCaption">Print direto do protótipo no Figma — lista de assets e painel de detalhe lado a lado, sem retoque.</p>
+      </div>
+    </div>
+
+    <div class="pillar-grid reveal">
+      <article class="pillar-card">
+        <span class="service-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+        </span>
+        <h3 data-i18n="pillar1Title">Tudo num só lugar</h3>
+        <p data-i18n="pillar1Desc">Uma biblioteca única de jornadas, workflows, intenções e variáveis — pesquisável e filtrável por tipo de asset, em vez de depender de abrir arquivo por arquivo.</p>
+      </article>
+      <article class="pillar-card">
+        <span class="service-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/><path d="M6.5 10v4a2 2 0 0 0 2 2H14M17.5 14v-4a2 2 0 0 0-2-2h-1.5"/></svg>
+        </span>
+        <h3 data-i18n="pillar2Title">Ambiente sempre visível</h3>
+        <p data-i18n="pillar2Desc">Cada asset mostra em que ambiente está — Dev, QA Interno, QA Externo ou Produção — pra ninguém testar achando que já é a versão em produção, ou o contrário.</p>
+      </article>
+      <article class="pillar-card">
+        <span class="service-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 2 7l10 5 10-5-10-5Z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+        </span>
+        <h3 data-i18n="pillar3Title">Publicar com rede de segurança</h3>
+        <p data-i18n="pillar3Desc">Um pipeline de três passos — destino, pendências e rollout — com aprovação obrigatória antes de qualquer mudança sensível ir pro ar.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="section case-wide container">
+    <div class="postit postit--mint postit--right" style="--postit-rotate:-4deg;" aria-hidden="true"><p data-i18n="postitText">Ambiente errado publicado = pesadelo evitado 😮‍💨</p></div>
+    <div class="section-head reveal">
+      <span class="section-num" data-i18n="caseContextNum">01 / Contexto</span>
+      <h2 data-i18n="caseContextTitle">Muitos agentes, muitos fluxos, nenhum lugar central</h2>
+      <p class="section-lede" data-i18n="caseContextBody">
+        Conforme o número de agentes e automações de WhatsApp da empresa crescia, ficou cada vez mais difícil saber
+        rapidamente o que já existia, em qual ambiente cada coisa estava publicada e se era seguro alterar uma versão
+        sem quebrar o que já estava em produção. O Workflow Builder nasceu como o painel central pra resolver exatamente isso.
+      </p>
+    </div>
+    <div class="decision-block reveal">
+      <h3 data-i18n="caseRoleTitle">Minha participação</h3>
+      <p data-i18n="caseRoleBody">
+        Atuei no design desse painel interno junto com o time de produto e engenharia — da estrutura da biblioteca de
+        assets até o fluxo de publicação, incluindo como comunicar bloqueio, alerta e necessidade de aprovação sem
+        deixar a pessoa insegura na hora de publicar.
+      </p>
+    </div>
+
+    <div class="compare-grid reveal">
+      <div class="compare-col is-before">
+        <span class="compare-label" data-i18n="compareBeforeLabel">😵‍💫 Antes do painel</span>
+        <ul>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+            <span data-i18n="compareBefore1">Achar um workflow específico dependia de lembrar o nome do arquivo ou perguntar pra alguém</span>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+            <span data-i18n="compareBefore2">Nenhuma visão clara de qual ambiente (Dev, QA, Produção) tinha qual versão</span>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+            <span data-i18n="compareBefore3">Publicar uma mudança não deixava claro se havia algo pendente de resolver antes</span>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+            <span data-i18n="compareBefore4">Mudança sensível em produção não tinha um passo formal de aprovação</span>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+            <span data-i18n="compareBefore5">Feedback sobre um workflow se perdia em mensagem solta, sem saber exatamente do que estava falando</span>
+          </li>
+        </ul>
+      </div>
+      <div class="compare-col is-after">
+        <span class="compare-label" data-i18n="compareAfterLabel">✨ Com o Workflow Builder</span>
+        <ul>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M20 6 9 17l-5-5"/></svg>
+            <span data-i18n="compareAfter1">Biblioteca única, com busca e filtro por Agentes, Jornadas e Workflows</span>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M20 6 9 17l-5-5"/></svg>
+            <span data-i18n="compareAfter2">Badge de ambiente visível em cada asset, direto na lista</span>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M20 6 9 17l-5-5"/></svg>
+            <span data-i18n="compareAfter3">Pendências (bloqueios e alertas) aparecem antes do botão de continuar liberar</span>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M20 6 9 17l-5-5"/></svg>
+            <span data-i18n="compareAfter4">Aprovação obrigatória pra ambientes sensíveis, com atalho pra chamar quem aprova</span>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M20 6 9 17l-5-5"/></svg>
+            <span data-i18n="compareAfter5">Comentário fica anexado direto no workflow certo, com autor, ambiente e data — sem sair do contexto</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section case-wide container">
+    <div class="section-head reveal">
+      <span class="section-num" data-i18n="caseScenariosNum">02 / No dia a dia</span>
+      <h2 data-i18n="caseScenariosTitle">Como isso aparece na prática</h2>
+      <p class="section-lede" data-i18n="caseScenariosBody">
+        Quatro momentos comuns da rotina de quem mantém automações de WhatsApp no ar — e como o painel foi pensado
+        pra cada um deles:
+      </p>
+    </div>
+    <div class="scenario-grid reveal">
+      <article class="scenario-card">
+        <span class="scenario-tag" data-i18n="scenario1Tag">Busca rápida</span>
+        <h3 data-i18n="scenario1Title">Alguém precisa achar um workflow específico</h3>
+        <p data-i18n="scenario1Body">Em vez de vasculhar pastas, a pessoa busca pelo nome ou filtra por tipo de asset — e já vê em que ambiente cada versão está, sem precisar abrir nada.</p>
+      </article>
+      <article class="scenario-card">
+        <span class="scenario-tag" data-i18n="scenario2Tag">Pré-publicação</span>
+        <h3 data-i18n="scenario2Title">Uma versão nova está pronta pra ir pro ar</h3>
+        <p data-i18n="scenario2Body">O assistente de publicação separa bloqueios (precisam ser resolvidos) de alertas (avisam, mas não travam) antes de liberar o botão de continuar.</p>
+      </article>
+      <article class="scenario-card">
+        <span class="scenario-tag" data-i18n="scenario3Tag">Aprovação</span>
+        <h3 data-i18n="scenario3Title">A mudança afeta um ambiente sensível</h3>
+        <p data-i18n="scenario3Body">Pra QA Externo e Produção, a publicação fica condicionada à aprovação de uma pessoa autorizada — com um atalho pra chamá-la direto do próprio fluxo.</p>
+      </article>
+      <article class="scenario-card">
+        <span class="scenario-tag" data-i18n="scenario4Tag">Rollout</span>
+        <h3 data-i18n="scenario4Title">A equipe quer controlar o ritmo da mudança</h3>
+        <p data-i18n="scenario4Body">Rollout imediato pra todas as sessões ou agendado pra um horário específico — útil quando a mudança está ligada a uma campanha com data marcada.</p>
+      </article>
+      <article class="scenario-card">
+        <span class="scenario-tag" data-i18n="scenario5Tag">Colaboração</span>
+        <h3 data-i18n="scenario5Title">Uma pendência precisa de contexto, não só de um status</h3>
+        <p data-i18n="scenario5Body">Comentários ficam anexados direto no workflow certo — com quem escreveu, de qual empresa e em qual ambiente — em vez de se perderem numa mensagem solta no chat.</p>
+      </article>
+      <article class="scenario-card">
+        <span class="scenario-tag" data-i18n="scenario6Tag">Reuso</span>
+        <h3 data-i18n="scenario6Title">Um fluxo parecido já existe em outro agente</h3>
+        <p data-i18n="scenario6Body">A aba Compartilhados mostra o que já está disponível pra reuso, com a origem e o nível de escopo — de um agente específico até a organização inteira — antes de alguém recriar o mesmo workflow do zero.</p>
+      </article>
+    </div>
+
+    <div class="gallery-intro reveal">
+      <h3 data-i18n="caseGalleryTitle">Por dentro do painel: a jornada completa</h3>
+      <p class="section-lede" data-i18n="caseGalleryBody">
+        Da busca ao clique em publicar, alguns momentos que mostram como o fluxo foi pensado de ponta a ponta — prints
+        reais do protótipo no Figma.
+      </p>
+    </div>
+
+    <div class="gallery-feature reveal">
+      <div class="case-shot is-wide">
+        <img src="../assets/figma/wb/wb-home-dashboard.png" data-i18n-alt="galleryHomeAlt" alt="Tela real da home de um agente no Workflow Builder: cartões de métricas no topo (novos usuários hoje, erros em workflows, pushes enviados e taxa de entrega), colunas de Ambientes, Jornadas e Workflows, e painéis de Erros em Workflows e Pushes em andamento com itens reais.">
+      </div>
+      <div class="gallery-feature-copy">
+        <h3 data-i18n="galleryHomeTitle">Antes de buscar qualquer coisa, a home já mostra a saúde do agente</h3>
+        <p data-i18n="galleryHomeBody">
+          Cada agente tem sua própria home: novos usuários, erros em workflows e taxa de entrega de push logo no topo,
+          com atalho rápido pras colunas de Ambientes, Jornadas e Workflows.
+        </p>
+        <p data-i18n="galleryHomeBody2">
+          Embaixo, os erros ativos e os pushes em andamento já aparecem destacados — sem precisar abrir nada pra saber
+          se está tudo rodando bem.
+        </p>
+      </div>
+    </div>
+
+    <div class="gallery-feature reveal">
+      <div class="case-shot is-wide">
+        <img src="../assets/figma/wb/wb-lista-search.png" data-i18n-alt="galleryComposedAlt" alt="Tela real da biblioteca de assets do Workflow Builder: busca no topo, filtro por Agentes/Jornadas/Workflows, lista de agentes à esquerda com nome e badge de ambiente, e painel vazio à direita com a mensagem 'Não há nada aqui no momento'.">
+      </div>
+      <div class="gallery-feature-copy">
+        <h3 data-i18n="galleryComposedTitle">O ponto de partida é sempre buscar, não criar do zero</h3>
+        <p data-i18n="galleryComposedBody">
+          A tela inicial já deixa claro que existe uma biblioteca pra consultar antes de qualquer coisa: busca no topo,
+          filtro por tipo de asset (Agentes, Jornadas, Workflows) e uma lista com nome e badge de ambiente de cada item.
+          O painel à direita só se preenche quando algo é selecionado.
+        </p>
+        <p data-i18n="galleryComposedBody2">
+          Esse é o comportamento que reduz duplicação: antes de desenhar um workflow novo, a pessoa vê rápido se já
+          existe algo parecido — e em qual ambiente está.
+        </p>
+      </div>
+    </div>
+
+    <div class="gallery-grid reveal">
+      <figure class="gallery-item">
+        <div class="case-shot">
+          <img src="../assets/figma/wb/wb-cards-gallery.png" data-i18n-alt="galleryTagsAlt" alt="Grade real de variações do cartão de asset do Workflow Builder: com avatar grande ou pequeno, só texto, com e sem badge de ambiente (DEV/PROD), em formato de lista e em formato de cartão compacto.">
+        </div>
+        <figcaption>
+          <h4 data-i18n="galleryTagsTitle">Um cartão, vários tamanhos</h4>
+          <p data-i18n="galleryTagsBody">O mesmo cartão de asset se adapta a diferentes densidades — com avatar grande ou compacto, com ou sem badge de ambiente — pra funcionar tanto numa lista cheia quanto num espaço menor de destaque.</p>
+        </figcaption>
+      </figure>
+      <figure class="gallery-item">
+        <div class="case-shot">
+          <img src="../assets/figma/wb/wb-bloqueios-alertas.png" data-i18n-alt="galleryAvatarsAlt" alt="Componentes reais de Bloqueios (ícone vermelho de alerta) e Alertas (ícone amarelo de atenção) do Workflow Builder, cada um em sua própria seção recolhível, com botão Resolver em cada item.">
+        </div>
+        <figcaption>
+          <h4 data-i18n="galleryAvatarsTitle">Bloqueio não é a mesma coisa que alerta</h4>
+          <p data-i18n="galleryAvatarsBody">Vermelho sempre impede a publicação; amarelo só avisa. Mesmo sem ler o texto, a cor já diz o que precisa de ação imediata e o que é só um aviso pra se atentar.</p>
+        </figcaption>
+      </figure>
+      <figure class="gallery-item">
+        <div class="case-shot">
+          <img src="../assets/figma/wb/wb-view-intencoes.png" data-i18n-alt="galleryInputAlt" alt="Painel lateral real do Workflow Builder na aba Intenções, mostrando cartões com título, jornadas relacionadas, versão, última edição e botão Abrir, no mesmo layout usado nas abas Jornadas e Workflows.">
+        </div>
+        <figcaption>
+          <h4 data-i18n="galleryInputTitle">Mesmo layout, tipo de asset diferente</h4>
+          <p data-i18n="galleryInputBody">Jornadas, Workflows, Intenções e Variáveis dividem a mesma estrutura de cartão dentro do painel lateral — menos decisão de design nova a cada tipo, mais previsibilidade pra quem usa.</p>
+        </figcaption>
+      </figure>
+      <figure class="gallery-item">
+        <div class="case-shot">
+          <img src="../assets/figma/wb/wb-view-jornadas.png" data-i18n-alt="galleryJourneysAlt" alt="Painel lateral real do Workflow Builder na aba Jornadas, mostrando o cartão &quot;CADASTRO | 3 workflows&quot; com a data da última edição e o botão Abrir.">
+        </div>
+        <figcaption>
+          <h4 data-i18n="galleryJourneysTitle">Jornada agrupa workflows, não o contrário</h4>
+          <p data-i18n="galleryJourneysBody">Cada jornada mostra quantos workflows ela reúne — como "Cadastro" com 3 workflows — e organiza o painel por tema em vez de uma lista plana de nomes técnicos.</p>
+        </figcaption>
+      </figure>
+      <figure class="gallery-item">
+        <div class="case-shot">
+          <img src="../assets/figma/wb/wb-view-variaveis.png" data-i18n-alt="galleryVariablesAlt" alt="Painel lateral real do Workflow Builder na aba Variáveis, mostrando uma lista de itens em pares de título e valor, no mesmo cartão usado pelos outros tipos de asset.">
+        </div>
+        <figcaption>
+          <h4 data-i18n="galleryVariablesTitle">Variável em pares simples de chave e valor</h4>
+          <p data-i18n="galleryVariablesBody">Cada variável aparece como título e valor, dentro do mesmo cartão usado pelos outros tipos de asset — dá pra escanear rápido sem aprender um formato novo.</p>
+        </figcaption>
+      </figure>
+      <figure class="gallery-item">
+        <div class="case-shot">
+          <img src="../assets/figma/wb/wb-comentarios.png" data-i18n-alt="galleryCommentsAlt" alt="Aba Comentários real do Workflow Builder, mostrando comentários anexados a workflows específicos, cada um com autor, empresa, ambiente e tempo decorrido.">
+        </div>
+        <figcaption>
+          <h4 data-i18n="galleryCommentsTitle">Comentário fica anexado ao workflow certo</h4>
+          <p data-i18n="galleryCommentsBody">Cada comentário mostra quem escreveu, de qual empresa, em qual ambiente e há quanto tempo — direto no workflow ou jornada a que ele se refere, sem precisar procurar contexto em outro lugar.</p>
+        </figcaption>
+      </figure>
+    </div>
+
+    <div class="gallery-feature reveal">
+      <div class="case-shot is-wide">
+        <img src="../assets/figma/wb/wb-home-expandido.png" data-i18n-alt="galleryExpandAlt" alt="Tela real da visualização expandida do Workflow Builder: lista de agentes recentes no topo, grade de agentes com nome, ambiente e o resumo &quot;32 workflows em 8 jornadas&quot;, e painel direito vazio com a mensagem &quot;Não há nada aqui no momento&quot;.">
+      </div>
+      <div class="gallery-feature-copy">
+        <h3 data-i18n="galleryExpandTitle">Cada agente também abre numa visão expandida</h3>
+        <p data-i18n="galleryExpandBody">
+          O botão "Expandir visualização" leva pra uma página cheia, com os mesmos cartões de Jornadas, Workflows,
+          Intenções e Variáveis — só que com mais espaço, os itens recentes em destaque e um resumo de quantos
+          workflows e jornadas aquele agente tem.
+        </p>
+        <p data-i18n="galleryExpandBody2">
+          É a mesma informação do painel lateral, só que pensada pra quando a tarefa pede mais espaço — comparar
+          várias jornadas lado a lado, por exemplo — em vez de criar uma tela completamente nova pra isso.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section case-wide container">
+    <div class="section-head reveal">
+      <span class="section-num" data-i18n="caseDecisionsNum">03 / Decisões</span>
+      <h2 data-i18n="caseDecisionsTitle">Decisões que ajudei a tomar no fluxo de publicação</h2>
+      <p class="interact-hint reveal">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11.5V6a1.5 1.5 0 0 1 3 0v4M12 6a1.5 1.5 0 0 1 3 0v5M15 6.5a1.5 1.5 0 0 1 3 0V13M18 10a1.5 1.5 0 0 1 3 0v4a6 6 0 0 1-6 6h-2a6 6 0 0 1-5-2.7l-3-4.3a1.4 1.4 0 0 1 2.1-1.8L9 14"/></svg>
+        <span data-i18n="interactHintClick">Clique em cada decisão pra ver mais</span>
+      </p>
+    </div>
+
+    <details class="decision-acc reveal" open>
+      <summary>
+        <span data-i18n="decision1Title">Publicar não é um clique só — é um pipeline de três passos</span>
+        <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+      </summary>
+      <div class="decision-body">
+        <p data-i18n="decision1Body">
+          Dividimos a publicação em Destino (pra qual ambiente a versão vai), Pendências (o que falta resolver antes)
+          e Rollout (como a mudança chega até quem usa) — três decisões separadas em vez de um único botão "publicar",
+          pra cada etapa poder dar o contexto certo na hora certa.
+        </p>
+        <div class="case-shot">
+          <img src="../assets/figma/wb/wb-publish-1-destino.png" data-i18n-alt="layer1ShotAlt" alt="Primeiro passo real do assistente de publicação do Workflow Builder: 'Para qual ambiente você quer publicar?', com a versão atual em Dev e opções de destino QA Interno, QA Externo (Cliente) e Produção (Live).">
+        </div>
+        <p class="case-figcaption" data-i18n="layerCaption">Passo 1 do assistente de publicação, direto do protótipo no Figma — escolha do ambiente de destino.</p>
+      </div>
+    </details>
+
+    <details class="decision-acc reveal">
+      <summary>
+        <span data-i18n="decision2Title">Separar bloqueio de alerta, não só listar "problemas"</span>
+        <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+      </summary>
+      <div class="decision-body">
+        <p data-i18n="decision2Body">
+          Bloqueios realmente impedem a publicação até serem resolvidos; alertas só avisam, sem travar o botão de
+          continuar. Misturar os dois numa lista só faria um aviso cosmético pesar tanto quanto algo que vai quebrar
+          o fluxo em produção.
+        </p>
+        <div class="case-shot">
+          <img src="../assets/figma/wb/wb-publish-2-pendencias.png" data-i18n-alt="decision2ShotAlt" alt="Passo 2 real do assistente de publicação do Workflow Builder: &quot;Pendências antes de publicar&quot;, com a seção Bloqueios expandida e a instrução &quot;Resolva os bloqueios para continuar. Alertas não impedem a publicação.&quot;">
+        </div>
+        <p class="case-figcaption" data-i18n="decision2Caption">Passo 2 do assistente de publicação, direto do protótipo no Figma — bloqueios e alertas antes de liberar o botão de continuar.</p>
+      </div>
+    </details>
+
+    <details class="decision-acc reveal">
+      <summary>
+        <span data-i18n="decision3Title">Aprovação obrigatória pra ambientes sensíveis</span>
+        <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+      </summary>
+      <div class="decision-body">
+        <p data-i18n="decision3Body">
+          Publicar em QA Externo ou Produção passa a depender da aprovação de uma pessoa autorizada — o rollout mostra
+          quem precisa aprovar e dá um atalho pra mandar mensagem direto pra ela, sem sair do fluxo de publicação.
+        </p>
+      </div>
+    </details>
+
+    <details class="decision-acc reveal">
+      <summary>
+        <span data-i18n="decision4Title">Rollout imediato ou agendado, não só ligar/desligar</span>
+        <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+      </summary>
+      <div class="decision-body">
+        <p data-i18n="decision4Body">
+          Além de publicar pra todas as sessões de uma vez, a pessoa pode agendar o rollout pra um horário específico —
+          pensado pra mudanças ligadas a uma campanha ou evento com data de início já definida.
+        </p>
+        <div class="case-shot">
+          <img src="../assets/figma/wb/wb-publish-3-rollout.png" data-i18n-alt="decision4ShotAlt" alt="Passo 3 real do assistente de publicação do Workflow Builder: &quot;Aprovação e Rollout&quot;, com a seção Estratégia de Rollout mostrando as opções Imediato (todas as sessões) e Agendado (escolher horário).">
+        </div>
+        <p class="case-figcaption" data-i18n="decision4Caption">Passo 3 do assistente de publicação, direto do protótipo no Figma — aprovação e escolha da estratégia de rollout.</p>
+      </div>
+    </details>
+
+    <details class="decision-acc reveal">
+      <summary>
+        <span data-i18n="decision5Title">Pendência também pode ser consultada fora do fluxo de publicação</span>
+        <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+      </summary>
+      <div class="decision-body">
+        <p data-i18n="decision5Body">
+          Além de aparecerem no passo 2 do assistente, as pendências de um ambiente ficam disponíveis num painel
+          próprio, filtrável por nome e tipo — pra quem quer revisar o que falta resolver sem precisar iniciar uma
+          publicação.
+        </p>
+        <div class="case-shot">
+          <img src="../assets/figma/wb/wb-pendencias-modal.png" data-i18n-alt="decision5ShotAlt" alt="Painel real de Pendências do Workflow Builder, aberto fora do assistente de publicação, com filtros por Nome e Tipo e itens reais como &quot;Documentos Termos | Arquivo (pdf)&quot; marcado como &quot;URL inválida&quot;.">
+        </div>
+        <p class="case-figcaption" data-i18n="decision5Caption">Painel de Pendências como tela própria, direto do protótipo no Figma — mesmo componente usado dentro do assistente de publicação.</p>
+      </div>
+    </details>
+
+    <details class="decision-acc reveal">
+      <summary>
+        <span data-i18n="decision6Title">Compartilhar workflow tem dono e tem escopo</span>
+        <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+      </summary>
+      <div class="decision-body">
+        <p data-i18n="decision6Body">
+          Um workflow compartilhado mostra de onde veio — qual agente é a origem — e em que nível foi liberado:
+          Agente, Company, Organization ou Global. Isso deixa claro quem pode reusar o quê, em vez de todo mundo
+          enxergar tudo de todo mundo por padrão.
+        </p>
+        <div class="case-shot">
+          <img src="../assets/figma/wb/wb-compartilhados-expandido.png" data-i18n-alt="decision6ShotAlt" alt="Aba Compartilhados real do Workflow Builder, mostrando os quatro níveis de escopo — Agente, Company, Organization e Global — e um workflow com descrição, agente de origem e nível de compartilhamento.">
+        </div>
+        <p class="case-figcaption" data-i18n="decision6Caption">Aba Compartilhados, direto do protótipo no Figma — escopo de reuso em quatro níveis, do agente específico até a organização inteira.</p>
+      </div>
+    </details>
+  </section>
+
+  <section class="section case-wide container">
+    <div class="section-head reveal">
+      <span class="section-num" data-i18n="caseFaqNum">04 / Perguntas frequentes</span>
+      <h2 data-i18n="caseFaqTitle">O que sempre perguntam sobre esse tipo de painel</h2>
+    </div>
+
+    <details class="decision-acc reveal">
+      <summary>
+        <span data-i18n="faq1Q">Por que não publicar direto, sem passar por QA Interno e Externo?</span>
+        <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+      </summary>
+      <div class="decision-body">
+        <p data-i18n="faq1A">Automações de WhatsApp falam direto com quem usa o produto — um erro em produção vira experiência ruim na hora. Os ambientes intermediários existem pra pegar esse tipo de problema antes, com o menor custo possível de correção.</p>
+      </div>
+    </details>
+    <details class="decision-acc reveal">
+      <summary>
+        <span data-i18n="faq2Q">Quem decide o que é bloqueio e o que é só alerta?</span>
+        <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+      </summary>
+      <div class="decision-body">
+        <p data-i18n="faq2A">A regra geral é: se o problema impede o fluxo de funcionar (uma integração quebrada, por exemplo), é bloqueio. Se é algo que vale revisar mas não quebra nada sozinho, é alerta. Essa distinção foi definida junto com o time técnico.</p>
+      </div>
+    </details>
+    <details class="decision-acc reveal">
+      <summary>
+        <span data-i18n="faq3Q">Por que oferecer rollout agendado, e não só "ligado" ou "desligado"?</span>
+        <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+      </summary>
+      <div class="decision-body">
+        <p data-i18n="faq3A">Muita automação está ligada a uma campanha com data de início certa — publicar cedo demais ou esquecer de publicar na hora certa são dois jeitos de dar errado. Agendar tira essa responsabilidade de "lembrar manualmente" de cima de alguém.</p>
+      </div>
+    </details>
+    <details class="decision-acc reveal">
+      <summary>
+        <span data-i18n="faq4Q">Por que separar o compartilhamento em quatro níveis de escopo?</span>
+        <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+      </summary>
+      <div class="decision-body">
+        <p data-i18n="faq4A">Nem todo workflow deveria estar disponível pra empresa inteira assim que é criado. Os quatro níveis — Agente, Company, Organization, Global — deixam quem criou decidir o alcance, em vez de abrir tudo por padrão ou esconder tudo por padrão.</p>
+      </div>
+    </details>
+  </section>
+
+  <section class="section case-wide container section-playful">
+    <div class="section-head reveal">
+      <span class="section-num" data-i18n="caseFunNum">05 / Curiosidades</span>
+      <h2 data-i18n="caseFunTitle">🧩 Você sabia?</h2>
+      <p class="section-lede" data-i18n="caseFunBody">Clique nos cards pra virar e ver.</p>
+    </div>
+    <div class="flip-grid reveal">
+      <div class="flip-card">
+        <input type="checkbox" id="flip-wb-1">
+        <label for="flip-wb-1">
+          <div class="flip-inner">
+            <div class="flip-front">
+              <div class="flip-icon">🚦</div>
+              <span class="flip-label" data-i18n="flipWb1Front">Por que vermelho é bloqueio e amarelo é alerta?</span>
+              <span class="flip-cta" data-i18n="flipCta">Clique pra ver</span>
+            </div>
+            <div class="flip-back" data-i18n="flipWb1Back">Cor como atalho cognitivo: vermelho sempre trava a publicação, amarelo nunca trava — dá pra reconhecer a gravidade antes mesmo de ler o texto do card.</div>
+          </div>
+        </label>
+      </div>
+      <div class="flip-card">
+        <input type="checkbox" id="flip-wb-2">
+        <label for="flip-wb-2">
+          <div class="flip-inner">
+            <div class="flip-front">
+              <div class="flip-icon">🗂️</div>
+              <span class="flip-label" data-i18n="flipWb2Front">Um só layout de cartão pra quatro tipos de asset</span>
+              <span class="flip-cta" data-i18n="flipCta">Clique pra ver</span>
+            </div>
+            <div class="flip-back" data-i18n="flipWb2Back">Jornadas, Workflows, Intenções e Variáveis usam exatamente a mesma estrutura de cartão no painel lateral — menos decisão de design nova a cada tipo, mais consistência pra quem usa.</div>
+          </div>
+        </label>
+      </div>
+      <div class="flip-card">
+        <input type="checkbox" id="flip-wb-3">
+        <label for="flip-wb-3">
+          <div class="flip-inner">
+            <div class="flip-front">
+              <div class="flip-icon">📅</div>
+              <span class="flip-label" data-i18n="flipWb3Front">O rollout agendado usa ícone de calendário, não de relógio</span>
+              <span class="flip-cta" data-i18n="flipCta">Clique pra ver</span>
+            </div>
+            <div class="flip-back" data-i18n="flipWb3Back">Uma decisão pequena de microcopy e iconografia: calendário deixa claro que é uma data marcada, não um timer contando — evita confundir "agendado" com "atrasando".</div>
+          </div>
+        </label>
+      </div>
+      <div class="flip-card">
+        <input type="checkbox" id="flip-wb-4">
+        <label for="flip-wb-4">
+          <div class="flip-inner">
+            <div class="flip-front">
+              <div class="flip-icon">💬</div>
+              <span class="flip-label" data-i18n="flipWb4Front">Pendência e comentário moram na mesma aba, só trocam de sub-aba</span>
+              <span class="flip-cta" data-i18n="flipCta">Clique pra ver</span>
+            </div>
+            <div class="flip-back" data-i18n="flipWb4Back">"Pendências" e "Comentários" vivem lado a lado dentro do mesmo painel "Resumo" — menos um lugar novo pra lembrar de abrir, mais um hábito só de onde olhar primeiro.</div>
+          </div>
+        </label>
+      </div>
+      <div class="flip-card">
+        <input type="checkbox" id="flip-wb-5">
+        <label for="flip-wb-5">
+          <div class="flip-inner">
+            <div class="flip-front">
+              <div class="flip-icon">🧭</div>
+              <span class="flip-label" data-i18n="flipWb5Front">O cartão de jornada já mostra "N workflows" antes de abrir</span>
+              <span class="flip-cta" data-i18n="flipCta">Clique pra ver</span>
+            </div>
+            <div class="flip-back" data-i18n="flipWb5Back">Em vez de abrir pra contar quantos workflows uma jornada tem, o número já vem no título do cartão — uma decisão pequena que economiza um clique repetido centenas de vezes.</div>
+          </div>
+        </label>
+      </div>
+      <div class="flip-card">
+        <input type="checkbox" id="flip-wb-6">
+        <label for="flip-wb-6">
+          <div class="flip-inner">
+            <div class="flip-front">
+              <div class="flip-icon">🔴</div>
+              <span class="flip-label" data-i18n="flipWb6Front">O badge vermelho de pendência aparece direto na lista</span>
+              <span class="flip-cta" data-i18n="flipCta">Clique pra ver</span>
+            </div>
+            <div class="flip-back" data-i18n="flipWb6Back">Não precisa abrir um workflow pra saber se ele tem pendência: um badge numérico vermelho já aparece junto ao nome, na lista — a mesma lógica de cor usada nos bloqueios.</div>
+          </div>
+        </label>
+      </div>
+    </div>
+  </section>
+
+  <section class="section case-wide container">
+    <div class="section-head reveal">
+      <span class="section-num" data-i18n="caseImpactNum">06 / Impacto</span>
+      <h2 data-i18n="caseImpactTitle">Um lugar só pra confiar antes de publicar</h2>
+      <p class="section-lede" data-i18n="caseImpactBody">
+        O Workflow Builder centralizou a descoberta de assets de automação que antes estavam espalhados, e deu uma
+        rede de segurança — bloqueios, alertas e aprovação — pro momento mais sensível do processo: o clique em
+        publicar numa automação que fala direto com quem usa o produto.
+      </p>
+      <p class="case-disclaimer" data-i18n="caseDisclaimer">Resultado descrito de forma qualitativa, sem métricas fechadas de antes/depois.</p>
+    </div>
+
+    <div class="case-more-grid reveal">
+      <a href="projeto-04.html" data-i18n="exploreDesignSystem">Design System →</a>
+      <a href="projeto-05.html" data-i18n="exploreTimeBrasil">Time Brasil no WhatsApp →</a>
+      <a href="../index.html#trabalhos" data-i18n="allWorkLabel">Ver todos os trabalhos</a>
+    </div>
+  </section>
+
+  <section class="section container contact-section">
+    <div class="contact-box reveal">
+      <h2 data-i18n="caseContactHeading">Gostou deste projeto?</h2>
+      <p data-i18n="contactSub">Entre em contato 👋</p>
+      <a href="mailto:felipeyoshi93@gmail.com" class="btn btn-primary btn-lg">felipeyoshi93@gmail.com</a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <div>
+      <p class="footer-name">Felipe Yoshida</p>
+      <p class="footer-role" data-i18n="footerRole">UX Designer</p>
+    </div>
+
+    <nav class="footer-nav" data-i18n-aria="footerNavAria" aria-label="Navegação do rodapé">
+      <a href="../index.html#sobre" data-i18n="navAbout">Sobre</a>
+      <a href="../index.html#servicos" data-i18n="navServices">Serviços</a>
+      <a href="../index.html#trabalhos" data-i18n="navWork">Trabalhos</a>
+      <a href="../index.html#contato" data-i18n="navContact">Contato</a>
+    </nav>
+
+    <div class="footer-social">
+      <a href="https://dribbble.com/felipe_yoshida" target="_blank" rel="noopener noreferrer">Dribbble</a>
+      <a href="https://www.instagram.com/felipe.tadashi" target="_blank" rel="noopener noreferrer">Instagram</a>
+      <a href="https://www.behance.net/felipeyoshida1" target="_blank" rel="noopener noreferrer">Behance</a>
+      <a href="https://www.linkedin.com/in/felipe-yoshida" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+    </div>
+  </div>
+  <div class="container footer-bottom">
+    <p>© <span id="year"></span> Felipe Yoshida. <span data-i18n="footerRights">Todos os direitos reservados.</span></p>
+  </div>
+</footer>
+
+<button id="back-to-top" class="back-to-top" data-i18n-aria="backToTopLabel" aria-label="Voltar ao topo" type="button" hidden>
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+</button>
+
+<script src="../js/i18n.js"></script>
+<script src="../js/script.js"></script>
+</body>
+</html>

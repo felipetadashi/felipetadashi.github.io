@@ -17,14 +17,14 @@
 <meta name="twitter:card" content="summary_large_image">
 
 <meta name="color-scheme" content="dark light">
-<meta name="theme-color" content="#0b0d10" media="(prefers-color-scheme: dark)">
-<meta name="theme-color" content="#f7f6f3" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0c0c0b" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#efe8da" media="(prefers-color-scheme: light)">
 
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%237c5cff'/%3E%3Ctext x='16' y='22' font-family='sans-serif' font-size='16' font-weight='700' fill='%23ffffff' text-anchor='middle'%3EFY%3C/text%3E%3C/svg%3E">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700;9..144,900&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
 
 <link rel="stylesheet" href="../css/style.css">
 </head>
@@ -70,7 +70,8 @@
       </div>
 
       <div class="case-hero-visual reveal">
-        <img src="../assets/figma/ds/ds-colors.png" data-i18n-alt="heroShotAlt" alt="Estudo de cores do Design System no Figma: a escala de cada tom, de 50 a 900, testada em fundo claro e escuro.">
+        <img src="../assets/figma/ds/ds-buttons.png" data-i18n-alt="heroShotAlt" alt="Biblioteca real de botões do Design System no Figma: variantes de cor, tamanho e estado (ativo, outline, desabilitado) lado a lado.">
+        <p class="case-figcaption" data-i18n="heroShotCaption">Print direto do arquivo de Design System no Figma — biblioteca de botões, sem retoque.</p>
       </div>
     </div>
 
@@ -100,6 +101,7 @@
   </section>
 
   <section class="section case-wide container">
+    <div class="postit postit--yellow postit--right" style="--postit-rotate:-5deg;" aria-hidden="true"><p data-i18n="postitText">Não é projeto paralelo — é rotina mesmo.</p></div>
     <div class="section-head reveal">
       <span class="section-num" data-i18n="caseContextNum">01 / Contexto</span>
       <h2 data-i18n="caseContextTitle">Vários fluxos, vários times, um só padrão pra manter</h2>
@@ -196,6 +198,73 @@
         <p data-i18n="scenario4Body">Com os blocos de texto organizados como componentes, fica mais claro o que precisa ser traduzido e o que é estrutura técnica que não muda entre idiomas.</p>
       </article>
     </div>
+
+    <div class="gallery-intro reveal">
+      <h3 data-i18n="caseGalleryTitle">Por dentro da biblioteca: mais peças reais</h3>
+      <p class="section-lede" data-i18n="caseGalleryBody">
+        Pra além dos quatro cenários acima, vale olhar de perto algumas peças que sustentam esses fluxos — de
+        uma tela de produção montada inteiramente com componentes do sistema até os componentes individuais
+        que a compõem.
+      </p>
+    </div>
+
+    <div class="gallery-feature reveal">
+      <div class="case-shot is-wide">
+        <img src="../assets/figma/ds/ds-composed-screen.png" data-i18n-alt="galleryComposedAlt" alt="Tela real composta só com componentes do Design System: um painel de conversa no WhatsApp ao lado de dois painéis de Sessão ID com as abas Conversa, Propriedades e Variáveis, cada uma com uma tabela de Prop, Tipo e valor.">
+      </div>
+      <div class="gallery-feature-copy">
+        <h3 data-i18n="galleryComposedTitle">Uma tela de debug montada só com componentes do sistema</h3>
+        <p data-i18n="galleryComposedBody">
+          É assim que o time técnico acompanha um fluxo em produção: o painel de conversa do WhatsApp ao lado
+          de dois painéis de "Sessão", cada um com abas pra Conversa, Propriedades e Variáveis — tudo isso é
+          montagem de componentes já prontos (tabs, tabela, botão, cabeçalho de modal), não uma tela desenhada
+          do zero pra esse caso específico.
+        </p>
+        <p data-i18n="galleryComposedBody2">
+          Isso é o que o Design System entrega na prática: uma pessoa monta uma tela nova combinando peças
+          existentes, em vez de desenhar cada elemento de novo.
+        </p>
+      </div>
+    </div>
+
+    <div class="gallery-grid reveal">
+      <figure class="gallery-item">
+        <div class="case-shot">
+          <img src="../assets/figma/ds/ds-tags.png" data-i18n-alt="galleryTagsAlt" alt="Grade real do componente de tag do Design System, mostrando as variações de cor (roxo, azul, vermelho, laranja, verde, neutro, entre outras), preenchido versus contornado e os diferentes tamanhos disponíveis.">
+        </div>
+        <figcaption>
+          <h4 data-i18n="galleryTagsTitle">Uma etiqueta, muitas variações</h4>
+          <p data-i18n="galleryTagsBody">A tag sinaliza estado dentro dos fluxos técnicos (erro, sucesso, aviso, neutro). A biblioteca cobre cor, contorno x preenchido e tamanho — sempre com os mesmos tokens de cor do resto do produto.</p>
+        </figcaption>
+      </figure>
+      <figure class="gallery-item">
+        <div class="case-shot">
+          <img src="../assets/figma/ds/ds-avatars.png" data-i18n-alt="galleryAvatarsAlt" alt="Escala real do componente de avatar do Design System, da marcação miúda usada dentro de listas até o avatar grande de perfil, para pessoas e outras entidades.">
+        </div>
+        <figcaption>
+          <h4 data-i18n="galleryAvatarsTitle">Mesma escala em qualquer contexto</h4>
+          <p data-i18n="galleryAvatarsBody">Da marcação miúda dentro de uma lista até o avatar grande de perfil, o componente segue uma única escala de tamanho pra pessoas e outras entidades — evita que cada tela reinvente seu próprio círculo com iniciais.</p>
+        </figcaption>
+      </figure>
+      <figure class="gallery-item">
+        <div class="case-shot">
+          <img src="../assets/figma/ds/ds-text-input.png" data-i18n-alt="galleryInputAlt" alt="Componente real de campo de texto do Design System nos estados ocioso, em foco, somente leitura e desabilitado, todos com o texto de exemplo Placeholder.">
+        </div>
+        <figcaption>
+          <h4 data-i18n="galleryInputTitle">Todos os estados já previstos</h4>
+          <p data-i18n="galleryInputBody">Ocioso, em foco, somente leitura e desabilitado — os estados que qualquer formulário dentro dos fluxos precisa, prontos pra reaproveitar sem redesenhar o comportamento a cada tela nova.</p>
+        </figcaption>
+      </figure>
+      <figure class="gallery-item">
+        <div class="case-shot">
+          <img src="../assets/figma/ds/ds-flows-nf.png" data-i18n-alt="galleryFlowsAlt" alt="Tela real de um WhatsApp Flow do Design System: fluxo de cadastro de nota fiscal numa campanha promocional, com cabeçalho, exemplos de imagem, campos de número da NF e CNPJ, e botão de enviar foto, todos componentes reutilizáveis de Flows.">
+        </div>
+        <figcaption>
+          <h4 data-i18n="galleryFlowsTitle">Um fluxo inteiro, só com peças do sistema</h4>
+          <p data-i18n="galleryFlowsBody">Esse template de cadastro de nota fiscal pra campanhas promocionais é cabeçalho, imagem, texto, campo e botão do Flows já prontos — encaixados uma vez e reaproveitados em cada campanha nova.</p>
+        </figcaption>
+      </figure>
+    </div>
   </section>
 
   <section class="section case-wide container">
@@ -230,20 +299,23 @@
           <div class="toggle-panels">
             <div class="toggle-panel" data-panel="1">
               <div class="case-shot">
-                <img src="../assets/figma/ds/ds-chat-layer.png" data-i18n-alt="layer1ShotAlt" alt="Componentes reais de bolha de mensagem do Design System, em modo claro, usados na camada de conversa.">
+                <img src="../assets/figma/ds/ds-typography.png" data-i18n-alt="layer1ShotAlt" alt="Escala tipográfica real do Design System, com os estilos de display, título, subtítulo e heading usados no texto da conversa.">
               </div>
               <div class="tab-panel-copy">
                 <h3 data-i18n="layer1Title">Camada de conversa</h3>
-                <p data-i18n="layer1Desc">O que a pessoa lê e responde — tom, clareza e ritmo da mensagem.</p>
+                <p data-i18n="layer1Desc">O que a pessoa lê e responde dentro da conversa — tom, clareza e ritmo da mensagem. No Figma isso virou uma escala tipográfica com poucos estilos (display, título, subtítulo, heading), pensada pra manter hierarquia mesmo dentro de uma tela pequena de chat.</p>
+                <p data-i18n="layer1Desc2">Na prática, cada estilo tem um uso específico dentro do fluxo: Display abre uma etapa nova da conversa, Título nomeia um bloco de pergunta, Subtítulo dá contexto complementar e Heading organiza listas de opção dentro da própria mensagem.</p>
+                <p data-i18n="layer1Desc3">Como o texto da conversa é a parte mais visível do fluxo pra quem usa o produto, manter esses estilos num conjunto pequeno e já testado ajuda o time de conteúdo a escrever rápido sem perder consistência.</p>
               </div>
             </div>
             <div class="toggle-panel" data-panel="2">
               <div class="case-shot">
-                <img src="../assets/figma/ds/ds-backend-layer.png" data-i18n-alt="layer2ShotAlt" alt="Componentes reais de decisão do Design System, codificados por cor (perigo, alerta, info, sucesso, destaque), usados na camada técnica.">
+                <img src="../assets/figma/ds/ds-glossary.png" data-i18n-alt="layer2ShotAlt" alt="Glossário real de tipos de nó usados nos fluxos do Design System: Delay, Chamada de API, Error, Scheduler, Push, Decision, Click, entre outros.">
               </div>
               <div class="tab-panel-copy">
                 <h3 data-i18n="layer2Title">Camada técnica</h3>
-                <p data-i18n="layer2Desc">O que guia a implementação — variáveis, condições e integrações por trás da mensagem.</p>
+                <p data-i18n="layer2Desc">O que guia a implementação por trás da mensagem — variáveis, condições e integrações. Cada tipo de nó do fluxo (Delay, Chamada de API, Error, Scheduler, Push, Decision, Click, entre outros) tem um ícone e um campo de dado padronizados, pra qualquer pessoa do time reconhecer o papel dele só de bater o olho.</p>
+                <p data-i18n="layer2Desc2">Essa padronização também ajuda na hora de montar um fluxo novo: quem está desenhando reconhece de cara qual nó representa uma chamada externa, qual guarda um valor e qual é só uma condição de decisão.</p>
               </div>
             </div>
           </div>
@@ -394,7 +466,7 @@
 
     <div class="case-more-grid reveal">
       <a href="projeto-05.html" data-i18n="exploreTimeBrasil">Time Brasil no WhatsApp →</a>
-      <a href="projeto-03.html" data-i18n="exploreSidebar">Sidebar Menu →</a>
+      <a href="projeto-06.html" data-i18n="exploreWorkflowBuilder">Workflow Builder →</a>
       <a href="../index.html#trabalhos" data-i18n="allWorkLabel">Ver todos os trabalhos</a>
     </div>
   </section>
