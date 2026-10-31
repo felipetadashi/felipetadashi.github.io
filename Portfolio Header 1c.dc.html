@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+
+<meta name="design_doc_mode" content="canvas">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#111110;font-family:'Bricolage Grotesque',sans-serif;-webkit-font-smoothing:antialiased}
+a{color:#FF5A1F;text-decoration:none}a:hover{color:#111110}
+@keyframes dash{to{stroke-dashoffset:-20}}
+@keyframes blink{50%{opacity:.25}}
+</style>
+</helmet>
+<div ref="{{ flowFrame }}" style="position:relative;width:1280px;height:760px;overflow:hidden;background:#111110;user-select:none;margin:0 auto">
+        <div style="position:absolute;inset:0;background-image:radial-gradient(#2E2E2A 1.2px,transparent 1.2px);background-size:24px 24px"></div>
+        <svg width="1280" height="760" style="position:absolute;inset:0;pointer-events:none">
+          <path d="{{ e0 }}" fill="none" stroke="#4A4843" stroke-width="1.5"></path>
+          <path d="{{ e1 }}" fill="none" stroke="#4A4843" stroke-width="1.5"></path>
+          <path d="{{ e2 }}" fill="none" stroke="#4A4843" stroke-width="1.5"></path>
+          <path d="{{ e3 }}" fill="none" stroke="#4A4843" stroke-width="1.5"></path>
+          <path d="{{ e4 }}" fill="none" stroke="#FF5A1F" stroke-width="1.5" stroke-dasharray="4 6" style="animation:dash 1s linear infinite"></path>
+          <path d="{{ e5 }}" fill="none" stroke="#4A4843" stroke-width="1.5"></path>
+          <path d="{{ e6 }}" fill="none" stroke="#FF5A1F" stroke-width="1.5" stroke-dasharray="4 6" style="animation:dash 1s linear infinite"></path>
+          <path d="{{ e7 }}" fill="none" stroke="#FF5A1F" stroke-width="1.5" stroke-dasharray="4 6" style="animation:dash 1s linear infinite"></path>
+        </svg>
+        <sc-for list="{{ nodes }}" as="n" hint-placeholder-count="7">
+          <div onMouseDown="{{ n.down }}" style="position:absolute;left:{{ n.x }}px;top:{{ n.y }}px;width:176px;height:72px;box-sizing:border-box;padding:12px 14px;border-radius:10px;background:{{ n.bg }};border:1px solid {{ n.bd }};display:flex;flex-direction:column;justify-content:space-between;cursor:grab;box-shadow:0 10px 30px -10px rgba(0,0,0,.6)" style-hover="border-color:#FF5A1F">
+            <span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:{{ n.sub }}">{{ n.k }}</span>
+            <span style="font-size:20px;font-weight:600;color:{{ n.fg }};letter-spacing:-0.01em">{{ n.t }}</span>
+            <div style="position:absolute;left:-5px;top:31px;width:8px;height:8px;border-radius:50%;background:#111110;border:1.5px solid #6B675E"></div>
+            <div style="position:absolute;right:-5px;top:31px;width:8px;height:8px;border-radius:50%;background:#111110;border:1.5px solid #6B675E"></div>
+          </div>
+        </sc-for>
+        <div style="position:absolute;left:64px;top:36px;display:flex;align-items:center;gap:14px;font-family:'JetBrains Mono',monospace;font-size:13px;color:#B9B5AB">
+          <span style="font-family:'Bricolage Grotesque',sans-serif;font-size:22px;font-weight:700;color:#EEECE6;letter-spacing:-0.02em">lia moreno</span>
+          <span style="width:8px;height:8px;border-radius:50%;background:#3DDC84;animation:blink 1.6s ease-in-out infinite"></span>
+          <span>disponível para projetos</span>
+        </div>
+        <div style="position:absolute;left:64px;bottom:64px;display:flex;flex-direction:column;gap:24px;pointer-events:none">
+          <div style="font-size:124px;font-weight:800;line-height:0.88;letter-spacing:-0.045em;color:#EEECE6">Do insight<br><span style="color:#FF5A1F">ao deploy.</span></div>
+          <div style="font-family:'JetBrains Mono',monospace;font-size:14px;color:#B9B5AB;max-width:520px;line-height:1.6">UX design × engenharia front-end. Eu conecto pesquisa, interface e código num único fluxo — arraste e veja.</div>
+        </div>
+        <div style="position:absolute;right:64px;bottom:40px;font-family:'JetBrains Mono',monospace;font-size:12px;color:#6B675E">flow.json · 7 nós · 8 conexões</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+const LINES = [["L","I","A"],["M","O","R","E","N","O"]];
+const NODES = [
+  {k:"01 / descobrir", t:"Pesquisa", x:470, y:120},
+  {k:"02 / definir", t:"Personas", x:720, y:70},
+  {k:"03 / estruturar", t:"Wireframe", x:720, y:250},
+  {k:"04 / validar", t:"Protótipo", x:980, y:150},
+  {k:"05 / medir", t:"Teste", x:1010, y:340},
+  {k:"06 / construir", t:"Código", x:760, y:440},
+  {k:"07 / lançar", t:"Deploy", x:1040, y:560, hot:true}
+];
+const EDGES = [[0,1],[0,2],[1,3],[2,3],[3,4],[2,5],[4,6],[5,6]];
+const scaleOf = el => el.offsetWidth / el.getBoundingClientRect().width;
+const pt = (e, el) => { const r = el.getBoundingClientRect(), s = el.offsetWidth / r.width; return {x: Math.round((e.clientX - r.left) * s), y: Math.round((e.clientY - r.top) * s)}; };
+
+class Component extends DCLogic {
+  lensFrame = React.createRef(); lensTop = React.createRef(); lensRing = React.createRef();
+  insFrame = React.createRef(); flowFrame = React.createRef();
+  letterEls = []; r = 170; revealed = false; drag = null;
+  state = { hover: null, off: {}, mx: 640, my: 380, inIns: false, nodes: NODES.map(n => ({...n})) };
+
+  componentDidMount() {
+    this.mv = e => this.onWinMove(e); this.up = () => { this.drag = null; this.setState({ dragging: false }); };
+    window.addEventListener('mousemove', this.mv); window.addEventListener('mouseup', this.up);
+    this.applyLens(760, 400);
+    setTimeout(() => this.forceUpdate(), 400);
+  }
+  componentWillUnmount() { window.removeEventListener('mousemove', this.mv); window.removeEventListener('mouseup', this.up); }
+
+  applyLens(x, y) {
+    this.lx = x; this.ly = y;
+    const t = this.lensTop.current, g = this.lensRing.current;
+    if (t) t.style.clipPath = `circle(${this.r}px at ${x}px ${y}px)`;
+    if (g) { g.style.left = (x - this.r) + 'px'; g.style.top = (y - this.r) + 'px'; g.style.width = g.style.height = (2 * this.r) + 'px'; g.style.opacity = this.revealed ? 0 : 1; }
+  }
+  onWinMove(e) {
+    const d = this.drag; if (!d) return;
+    const s = scaleOf(d.frame), dx = (e.clientX - d.sx) * s, dy = (e.clientY - d.sy) * s;
+    if (d.type === 'letter') this.setState(st => ({ off: {...st.off, [d.i]: {x: d.ox + dx, y: d.oy + dy}} }));
+    else this.setState(st => { const nodes = st.nodes.slice(); nodes[d.i] = {...nodes[d.i], x: Math.max(0, Math.min(1104, d.ox + dx)), y: Math.max(0, Math.min(688, d.oy + dy))}; return { nodes }; });
+  }
+
+  renderVals() {
+    const st = this.state;
+    const letters = []; let gi = 0;
+    const lines = LINES.map(row => ({ letters: row.map(ch => {
+      const i = gi++, o = st.off[i] || {x: 0, y: 0};
+      return {
+        ch, tf: `translate(${o.x}px, ${o.y}px)`, z: st.hover === i ? 10 : 1,
+        color: st.hover === i ? '#2F6BFF' : '#111110',
+        ref: el => { this.letterEls[i] = el; },
+        enter: () => { if (!this.drag) this.setState({ hover: i }); },
+        down: e => { e.preventDefault(); this.drag = { type: 'letter', i, frame: this.insFrame.current, sx: e.clientX, sy: e.clientY, ox: o.x, oy: o.y }; this.setState({ hover: i, dragging: true }); }
+      };
+    }) }));
+    let sel = null;
+    const el = st.hover != null && this.letterEls[st.hover];
+    if (el) { const o = st.off[st.hover] || {x: 0, y: 0}; sel = { x: Math.round(el.offsetLeft + o.x), y: Math.round(el.offsetTop + o.y), w: el.offsetWidth, h: el.offsetHeight, ch: el.textContent }; }
+    const ticksX = [], ticksY = [];
+    for (let p = 24; p <= 1280; p += 20) { const v = p - 24, major = v % 100 === 0; ticksX.push({ p, h: major ? 10 : 5, lp: p + 3, label: major ? String(v) : '' }); }
+    for (let p = 0; p <= 736; p += 20) ticksY.push({ p, h: (p % 100 === 0) ? 10 : 5 });
+
+    const N = st.nodes;
+    const edge = ([a, b]) => { const x1 = N[a].x + 176, y1 = N[a].y + 36, x2 = N[b].x, y2 = N[b].y + 36, c = Math.max(70, Math.abs(x2 - x1) / 2); return `M${x1} ${y1} C${x1 + c} ${y1}, ${x2 - c} ${y2}, ${x2} ${y2}`; };
+    const ev = {}; EDGES.forEach((e, i) => ev['e' + i] = edge(e));
+    const nodes = N.map((n, i) => ({
+      ...n, bg: n.hot ? '#FF5A1F' : '#1B1B19', bd: n.hot ? '#FF5A1F' : '#34332F', fg: n.hot ? '#111110' : '#EEECE6', sub: n.hot ? '#111110' : '#8E897E',
+      down: e => { e.preventDefault(); this.drag = { type: 'node', i, frame: this.flowFrame.current, sx: e.clientX, sy: e.clientY, ox: n.x, oy: n.y }; }
+    }));
+
+    return {
+      lensFrame: this.lensFrame, lensTop: this.lensTop, lensRing: this.lensRing, insFrame: this.insFrame, flowFrame: this.flowFrame,
+      onLensMove: e => { const p = pt(e, this.lensFrame.current); this.applyLens(p.x, p.y); },
+      onLensClick: () => {
+        this.revealed = !this.revealed; this.r = this.revealed ? 1500 : 170;
+        const t = this.lensTop.current; t.style.transition = 'clip-path .8s cubic-bezier(.7,0,.2,1)';
+        this.applyLens(this.lx, this.ly); clearTimeout(this.tt); this.tt = setTimeout(() => { t.style.transition = ''; }, 820);
+      },
+      onInsMove: e => { const p = pt(e, this.insFrame.current); this.setState({ mx: p.x, my: p.y, inIns: true }); },
+      onInsLeave: () => { if (!this.drag) this.setState({ inIns: false, hover: null }); },
+      resetLetters: () => this.setState({ off: {}, hover: null }),
+      lines, mx: st.mx, my: st.my, myR: st.my - 24, inIns: st.inIns, ticksX, ticksY,
+      hasSel: !!sel, selX: sel ? sel.x : 0, selY: sel ? sel.y : 0, selW: sel ? sel.w : 0, selH: sel ? sel.h : 0,
+      selLabel: sel ? `Glifo “${sel.ch}”` : 'Nenhuma seleção',
+      pX: sel ? sel.x + 96 : '—', pY: sel ? sel.y + 110 : '—', pW: sel ? sel.w : '—', pH: sel ? sel.h : '—',
+      nodes, ...ev
+    };
+  }
+}
+</script>
+</body>
+</html>
