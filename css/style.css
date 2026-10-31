@@ -144,9 +144,19 @@ a { color: inherit; text-decoration: none; }
   z-index: 0;
   overflow: hidden;
   opacity: .8;
+  /* Grão sutil (ruído SVG, opacidade já "assada" no SVG) + grade de pontos
+     (bate com a grade de 8px que um design system usa) por cima do fundo —
+     textura real, não só cor, sem pesar no carregamento (é tudo gerado via
+     data URI, sem request extra) nem no desempenho (estático, não anima). */
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.05 0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E"),
+    radial-gradient(circle at 1px 1px, color-mix(in srgb, var(--text) 22%, transparent) 1.3px, transparent 1.5px);
+  background-repeat: repeat, repeat;
+  background-size: 200px 200px, 32px 32px;
 }
 .noise-overlay::before,
-.noise-overlay::after {
+.noise-overlay::after,
+.noise-blob-3 {
   content: "";
   position: absolute;
   width: 60vmax;
@@ -167,6 +177,18 @@ a { color: inherit; text-decoration: none; }
   right: -18vmax;
   background: radial-gradient(circle, var(--accent-2), transparent 70%);
   animation: mesh-drift-b 32s ease-in-out infinite;
+}
+/* Terceiro "borrão" de cor, ancorado embaixo — SPAN em vez de ::before/::after
+   (um elemento só tem dois pseudo-elementos disponíveis) pra dar mais presença
+   de cor na parte de baixo da tela também, não só no topo. */
+.noise-blob-3 {
+  width: 50vmax;
+  height: 50vmax;
+  bottom: -20vmax;
+  left: 18vmax;
+  opacity: .22;
+  background: radial-gradient(circle, var(--accent-3), transparent 70%);
+  animation: mesh-drift-a 34s ease-in-out infinite reverse;
 }
 @keyframes mesh-drift-a {
   0%, 100% { transform: translate(0, 0) scale(1); }
@@ -811,7 +833,16 @@ a { color: inherit; text-decoration: none; }
    as duas classes no mesmo elemento) para o fundo poder ir de ponta a
    ponta da tela; por isso zeramos o padding horizontal duplicado aqui. */
 .section-tint {
-  background: var(--bg-elevated);
+  /* Trama diagonal bem sutil por cima da cor sólida — essas faixas (servicos,
+     figma) ficam com overlay fixo escondido atrás (a cor delas é opaca), então
+     ganham textura própria em vez de ficarem lisas. */
+  background:
+    repeating-linear-gradient(135deg,
+      color-mix(in srgb, var(--text) 5%, transparent) 0,
+      color-mix(in srgb, var(--text) 5%, transparent) 1px,
+      transparent 1px,
+      transparent 23px),
+    var(--bg-elevated);
   padding-left: 0;
   padding-right: 0;
 }
@@ -1089,10 +1120,13 @@ a { color: inherit; text-decoration: none; }
 
 .work-thumb {
   width: 100%;
-  aspect-ratio: 5 / 4;
+  /* 16:9 — bate exatamente com a proporção das capas desenhadas (2560x1440),
+     então elas aparecem inteiras, sem corte nenhum; só o card 01 (imagem
+     mais quadrada) perde um pouco de cima/baixo, por isso "center center". */
+  aspect-ratio: 16 / 9;
   background-color: #f4f3f0;
   background-size: cover;
-  background-position: top center;
+  background-position: center center;
   position: relative;
   overflow: hidden;
   z-index: 1;
@@ -1746,6 +1780,85 @@ html.js .work-card.reveal.is-visible {
 
 @media (max-width: 880px) {
   .postit { display: none; }
+}
+
+/* ---------- Chips de design system: botões e símbolos soltos pela home ----------
+   Mesma âncora segura dos post-its (espreitam bem no topo de uma seção que já
+   tem position:relative, somem em telas pequenas pra não brigar com o layout),
+   mas sem rotação — ao contrário do post-it "escrito à mão", aqui a ideia é
+   parecer um token/componente real de design system: alinhado à grade, nunca
+   encostando no conteúdo (fica sempre na faixa de padding vazia acima do
+   section-head). Espalhados pelas seções que ainda não tinham nenhum post-it
+   (serviços, Figma), mais um par nas que já tinham pra variar o símbolo. */
+.ds-chip {
+  position: absolute;
+  z-index: 3;
+  top: -22px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 16px;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  box-shadow: var(--shadow-card);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  white-space: nowrap;
+  pointer-events: none;
+  transition: transform 0.3s cubic-bezier(.34,1.56,.64,1);
+}
+.ds-chip--safe-top { top: 14px; }
+.ds-chip--right { right: 22px; }
+.ds-chip--left { left: 22px; }
+.ds-chip code { font-family: var(--font-mono); color: var(--text); font-weight: 600; letter-spacing: -0.01em; }
+
+.ds-chip-swatches { display: flex; }
+.ds-chip-swatches i {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  box-shadow: 0 0 0 2px var(--bg-elevated);
+  display: block;
+}
+.ds-chip-swatches i:not(:first-child) { margin-left: -5px; }
+
+.ds-chip-btn {
+  display: inline-flex;
+  align-items: center;
+  padding: 5px 12px;
+  border-radius: 999px;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.7rem;
+}
+.ds-chip-btn--primary { background: var(--accent); color: var(--accent-text); }
+.ds-chip-btn--ghost { border: 1px solid var(--border); color: var(--text); }
+
+.ds-chip-gridicon {
+  display: grid;
+  grid-template-columns: repeat(3, 5px);
+  grid-template-rows: repeat(3, 5px);
+  gap: 3px;
+}
+.ds-chip-gridicon i {
+  background: var(--accent);
+  border-radius: 1.5px;
+  opacity: 0.75;
+  display: block;
+}
+
+.ds-chip-radiusicon {
+  width: 18px;
+  height: 18px;
+  border: 2px solid var(--accent-2);
+  border-radius: 8px 2px 2px 2px;
+  display: block;
+}
+
+@media (max-width: 880px) {
+  .ds-chip { display: none; }
 }
 
 /* ---------- Print real (Figma), usado no lugar dos mockups ilustrativos ----------
