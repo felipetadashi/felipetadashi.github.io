@@ -1040,7 +1040,11 @@ a { color: inherit; text-decoration: none; }
 /* ---------- Work ---------- */
 .work-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  /* minmax(0, 1fr) em vez de só "1fr": item de grid tem min-width:auto por
+     padrão, então sem isso o conteúdo de dentro (como a imagem de fundo do
+     card) pode forçar a coluna a crescer além da sua fatia e estourar por
+     cima da coluna vizinha em alguns navegadores. */
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 32px;
 }
 
@@ -1056,6 +1060,7 @@ a { color: inherit; text-decoration: none; }
   --card-tint: var(--accent);
   --card-tint-2: var(--accent-3);
   position: relative;
+  min-width: 0;
   background:
     radial-gradient(120% 130% at 100% 0%, color-mix(in srgb, var(--card-tint) 20%, transparent), transparent 62%),
     radial-gradient(100% 100% at 0% 100%, color-mix(in srgb, var(--card-tint-2) 12%, transparent), transparent 60%),
@@ -1083,11 +1088,13 @@ a { color: inherit; text-decoration: none; }
 .work-card:nth-child(4) { --card-tint: var(--accent-3); --card-tint-2: var(--accent-2); }
 
 .work-thumb {
+  width: 100%;
   aspect-ratio: 5 / 4;
   background-color: #f4f3f0;
   background-size: cover;
   background-position: top center;
   position: relative;
+  overflow: hidden;
   z-index: 1;
   transform: scale(1);
   transition: transform 0.6s ease;
