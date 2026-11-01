@@ -28,7 +28,7 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700;9..144,900&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700;9..144,900&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&family=Caveat:wght@600;700&family=Bricolage+Grotesque:opsz,wght@12..96,400..800&display=swap" rel="stylesheet">
 
 <link rel="stylesheet" href="css/style.css">
 
@@ -94,69 +94,91 @@
 
 <main id="main-content" tabindex="-1">
 
-  <!-- HERO -->
-  <section class="hero container">
-    <div class="postit postit--yellow postit--right postit--safe-top" style="--postit-rotate:-6deg;" aria-hidden="true"><p data-i18n="postitHeroText">Figma aberto o dia inteiro, quase todo dia 🎨</p></div>
-    <div class="hero-visual" aria-hidden="true">
-      <svg viewBox="0 0 320 260" xmlns="http://www.w3.org/2000/svg" role="img">
-        <rect x="1" y="1" width="318" height="258" rx="18" fill="var(--bg-elevated)" stroke="var(--border)"/>
-        <circle cx="22" cy="22" r="4" fill="var(--border)"/>
-        <circle cx="36" cy="22" r="4" fill="var(--border)"/>
-        <circle cx="50" cy="22" r="4" fill="var(--border)"/>
-        <line x1="1" y1="38" x2="319" y2="38" stroke="var(--border)"/>
+  <!-- HERO: "Fluxo vivo" (header 1c) — diagrama do processo de trabalho,
+       com nós arrastáveis; ver docs/design_handoff_portfolio_header/README.md -->
+  <section class="hero-flow" aria-label="Processo de trabalho, de ponta a ponta">
+    <div class="hero-flow-scaler" id="flow-scaler">
+      <div class="hero-flow-stage" id="flow-stage">
+        <svg class="flow-edges" viewBox="0 0 1280 760" aria-hidden="true" focusable="false">
+          <path class="is-static"></path>
+          <path class="is-static"></path>
+          <path class="is-static"></path>
+          <path class="is-static"></path>
+          <path class="is-live"></path>
+          <path class="is-static"></path>
+          <path class="is-live"></path>
+          <path class="is-live"></path>
+        </svg>
 
-        <rect x="22" y="56" width="56" height="8" rx="4" fill="var(--border)"/>
-        <rect x="238" y="52" width="60" height="16" rx="8" fill="var(--accent)"/>
+        <div class="flow-node" data-node="0">
+          <span class="flow-node-label" data-i18n="node0Label">01 / descobrir</span>
+          <span class="flow-node-title" data-i18n="node0Title">Pesquisa</span>
+          <span class="flow-node-port flow-node-port--l" aria-hidden="true"></span>
+          <span class="flow-node-port flow-node-port--r" aria-hidden="true"></span>
+        </div>
+        <div class="flow-node" data-node="1">
+          <span class="flow-node-label" data-i18n="node1Label">02 / definir</span>
+          <span class="flow-node-title" data-i18n="node1Title">Personas</span>
+          <span class="flow-node-port flow-node-port--l" aria-hidden="true"></span>
+          <span class="flow-node-port flow-node-port--r" aria-hidden="true"></span>
+        </div>
+        <div class="flow-node" data-node="2">
+          <span class="flow-node-label" data-i18n="node2Label">03 / estruturar</span>
+          <span class="flow-node-title" data-i18n="node2Title">Wireframe</span>
+          <span class="flow-node-port flow-node-port--l" aria-hidden="true"></span>
+          <span class="flow-node-port flow-node-port--r" aria-hidden="true"></span>
+        </div>
+        <div class="flow-node" data-node="3">
+          <span class="flow-node-label" data-i18n="node3Label">04 / validar</span>
+          <span class="flow-node-title" data-i18n="node3Title">Protótipo</span>
+          <span class="flow-node-port flow-node-port--l" aria-hidden="true"></span>
+          <span class="flow-node-port flow-node-port--r" aria-hidden="true"></span>
+        </div>
+        <div class="flow-node" data-node="4">
+          <span class="flow-node-label" data-i18n="node4Label">05 / medir</span>
+          <span class="flow-node-title" data-i18n="node4Title">Teste</span>
+          <span class="flow-node-port flow-node-port--l" aria-hidden="true"></span>
+          <span class="flow-node-port flow-node-port--r" aria-hidden="true"></span>
+        </div>
+        <div class="flow-node" data-node="5">
+          <span class="flow-node-label" data-i18n="node5Label">06 / entregar</span>
+          <span class="flow-node-title" data-i18n="node5Title">Handoff</span>
+          <span class="flow-node-port flow-node-port--l" aria-hidden="true"></span>
+          <span class="flow-node-port flow-node-port--r" aria-hidden="true"></span>
+        </div>
+        <div class="flow-node flow-node--hot" data-node="6">
+          <span class="flow-node-label" data-i18n="node6Label">07 / lançar</span>
+          <span class="flow-node-title" data-i18n="node6Title">Deploy</span>
+          <span class="flow-node-port flow-node-port--l" aria-hidden="true"></span>
+          <span class="flow-node-port flow-node-port--r" aria-hidden="true"></span>
+        </div>
 
-        <rect x="22" y="86" width="184" height="14" rx="4" fill="var(--text)"/>
-        <rect x="22" y="108" width="132" height="9" rx="4" fill="var(--border)"/>
+        <div class="flow-topbar">
+          <span class="flow-name">Felipe Yoshida</span>
+          <span class="flow-online" aria-hidden="true"></span>
+          <span data-i18n="availableBadge">Disponível para novos projetos</span>
+        </div>
 
-        <rect x="22" y="136" width="82" height="62" rx="10" fill="var(--bg)" stroke="var(--border)"/>
-        <path d="M34 178c6-14 14-14 20-4s14 8 20-6" fill="none" stroke="var(--accent)" stroke-width="2.5" stroke-linecap="round"/>
+        <div class="flow-headline">
+          <h1 data-i18n-html="heroFlowHeadline">Do insight<br><span class="flow-accent-text">ao deploy.</span></h1>
+          <p data-i18n="heroFlowSub">UX Design × Product Design. Conecto pesquisa, interface e handoff num único fluxo — arraste e veja.</p>
+          <div class="flow-actions">
+            <a href="#contato" class="btn btn-primary" data-i18n="ctaStart">Iniciar um projeto</a>
+            <a href="#trabalhos" class="btn btn-ghost" data-i18n="ctaWork">Ver trabalhos</a>
+            <a href="assets/felipe-yoshida-cv.pdf" download class="cv-link" id="cv-download-link">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m0 0 4-4m-4 4-4-4"/><path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></svg>
+              <span data-i18n="cvLabel">Baixar CV</span>
+            </a>
+          </div>
+          <div class="flow-meta">
+            <a href="mailto:felipeyoshi93@gmail.com">felipeyoshi93@gmail.com</a>
+            <span class="flow-divider">·</span>
+            <span data-i18n="heroLocation">São Paulo, Brasil</span>
+          </div>
+        </div>
 
-        <rect x="116" y="136" width="82" height="62" rx="10" fill="var(--bg)" stroke="var(--border)"/>
-        <rect x="128" y="150" width="58" height="7" rx="3.5" fill="var(--border)"/>
-        <rect x="128" y="164" width="40" height="7" rx="3.5" fill="var(--border)"/>
-        <rect x="128" y="180" width="30" height="9" rx="4.5" fill="var(--accent-soft)"/>
-
-        <rect x="210" y="136" width="88" height="62" rx="10" fill="var(--accent-soft)" stroke="var(--accent)"/>
-        <circle cx="254" cy="167" r="16" fill="none" stroke="var(--accent)" stroke-width="3"/>
-        <path d="M254 159v16M246 167h16" stroke="var(--accent)" stroke-width="2.5" stroke-linecap="round"/>
-
-        <circle cx="34" cy="222" r="9" fill="var(--accent)"/>
-        <circle cx="56" cy="222" r="9" fill="#f2b134"/>
-        <circle cx="78" cy="222" r="9" fill="#4cc9a0"/>
-        <circle cx="100" cy="222" r="9" fill="#ef5b5b"/>
-        <rect x="122" y="217" width="70" height="10" rx="5" fill="var(--border)"/>
-
-        <g transform="translate(224,170)">
-          <path d="M0 0 22 8 13 12 18 22 12 25 7 15 0 24Z" fill="var(--accent)" stroke="var(--bg-elevated)" stroke-width="1.5" stroke-linejoin="round"/>
-        </g>
-      </svg>
-    </div>
-
-    <p class="eyebrow reveal" data-i18n="availableBadge">Disponível para novos projetos</p>
-    <h1 class="reveal" data-i18n-html="heroTitle">
-      Olá, sou <span class="highlight">Felipe Yoshida</span>.<br>
-      Crio experiências digitais intuitivas e centradas em pessoas.
-    </h1>
-    <p class="hero-sub reveal" data-i18n="heroSub">
-      Como UX Designer, uso dados, empatia e criatividade para transformar problemas complexos
-      em produtos simples de usar — do primeiro esboço à interface final.
-    </p>
-    <div class="hero-actions reveal">
-      <a href="#contato" class="btn btn-primary" data-i18n="ctaStart">Iniciar um projeto</a>
-      <a href="#trabalhos" class="btn btn-ghost" data-i18n="ctaWork">Ver trabalhos</a>
-      <a href="assets/felipe-yoshida-cv.pdf" download class="cv-link" id="cv-download-link">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m0 0 4-4m-4 4-4-4"/><path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></svg>
-        <span data-i18n="cvLabel">Baixar CV</span>
-      </a>
-    </div>
-
-    <div class="hero-meta reveal">
-      <a href="mailto:felipeyoshi93@gmail.com">felipeyoshi93@gmail.com</a>
-      <span class="divider">·</span>
-      <span data-i18n="heroLocation">São Paulo, Brasil</span>
+        <div class="flow-footer" data-i18n="heroFlowFooter">flow.json · 7 nós · 8 conexões</div>
+      </div>
     </div>
   </section>
 
@@ -180,7 +202,7 @@
 
   <!-- SOBRE -->
   <section id="sobre" class="section container">
-    <div class="postit postit--pink postit--left" style="--postit-rotate:5deg;" aria-hidden="true"><p data-i18n="postitAboutText">Do binds.co pra smarters, sempre em UX 👋</p></div>
+    <div class="postit postit--pink postit--right" style="--postit-rotate:5deg;" aria-hidden="true"><p data-i18n="postitAboutText">Do binds.co pra smarters, sempre em UX 👋</p></div>
     <div class="section-head reveal">
       <span class="section-num" data-i18n="aboutNum">01 / Sobre</span>
       <h2 data-i18n="aboutHeading">Sobre mim</h2>
@@ -291,516 +313,115 @@
     </div>
   </section>
 
-  <!-- FAIXA DE PRINTS: capturas reais de projetos (Design System, Time Brasil e outros) — cada card leva ao case study correspondente -->
-  <div class="shot-strip" aria-label="Mais telas dos projetos">
-    <div class="shot-track">
-      <a class="shot-frame" href="trabalhos/projeto-04.html" data-i18n-aria="shotStripAria4" aria-label="Ver case study: Design System">
-        <span class="shot-frame-bar" aria-hidden="true">
-          <span class="shot-frame-dot"></span>
-          <span class="shot-frame-dot"></span>
-          <span class="shot-frame-dot"></span>
-        </span>
-        <span class="shot-frame-media">
-          <img src="assets/figma/ds/ds-composed-screen.png" alt="" loading="lazy">
-          <span class="shot-frame-caption">
-            <span class="shot-frame-caption-title" data-i18n="work4Title">Design System</span>
-            <span class="shot-frame-caption-cta" data-i18n="workLinkLabel">Ver case study →</span>
-          </span>
-        </span>
-      </a>
-      <a class="shot-frame" href="trabalhos/projeto-05.html" data-i18n-aria="shotStripAria5" aria-label="Ver case study: Time Brasil no WhatsApp">
-        <span class="shot-frame-bar" aria-hidden="true">
-          <span class="shot-frame-dot"></span>
-          <span class="shot-frame-dot"></span>
-          <span class="shot-frame-dot"></span>
-        </span>
-        <span class="shot-frame-media">
-          <img src="assets/figma/cob/menu-principal.png" alt="" loading="lazy">
-          <span class="shot-frame-caption">
-            <span class="shot-frame-caption-title" data-i18n="work5Title">Time Brasil no WhatsApp</span>
-            <span class="shot-frame-caption-cta" data-i18n="workLinkLabel">Ver case study →</span>
-          </span>
-        </span>
-      </a>
-      <a class="shot-frame" href="trabalhos/projeto-01.html" data-i18n-aria="shotStripAria1" aria-label="Ver case study: Single Page Survey">
-        <span class="shot-frame-bar" aria-hidden="true">
-          <span class="shot-frame-dot"></span>
-          <span class="shot-frame-dot"></span>
-          <span class="shot-frame-dot"></span>
-        </span>
-        <span class="shot-frame-media">
-          <img src="assets/projects/projeto-01-full.jpg" alt="" loading="lazy">
-          <span class="shot-frame-caption">
-            <span class="shot-frame-caption-title">Single Page Survey</span>
-            <span class="shot-frame-caption-cta" data-i18n="workLinkLabel">Ver case study →</span>
-          </span>
-        </span>
-      </a>
-      <a class="shot-frame" href="trabalhos/projeto-04.html" data-i18n-aria="shotStripAria4" aria-label="Ver case study: Design System">
-        <span class="shot-frame-bar" aria-hidden="true">
-          <span class="shot-frame-dot"></span>
-          <span class="shot-frame-dot"></span>
-          <span class="shot-frame-dot"></span>
-        </span>
-        <span class="shot-frame-media">
-          <img src="assets/figma/ds/ds-buttons.png" alt="" loading="lazy">
-          <span class="shot-frame-caption">
-            <span class="shot-frame-caption-title" data-i18n="work4Title">Design System</span>
-            <span class="shot-frame-caption-cta" data-i18n="workLinkLabel">Ver case study →</span>
-          </span>
-        </span>
-      </a>
-      <a class="shot-frame" href="trabalhos/projeto-05.html" data-i18n-aria="shotStripAria5" aria-label="Ver case study: Time Brasil no WhatsApp">
-        <span class="shot-frame-bar" aria-hidden="true">
-          <span class="shot-frame-dot"></span>
-          <span class="shot-frame-dot"></span>
-          <span class="shot-frame-dot"></span>
-        </span>
-        <span class="shot-frame-media">
-          <img src="assets/figma/cob/quiz.png" alt="" loading="lazy">
-          <span class="shot-frame-caption">
-            <span class="shot-frame-caption-title" data-i18n="work5Title">Time Brasil no WhatsApp</span>
-            <span class="shot-frame-caption-cta" data-i18n="workLinkLabel">Ver case study →</span>
-          </span>
-        </span>
-      </a>
-      <a class="shot-frame" href="trabalhos/projeto-06.html" data-i18n-aria="shotStripAria6" aria-label="Ver case study: Workflow Builder">
-        <span class="shot-frame-bar" aria-hidden="true">
-          <span class="shot-frame-dot"></span>
-          <span class="shot-frame-dot"></span>
-          <span class="shot-frame-dot"></span>
-        </span>
-        <span class="shot-frame-media">
-          <img src="assets/figma/wb/wb-hero-painel.png" alt="" loading="lazy">
-          <span class="shot-frame-caption">
-            <span class="shot-frame-caption-title" data-i18n="work6Title">Workflow Builder</span>
-            <span class="shot-frame-caption-cta" data-i18n="workLinkLabel">Ver case study →</span>
-          </span>
-        </span>
-      </a>
-      <a class="shot-frame" href="trabalhos/projeto-06.html" data-i18n-aria="shotStripAria6" aria-label="Ver case study: Workflow Builder">
-        <span class="shot-frame-bar" aria-hidden="true">
-          <span class="shot-frame-dot"></span>
-          <span class="shot-frame-dot"></span>
-          <span class="shot-frame-dot"></span>
-        </span>
-        <span class="shot-frame-media">
-          <img src="assets/figma/wb/wb-publish-1-destino.png" alt="" loading="lazy">
-          <span class="shot-frame-caption">
-            <span class="shot-frame-caption-title" data-i18n="work6Title">Workflow Builder</span>
-            <span class="shot-frame-caption-cta" data-i18n="workLinkLabel">Ver case study →</span>
-          </span>
-        </span>
-      </a>
-      <a class="shot-frame" href="trabalhos/projeto-06.html" data-i18n-aria="shotStripAria6" aria-label="Ver case study: Workflow Builder">
-        <span class="shot-frame-bar" aria-hidden="true">
-          <span class="shot-frame-dot"></span>
-          <span class="shot-frame-dot"></span>
-          <span class="shot-frame-dot"></span>
-        </span>
-        <span class="shot-frame-media">
-          <img src="assets/figma/wb/wb-view-jornadas.png" alt="" loading="lazy">
-          <span class="shot-frame-caption">
-            <span class="shot-frame-caption-title" data-i18n="work6Title">Workflow Builder</span>
-            <span class="shot-frame-caption-cta" data-i18n="workLinkLabel">Ver case study →</span>
-          </span>
-        </span>
-      </a>
-      <a class="shot-frame" href="trabalhos/projeto-04.html" data-i18n-aria="shotStripAria4" aria-label="Ver case study: Design System">
-        <span class="shot-frame-bar" aria-hidden="true">
-          <span class="shot-frame-dot"></span>
-          <span class="shot-frame-dot"></span>
-          <span class="shot-frame-dot"></span>
-        </span>
-        <span class="shot-frame-media">
-          <img src="assets/figma/ds/ds-typography.png" alt="" loading="lazy">
-          <span class="shot-frame-caption">
-            <span class="shot-frame-caption-title" data-i18n="work4Title">Design System</span>
-            <span class="shot-frame-caption-cta" data-i18n="workLinkLabel">Ver case study →</span>
-          </span>
-        </span>
-      </a>
-      <a class="shot-frame" href="trabalhos/projeto-05.html" data-i18n-aria="shotStripAria5" aria-label="Ver case study: Time Brasil no WhatsApp">
-        <span class="shot-frame-bar" aria-hidden="true">
-          <span class="shot-frame-dot"></span>
-          <span class="shot-frame-dot"></span>
-          <span class="shot-frame-dot"></span>
-        </span>
-        <span class="shot-frame-media">
-          <img src="assets/figma/cob/fanfest.png" alt="" loading="lazy">
-          <span class="shot-frame-caption">
-            <span class="shot-frame-caption-title" data-i18n="work5Title">Time Brasil no WhatsApp</span>
-            <span class="shot-frame-caption-cta" data-i18n="workLinkLabel">Ver case study →</span>
-          </span>
-        </span>
-      </a>
-      <a class="shot-frame" href="trabalhos/projeto-04.html" data-i18n-aria="shotStripAria4" aria-label="Ver case study: Design System">
-        <span class="shot-frame-bar" aria-hidden="true">
-          <span class="shot-frame-dot"></span>
-          <span class="shot-frame-dot"></span>
-          <span class="shot-frame-dot"></span>
-        </span>
-        <span class="shot-frame-media">
-          <img src="assets/figma/ds/ds-tags.png" alt="" loading="lazy">
-          <span class="shot-frame-caption">
-            <span class="shot-frame-caption-title" data-i18n="work4Title">Design System</span>
-            <span class="shot-frame-caption-cta" data-i18n="workLinkLabel">Ver case study →</span>
-          </span>
-        </span>
-      </a>
-      <a class="shot-frame" href="trabalhos/projeto-05.html" data-i18n-aria="shotStripAria5" aria-label="Ver case study: Time Brasil no WhatsApp">
-        <span class="shot-frame-bar" aria-hidden="true">
-          <span class="shot-frame-dot"></span>
-          <span class="shot-frame-dot"></span>
-          <span class="shot-frame-dot"></span>
-        </span>
-        <span class="shot-frame-media">
-          <img src="assets/figma/cob/carteirinha.png" alt="" loading="lazy">
-          <span class="shot-frame-caption">
-            <span class="shot-frame-caption-title" data-i18n="work5Title">Time Brasil no WhatsApp</span>
-            <span class="shot-frame-caption-cta" data-i18n="workLinkLabel">Ver case study →</span>
-          </span>
-        </span>
-      </a>
-      <a class="shot-frame" href="trabalhos/projeto-04.html" data-i18n-aria="shotStripAria4" aria-label="Ver case study: Design System">
-        <span class="shot-frame-bar" aria-hidden="true">
-          <span class="shot-frame-dot"></span>
-          <span class="shot-frame-dot"></span>
-          <span class="shot-frame-dot"></span>
-        </span>
-        <span class="shot-frame-media">
-          <img src="assets/figma/ds/ds-avatars.png" alt="" loading="lazy">
-          <span class="shot-frame-caption">
-            <span class="shot-frame-caption-title" data-i18n="work4Title">Design System</span>
-            <span class="shot-frame-caption-cta" data-i18n="workLinkLabel">Ver case study →</span>
-          </span>
-        </span>
-      </a>
-      <a class="shot-frame" href="trabalhos/projeto-05.html" data-i18n-aria="shotStripAria5" aria-label="Ver case study: Time Brasil no WhatsApp">
-        <span class="shot-frame-bar" aria-hidden="true">
-          <span class="shot-frame-dot"></span>
-          <span class="shot-frame-dot"></span>
-          <span class="shot-frame-dot"></span>
-        </span>
-        <span class="shot-frame-media">
-          <img src="assets/figma/cob/agenda.png" alt="" loading="lazy">
-          <span class="shot-frame-caption">
-            <span class="shot-frame-caption-title" data-i18n="work5Title">Time Brasil no WhatsApp</span>
-            <span class="shot-frame-caption-cta" data-i18n="workLinkLabel">Ver case study →</span>
-          </span>
-        </span>
-      </a>
-      <a class="shot-frame" href="trabalhos/projeto-04.html" data-i18n-aria="shotStripAria4" aria-label="Ver case study: Design System">
-        <span class="shot-frame-bar" aria-hidden="true">
-          <span class="shot-frame-dot"></span>
-          <span class="shot-frame-dot"></span>
-          <span class="shot-frame-dot"></span>
-        </span>
-        <span class="shot-frame-media">
-          <img src="assets/figma/ds/ds-glossary.png" alt="" loading="lazy">
-          <span class="shot-frame-caption">
-            <span class="shot-frame-caption-title" data-i18n="work4Title">Design System</span>
-            <span class="shot-frame-caption-cta" data-i18n="workLinkLabel">Ver case study →</span>
-          </span>
-        </span>
-      </a>
-      <a class="shot-frame" href="trabalhos/projeto-05.html" data-i18n-aria="shotStripAria5" aria-label="Ver case study: Time Brasil no WhatsApp">
-        <span class="shot-frame-bar" aria-hidden="true">
-          <span class="shot-frame-dot"></span>
-          <span class="shot-frame-dot"></span>
-          <span class="shot-frame-dot"></span>
-        </span>
-        <span class="shot-frame-media">
-          <img src="assets/figma/cob/atletas.png" alt="" loading="lazy">
-          <span class="shot-frame-caption">
-            <span class="shot-frame-caption-title" data-i18n="work5Title">Time Brasil no WhatsApp</span>
-            <span class="shot-frame-caption-cta" data-i18n="workLinkLabel">Ver case study →</span>
-          </span>
-        </span>
-      </a>
-      <a class="shot-frame" href="trabalhos/projeto-04.html" data-i18n-aria="shotStripAria4" aria-label="Ver case study: Design System">
-        <span class="shot-frame-bar" aria-hidden="true">
-          <span class="shot-frame-dot"></span>
-          <span class="shot-frame-dot"></span>
-          <span class="shot-frame-dot"></span>
-        </span>
-        <span class="shot-frame-media">
-          <img src="assets/figma/ds/ds-text-input.png" alt="" loading="lazy">
-          <span class="shot-frame-caption">
-            <span class="shot-frame-caption-title" data-i18n="work4Title">Design System</span>
-            <span class="shot-frame-caption-cta" data-i18n="workLinkLabel">Ver case study →</span>
-          </span>
-        </span>
-      </a>
-      <a class="shot-frame" href="trabalhos/projeto-05.html" data-i18n-aria="shotStripAria5" aria-label="Ver case study: Time Brasil no WhatsApp">
-        <span class="shot-frame-bar" aria-hidden="true">
-          <span class="shot-frame-dot"></span>
-          <span class="shot-frame-dot"></span>
-          <span class="shot-frame-dot"></span>
-        </span>
-        <span class="shot-frame-media">
-          <img src="assets/figma/cob/medalhas.png" alt="" loading="lazy">
-          <span class="shot-frame-caption">
-            <span class="shot-frame-caption-title" data-i18n="work5Title">Time Brasil no WhatsApp</span>
-            <span class="shot-frame-caption-cta" data-i18n="workLinkLabel">Ver case study →</span>
-          </span>
-        </span>
-      </a>
-      <a class="shot-frame" href="trabalhos/projeto-04.html" tabindex="-1" aria-hidden="true">
-        <span class="shot-frame-bar" aria-hidden="true">
-          <span class="shot-frame-dot"></span>
-          <span class="shot-frame-dot"></span>
-          <span class="shot-frame-dot"></span>
-        </span>
-        <span class="shot-frame-media">
-          <img src="assets/figma/ds/ds-composed-screen.png" alt="" loading="lazy">
-          <span class="shot-frame-caption">
-            <span class="shot-frame-caption-title" data-i18n="work4Title">Design System</span>
-            <span class="shot-frame-caption-cta" data-i18n="workLinkLabel">Ver case study →</span>
-          </span>
-        </span>
-      </a>
-      <a class="shot-frame" href="trabalhos/projeto-05.html" tabindex="-1" aria-hidden="true">
-        <span class="shot-frame-bar" aria-hidden="true">
-          <span class="shot-frame-dot"></span>
-          <span class="shot-frame-dot"></span>
-          <span class="shot-frame-dot"></span>
-        </span>
-        <span class="shot-frame-media">
-          <img src="assets/figma/cob/menu-principal.png" alt="" loading="lazy">
-          <span class="shot-frame-caption">
-            <span class="shot-frame-caption-title" data-i18n="work5Title">Time Brasil no WhatsApp</span>
-            <span class="shot-frame-caption-cta" data-i18n="workLinkLabel">Ver case study →</span>
-          </span>
-        </span>
-      </a>
-      <a class="shot-frame" href="trabalhos/projeto-01.html" tabindex="-1" aria-hidden="true">
-        <span class="shot-frame-bar" aria-hidden="true">
-          <span class="shot-frame-dot"></span>
-          <span class="shot-frame-dot"></span>
-          <span class="shot-frame-dot"></span>
-        </span>
-        <span class="shot-frame-media">
-          <img src="assets/projects/projeto-01-full.jpg" alt="" loading="lazy">
-          <span class="shot-frame-caption">
-            <span class="shot-frame-caption-title">Single Page Survey</span>
-            <span class="shot-frame-caption-cta" data-i18n="workLinkLabel">Ver case study →</span>
-          </span>
-        </span>
-      </a>
-      <a class="shot-frame" href="trabalhos/projeto-04.html" tabindex="-1" aria-hidden="true">
-        <span class="shot-frame-bar" aria-hidden="true">
-          <span class="shot-frame-dot"></span>
-          <span class="shot-frame-dot"></span>
-          <span class="shot-frame-dot"></span>
-        </span>
-        <span class="shot-frame-media">
-          <img src="assets/figma/ds/ds-buttons.png" alt="" loading="lazy">
-          <span class="shot-frame-caption">
-            <span class="shot-frame-caption-title" data-i18n="work4Title">Design System</span>
-            <span class="shot-frame-caption-cta" data-i18n="workLinkLabel">Ver case study →</span>
-          </span>
-        </span>
-      </a>
-      <a class="shot-frame" href="trabalhos/projeto-05.html" tabindex="-1" aria-hidden="true">
-        <span class="shot-frame-bar" aria-hidden="true">
-          <span class="shot-frame-dot"></span>
-          <span class="shot-frame-dot"></span>
-          <span class="shot-frame-dot"></span>
-        </span>
-        <span class="shot-frame-media">
-          <img src="assets/figma/cob/quiz.png" alt="" loading="lazy">
-          <span class="shot-frame-caption">
-            <span class="shot-frame-caption-title" data-i18n="work5Title">Time Brasil no WhatsApp</span>
-            <span class="shot-frame-caption-cta" data-i18n="workLinkLabel">Ver case study →</span>
-          </span>
-        </span>
-      </a>
-      <a class="shot-frame" href="trabalhos/projeto-06.html" tabindex="-1" aria-hidden="true">
-        <span class="shot-frame-bar" aria-hidden="true">
-          <span class="shot-frame-dot"></span>
-          <span class="shot-frame-dot"></span>
-          <span class="shot-frame-dot"></span>
-        </span>
-        <span class="shot-frame-media">
-          <img src="assets/figma/wb/wb-hero-painel.png" alt="" loading="lazy">
-          <span class="shot-frame-caption">
-            <span class="shot-frame-caption-title" data-i18n="work6Title">Workflow Builder</span>
-            <span class="shot-frame-caption-cta" data-i18n="workLinkLabel">Ver case study →</span>
-          </span>
-        </span>
-      </a>
-      <a class="shot-frame" href="trabalhos/projeto-06.html" tabindex="-1" aria-hidden="true">
-        <span class="shot-frame-bar" aria-hidden="true">
-          <span class="shot-frame-dot"></span>
-          <span class="shot-frame-dot"></span>
-          <span class="shot-frame-dot"></span>
-        </span>
-        <span class="shot-frame-media">
-          <img src="assets/figma/wb/wb-publish-1-destino.png" alt="" loading="lazy">
-          <span class="shot-frame-caption">
-            <span class="shot-frame-caption-title" data-i18n="work6Title">Workflow Builder</span>
-            <span class="shot-frame-caption-cta" data-i18n="workLinkLabel">Ver case study →</span>
-          </span>
-        </span>
-      </a>
-      <a class="shot-frame" href="trabalhos/projeto-06.html" tabindex="-1" aria-hidden="true">
-        <span class="shot-frame-bar" aria-hidden="true">
-          <span class="shot-frame-dot"></span>
-          <span class="shot-frame-dot"></span>
-          <span class="shot-frame-dot"></span>
-        </span>
-        <span class="shot-frame-media">
-          <img src="assets/figma/wb/wb-view-jornadas.png" alt="" loading="lazy">
-          <span class="shot-frame-caption">
-            <span class="shot-frame-caption-title" data-i18n="work6Title">Workflow Builder</span>
-            <span class="shot-frame-caption-cta" data-i18n="workLinkLabel">Ver case study →</span>
-          </span>
-        </span>
-      </a>
-      <a class="shot-frame" href="trabalhos/projeto-04.html" tabindex="-1" aria-hidden="true">
-        <span class="shot-frame-bar" aria-hidden="true">
-          <span class="shot-frame-dot"></span>
-          <span class="shot-frame-dot"></span>
-          <span class="shot-frame-dot"></span>
-        </span>
-        <span class="shot-frame-media">
-          <img src="assets/figma/ds/ds-typography.png" alt="" loading="lazy">
-          <span class="shot-frame-caption">
-            <span class="shot-frame-caption-title" data-i18n="work4Title">Design System</span>
-            <span class="shot-frame-caption-cta" data-i18n="workLinkLabel">Ver case study →</span>
-          </span>
-        </span>
-      </a>
-      <a class="shot-frame" href="trabalhos/projeto-05.html" tabindex="-1" aria-hidden="true">
-        <span class="shot-frame-bar" aria-hidden="true">
-          <span class="shot-frame-dot"></span>
-          <span class="shot-frame-dot"></span>
-          <span class="shot-frame-dot"></span>
-        </span>
-        <span class="shot-frame-media">
-          <img src="assets/figma/cob/fanfest.png" alt="" loading="lazy">
-          <span class="shot-frame-caption">
-            <span class="shot-frame-caption-title" data-i18n="work5Title">Time Brasil no WhatsApp</span>
-            <span class="shot-frame-caption-cta" data-i18n="workLinkLabel">Ver case study →</span>
-          </span>
-        </span>
-      </a>
-      <a class="shot-frame" href="trabalhos/projeto-04.html" tabindex="-1" aria-hidden="true">
-        <span class="shot-frame-bar" aria-hidden="true">
-          <span class="shot-frame-dot"></span>
-          <span class="shot-frame-dot"></span>
-          <span class="shot-frame-dot"></span>
-        </span>
-        <span class="shot-frame-media">
-          <img src="assets/figma/ds/ds-tags.png" alt="" loading="lazy">
-          <span class="shot-frame-caption">
-            <span class="shot-frame-caption-title" data-i18n="work4Title">Design System</span>
-            <span class="shot-frame-caption-cta" data-i18n="workLinkLabel">Ver case study →</span>
-          </span>
-        </span>
-      </a>
-      <a class="shot-frame" href="trabalhos/projeto-05.html" tabindex="-1" aria-hidden="true">
-        <span class="shot-frame-bar" aria-hidden="true">
-          <span class="shot-frame-dot"></span>
-          <span class="shot-frame-dot"></span>
-          <span class="shot-frame-dot"></span>
-        </span>
-        <span class="shot-frame-media">
-          <img src="assets/figma/cob/carteirinha.png" alt="" loading="lazy">
-          <span class="shot-frame-caption">
-            <span class="shot-frame-caption-title" data-i18n="work5Title">Time Brasil no WhatsApp</span>
-            <span class="shot-frame-caption-cta" data-i18n="workLinkLabel">Ver case study →</span>
-          </span>
-        </span>
-      </a>
-      <a class="shot-frame" href="trabalhos/projeto-04.html" tabindex="-1" aria-hidden="true">
-        <span class="shot-frame-bar" aria-hidden="true">
-          <span class="shot-frame-dot"></span>
-          <span class="shot-frame-dot"></span>
-          <span class="shot-frame-dot"></span>
-        </span>
-        <span class="shot-frame-media">
-          <img src="assets/figma/ds/ds-avatars.png" alt="" loading="lazy">
-          <span class="shot-frame-caption">
-            <span class="shot-frame-caption-title" data-i18n="work4Title">Design System</span>
-            <span class="shot-frame-caption-cta" data-i18n="workLinkLabel">Ver case study →</span>
-          </span>
-        </span>
-      </a>
-      <a class="shot-frame" href="trabalhos/projeto-05.html" tabindex="-1" aria-hidden="true">
-        <span class="shot-frame-bar" aria-hidden="true">
-          <span class="shot-frame-dot"></span>
-          <span class="shot-frame-dot"></span>
-          <span class="shot-frame-dot"></span>
-        </span>
-        <span class="shot-frame-media">
-          <img src="assets/figma/cob/agenda.png" alt="" loading="lazy">
-          <span class="shot-frame-caption">
-            <span class="shot-frame-caption-title" data-i18n="work5Title">Time Brasil no WhatsApp</span>
-            <span class="shot-frame-caption-cta" data-i18n="workLinkLabel">Ver case study →</span>
-          </span>
-        </span>
-      </a>
-      <a class="shot-frame" href="trabalhos/projeto-04.html" tabindex="-1" aria-hidden="true">
-        <span class="shot-frame-bar" aria-hidden="true">
-          <span class="shot-frame-dot"></span>
-          <span class="shot-frame-dot"></span>
-          <span class="shot-frame-dot"></span>
-        </span>
-        <span class="shot-frame-media">
-          <img src="assets/figma/ds/ds-glossary.png" alt="" loading="lazy">
-          <span class="shot-frame-caption">
-            <span class="shot-frame-caption-title" data-i18n="work4Title">Design System</span>
-            <span class="shot-frame-caption-cta" data-i18n="workLinkLabel">Ver case study →</span>
-          </span>
-        </span>
-      </a>
-      <a class="shot-frame" href="trabalhos/projeto-05.html" tabindex="-1" aria-hidden="true">
-        <span class="shot-frame-bar" aria-hidden="true">
-          <span class="shot-frame-dot"></span>
-          <span class="shot-frame-dot"></span>
-          <span class="shot-frame-dot"></span>
-        </span>
-        <span class="shot-frame-media">
-          <img src="assets/figma/cob/atletas.png" alt="" loading="lazy">
-          <span class="shot-frame-caption">
-            <span class="shot-frame-caption-title" data-i18n="work5Title">Time Brasil no WhatsApp</span>
-            <span class="shot-frame-caption-cta" data-i18n="workLinkLabel">Ver case study →</span>
-          </span>
-        </span>
-      </a>
-      <a class="shot-frame" href="trabalhos/projeto-04.html" tabindex="-1" aria-hidden="true">
-        <span class="shot-frame-bar" aria-hidden="true">
-          <span class="shot-frame-dot"></span>
-          <span class="shot-frame-dot"></span>
-          <span class="shot-frame-dot"></span>
-        </span>
-        <span class="shot-frame-media">
-          <img src="assets/figma/ds/ds-text-input.png" alt="" loading="lazy">
-          <span class="shot-frame-caption">
-            <span class="shot-frame-caption-title" data-i18n="work4Title">Design System</span>
-            <span class="shot-frame-caption-cta" data-i18n="workLinkLabel">Ver case study →</span>
-          </span>
-        </span>
-      </a>
-      <a class="shot-frame" href="trabalhos/projeto-05.html" tabindex="-1" aria-hidden="true">
-        <span class="shot-frame-bar" aria-hidden="true">
-          <span class="shot-frame-dot"></span>
-          <span class="shot-frame-dot"></span>
-          <span class="shot-frame-dot"></span>
-        </span>
-        <span class="shot-frame-media">
-          <img src="assets/figma/cob/medalhas.png" alt="" loading="lazy">
-          <span class="shot-frame-caption">
-            <span class="shot-frame-caption-title" data-i18n="work5Title">Time Brasil no WhatsApp</span>
-            <span class="shot-frame-caption-cta" data-i18n="workLinkLabel">Ver case study →</span>
-          </span>
-        </span>
-      </a>
+  <!-- DESIGN SYSTEM PLAYGROUND: componente de botão interativo ligado ao case Design System — muda props (variante, tamanho, estado, ícone) e vê o componente, as medidas e o código com tokens se atualizarem ao vivo -->
+  <section class="playground" data-i18n-aria="pgSectionAria" aria-label="Playground interativo: componente de botão do Design System">
+    <div class="playground-inner">
+      <div class="playground-intro reveal">
+        <span class="playground-eyebrow" data-i18n="pgEyebrow">02 · Design Systems · Conversacional</span>
+        <h2 class="playground-heading" data-i18n-html="pgHeading">Um componente,<br><span class="pg-accent-text">toda decisão.</span></h2>
+        <p class="playground-sub" data-i18n="pgSub">Mexa nas props como no Figma: cada combinação sai de tokens do Design System e vira o mesmo código no handoff.</p>
 
+        <div class="playground-controls">
+          <div class="playground-group" role="radiogroup" data-group="variant" data-i18n-aria="pgGroupVariant" aria-label="Variante">
+            <span class="playground-group-label" data-i18n="pgGroupVariant">Variante</span>
+            <div class="playground-pills">
+              <button type="button" class="playground-pill" role="radio" aria-checked="true" tabindex="0" data-group="variant" data-value="primary" data-i18n="pgVariantPrimary">Primário</button>
+              <button type="button" class="playground-pill" role="radio" aria-checked="false" tabindex="-1" data-group="variant" data-value="secondary" data-i18n="pgVariantSecondary">Secundário</button>
+              <button type="button" class="playground-pill" role="radio" aria-checked="false" tabindex="-1" data-group="variant" data-value="ghost" data-i18n="pgVariantGhost">Ghost</button>
+            </div>
+          </div>
+          <div class="playground-group" role="radiogroup" data-group="size" data-i18n-aria="pgGroupSize" aria-label="Tamanho">
+            <span class="playground-group-label" data-i18n="pgGroupSize">Tamanho</span>
+            <div class="playground-pills">
+              <button type="button" class="playground-pill" role="radio" aria-checked="false" tabindex="-1" data-group="size" data-value="sm">S</button>
+              <button type="button" class="playground-pill" role="radio" aria-checked="true" tabindex="0" data-group="size" data-value="md">M</button>
+              <button type="button" class="playground-pill" role="radio" aria-checked="false" tabindex="-1" data-group="size" data-value="lg">L</button>
+            </div>
+          </div>
+          <div class="playground-group" role="radiogroup" data-group="state" data-i18n-aria="pgGroupState" aria-label="Estado">
+            <span class="playground-group-label" data-i18n="pgGroupState">Estado</span>
+            <div class="playground-pills">
+              <button type="button" class="playground-pill" role="radio" aria-checked="true" tabindex="0" data-group="state" data-value="default" data-i18n="pgStateDefault">Padrão</button>
+              <button type="button" class="playground-pill" role="radio" aria-checked="false" tabindex="-1" data-group="state" data-value="hover" data-i18n="pgStateHover">Hover</button>
+              <button type="button" class="playground-pill" role="radio" aria-checked="false" tabindex="-1" data-group="state" data-value="disabled" data-i18n="pgStateDisabled">Desabilitado</button>
+            </div>
+          </div>
+          <div class="playground-group" role="radiogroup" data-group="icon" data-i18n-aria="pgGroupIcon" aria-label="Ícone">
+            <span class="playground-group-label" data-i18n="pgGroupIcon">Ícone</span>
+            <div class="playground-pills">
+              <button type="button" class="playground-pill" role="radio" aria-checked="true" tabindex="0" data-group="icon" data-value="with" data-i18n="pgIconWith">Com</button>
+              <button type="button" class="playground-pill" role="radio" aria-checked="false" tabindex="-1" data-group="icon" data-value="without" data-i18n="pgIconWithout">Sem</button>
+            </div>
+          </div>
+        </div>
+
+        <a class="playground-link reveal" href="trabalhos/projeto-04.html" data-i18n="pgCaseLink">Ver case Design System →</a>
+      </div>
+
+      <div class="playground-panel reveal">
+        <div class="playground-stage">
+          <span class="playground-stage-label" id="pg-stage-label">Button / Primário / M / Padrão</span>
+          <span class="playground-stage-grid">Grid · 8px</span>
+          <div class="playground-component-wrap" id="pg-component-wrap">
+            <span class="playground-component" id="pg-button">
+              <span data-i18n="pgButtonLabel">Ver agenda</span>
+              <span class="playground-component-icon" id="pg-button-icon" aria-hidden="true">→</span>
+            </span>
+            <span class="playground-redline playground-redline-h" id="pg-redline-h" aria-hidden="true"></span>
+            <span class="playground-redline-label playground-redline-h-label" id="pg-redline-h-label" aria-hidden="true"></span>
+            <span class="playground-redline playground-redline-px" id="pg-redline-px" aria-hidden="true"></span>
+            <span class="playground-redline-label playground-redline-px-label" id="pg-redline-px-label" aria-hidden="true"></span>
+            <span class="playground-redline-label playground-redline-r-label" id="pg-redline-r-label" aria-hidden="true"></span>
+          </div>
+        </div>
+        <div class="playground-code" id="pg-code" aria-hidden="true"></div>
+      </div>
     </div>
-  </div>
+  </section>
+
+  <!-- CONVERSA AO VIVO: case Time Brasil no WhatsApp como um chat simulado que roda sozinho, com os princípios de UX Writing acendendo conforme a conversa avança -->
+  <section class="live-chat" data-i18n-aria="chatSectionAria" aria-label="Case em destaque: conversa simulada do Time Brasil no WhatsApp">
+    <div class="live-chat-inner">
+      <div class="live-chat-intro reveal">
+        <span class="live-chat-eyebrow" data-i18n="chatEyebrow">03 · UX Writing · Conversacional</span>
+        <h2 class="live-chat-heading" data-i18n-html="chatHeading">Escrever é<br><span class="chat-accent-text">desenhar a conversa.</span></h2>
+        <p class="live-chat-sub" data-i18n="chatSub">Chatbot oficial do Time Brasil nos Jogos de Paris 2024 (COB + Meta). Cada mensagem é uma decisão de UX — as anotações acendem conforme a conversa avança.</p>
+      </div>
+
+      <div class="live-chat-phone-wrap reveal">
+        <button type="button" class="live-chat-toggle" id="chat-auto-toggle" data-i18n-aria="chatToggleLabel" aria-label="Alternar reprodução automática da conversa" aria-pressed="true">
+          <span class="live-chat-toggle-dot" aria-hidden="true"></span>
+          <span class="live-chat-toggle-label"></span>
+        </button>
+
+        <div class="live-chat-phone">
+          <div class="live-chat-phone-header">
+            <span class="live-chat-avatar" aria-hidden="true">TB</span>
+            <div class="live-chat-phone-head-text">
+              <span class="live-chat-contact-name">Time Brasil</span>
+              <span class="live-chat-status" id="chat-status">online</span>
+            </div>
+          </div>
+          <div class="live-chat-messages" id="chat-messages" aria-live="polite"></div>
+          <div class="live-chat-options" id="chat-options"></div>
+          <div class="live-chat-input-bar" aria-hidden="true">
+            <span class="live-chat-input-field" data-i18n="chatInputPlaceholder">Mensagem</span>
+            <span class="live-chat-input-send"></span>
+          </div>
+        </div>
+      </div>
+
+      <ul class="live-chat-principles reveal" id="chat-principles">
+        <li class="live-chat-principle" data-tag="id"><span class="live-chat-principle-num">01</span><span class="live-chat-principle-text" data-i18n="chatNote1">Dizer quem fala e pra quê, em uma linha</span></li>
+        <li class="live-chat-principle" data-tag="opt"><span class="live-chat-principle-num">02</span><span class="live-chat-principle-text" data-i18n="chatNote2">Botões no lugar de texto livre</span></li>
+        <li class="live-chat-principle" data-tag="ant"><span class="live-chat-principle-num">03</span><span class="live-chat-principle-text" data-i18n="chatNote3">Antecipar o próximo passo</span></li>
+        <li class="live-chat-principle" data-tag="conf"><span class="live-chat-principle-num">04</span><span class="live-chat-principle-text" data-i18n="chatNote4">Confirmar a ação e ensinar a saída</span></li>
+        <li class="live-chat-principle" data-tag="err"><span class="live-chat-principle-num">05</span><span class="live-chat-principle-text" data-i18n="chatNote5">Corrigir sem constranger</span></li>
+      </ul>
+
+      <a class="live-chat-link reveal" href="trabalhos/projeto-05.html" data-i18n="chatCaseLink">Ver case Time Brasil →</a>
+    </div>
+  </section>
 
   <!-- SERVIÇOS -->
   <section id="servicos" class="section section-tint">
@@ -817,7 +438,7 @@
       </div>
       <div class="section-visual" aria-hidden="true">
         <svg viewBox="0 0 260 200" xmlns="http://www.w3.org/2000/svg" role="img">
-          <rect x="1" y="1" width="258" height="198" rx="18" fill="var(--bg)" stroke="var(--border)"/>
+          <rect x="1" y="1" width="258" height="198" rx="18" fill="var(--bg-elevated)" stroke="var(--border)"/>
 
           <path d="M56 66 L126 44 L196 90 L150 148" fill="none" stroke="var(--border)" stroke-width="2" stroke-dasharray="5 6"/>
 
@@ -828,13 +449,13 @@
           </g>
 
           <g transform="translate(126,44)">
-            <circle r="24" fill="var(--bg-elevated)" stroke="var(--accent-2)" stroke-width="2"/>
+            <circle r="24" fill="var(--bg)" stroke="var(--accent-2)" stroke-width="2"/>
             <rect x="-10" y="-9" width="9" height="18" rx="2" fill="var(--accent-2)"/>
             <rect x="2" y="-9" width="9" height="10" rx="2" fill="var(--accent-2)" opacity="0.55"/>
           </g>
 
           <g transform="translate(196,90)">
-            <circle r="24" fill="var(--bg-elevated)" stroke="var(--accent-3)" stroke-width="2"/>
+            <circle r="24" fill="var(--bg)" stroke="var(--accent-3)" stroke-width="2"/>
             <rect x="-10" y="-10" width="20" height="20" rx="5" fill="none" stroke="var(--accent-3)" stroke-width="2.5"/>
             <circle cx="0" cy="0" r="4" fill="var(--accent-3)"/>
           </g>
@@ -905,6 +526,48 @@
       <p class="section-lede" data-i18n="workLede">Procuro construir designs inclusivos e acessíveis que resolvam problemas reais.</p>
     </div>
 
+    <!-- Diagrama "conecte os cases" (2a): nó de perfil ligado aos 4 cases,
+         arrastável, com painel de preview. Decorativo/explorável — some
+         abaixo de 860px, onde o .work-grid estático vira o jeito principal
+         de navegar pelos cases. -->
+    <div class="work-flow reveal">
+      <p class="work-flow-hint" data-i18n="workFlowHint">Arraste os nós ou clique neles pra explorar cada case →</p>
+      <div class="work-flow-body">
+        <div class="work-flow-scaler" id="wflow-scaler">
+          <div class="work-flow-stage" id="wflow-stage">
+            <svg class="wflow-edges" viewBox="0 0 1200 460" aria-hidden="true" focusable="false">
+              <path></path>
+              <path></path>
+              <path></path>
+              <path></path>
+            </svg>
+
+            <div class="wflow-node is-root" data-case="0" tabindex="-1" aria-hidden="true">
+              <span class="wflow-node-avatar" aria-hidden="true">FY</span>
+              <span class="wflow-node-title">Felipe Yoshida</span>
+            </div>
+            <div class="wflow-node" data-case="1" role="button" tabindex="0">
+              <span class="wflow-node-label">01</span>
+              <span class="wflow-node-title">Single Page Survey</span>
+            </div>
+            <div class="wflow-node" data-case="2" role="button" tabindex="0">
+              <span class="wflow-node-label">02</span>
+              <span class="wflow-node-title" data-i18n="work4Title">Design System</span>
+            </div>
+            <div class="wflow-node" data-case="3" role="button" tabindex="0">
+              <span class="wflow-node-label">03</span>
+              <span class="wflow-node-title" data-i18n="work5Title">Time Brasil no WhatsApp</span>
+            </div>
+            <div class="wflow-node" data-case="4" role="button" tabindex="0">
+              <span class="wflow-node-label">04</span>
+              <span class="wflow-node-title" data-i18n="work6Title">Workflow Builder</span>
+            </div>
+          </div>
+        </div>
+        <div class="wflow-preview" id="wflow-preview" aria-live="polite"></div>
+      </div>
+    </div>
+
     <div class="work-grid">
       <article class="work-card reveal">
         <div class="work-thumb" style="background-image:url('assets/projects/projeto-01-card.jpg')" aria-hidden="true"></div>
@@ -972,15 +635,15 @@
       </div>
       <div class="section-visual" aria-hidden="true">
         <svg viewBox="0 0 260 200" xmlns="http://www.w3.org/2000/svg" role="img">
-          <rect x="1" y="1" width="258" height="198" rx="18" fill="var(--bg)" stroke="var(--border)"/>
+          <rect x="1" y="1" width="258" height="198" rx="18" fill="var(--bg-elevated)" stroke="var(--border)"/>
 
-          <rect x="16" y="16" width="34" height="168" rx="6" fill="var(--bg-elevated)" stroke="var(--border)"/>
+          <rect x="16" y="16" width="34" height="168" rx="6" fill="var(--bg)" stroke="var(--border)"/>
           <rect x="24" y="28" width="18" height="6" rx="3" fill="var(--border)"/>
           <rect x="24" y="42" width="18" height="6" rx="3" fill="var(--border)"/>
           <rect x="24" y="56" width="18" height="6" rx="3" fill="var(--accent-soft)"/>
           <rect x="24" y="70" width="18" height="6" rx="3" fill="var(--border)"/>
 
-          <rect x="66" y="28" width="76" height="46" rx="8" fill="var(--bg-elevated)" stroke="var(--border)"/>
+          <rect x="66" y="28" width="76" height="46" rx="8" fill="var(--bg)" stroke="var(--border)"/>
           <rect x="78" y="40" width="30" height="8" rx="4" fill="var(--border)"/>
           <rect x="78" y="54" width="48" height="10" rx="5" fill="var(--accent)"/>
 
@@ -992,7 +655,7 @@
           <circle cx="198" cy="51" r="14" fill="none" stroke="var(--accent)" stroke-width="2"/>
           <path d="M198 44v14M191 51h14" stroke="var(--accent)" stroke-width="2" stroke-linecap="round"/>
 
-          <rect x="66" y="92" width="174" height="76" rx="8" fill="var(--bg-elevated)" stroke="var(--border)"/>
+          <rect x="66" y="92" width="174" height="76" rx="8" fill="var(--bg)" stroke="var(--border)"/>
           <rect x="80" y="106" width="60" height="8" rx="4" fill="var(--border)"/>
           <rect x="80" y="122" width="90" height="7" rx="3.5" fill="var(--border)" opacity="0.6"/>
           <rect x="80" y="136" width="70" height="7" rx="3.5" fill="var(--border)" opacity="0.6"/>
@@ -1109,5 +772,9 @@
 
 <script src="js/i18n.js"></script>
 <script src="js/script.js"></script>
+<script src="js/hero-flow.js"></script>
+<script src="js/live-chat.js"></script>
+<script src="js/ds-playground.js"></script>
+<script src="js/work-flow.js"></script>
 </body>
 </html>

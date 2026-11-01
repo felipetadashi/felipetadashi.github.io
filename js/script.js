@@ -103,7 +103,7 @@ document.addEventListener('DOMContentLoaded', () => {
   /* Animações de entrada ao rolar a página, em cascata dentro de cada grid */
   const revealEls = document.querySelectorAll('.reveal');
 
-  document.querySelectorAll('.services-grid, .work-grid, .figma-grid, .timeline, .cert-list').forEach(grid => {
+  document.querySelectorAll('.services-grid, .work-grid, .figma-grid, .timeline, .cert-list, .live-chat-principles').forEach(grid => {
     Array.from(grid.children).forEach((child, i) => {
       child.style.setProperty('--stagger-i', i);
     });
@@ -137,15 +137,15 @@ document.addEventListener('DOMContentLoaded', () => {
     updateProgress();
   }
 
-  /* Tilt 3D sutil nos cards de projeto e nos prints da faixa, seguindo o
-     mouse — só em dispositivos com mouse de precisão e sem "reduzir
-     movimento" ligado. O CSS já define --tilt-x/--tilt-y/--lift com valor
-     0 por padrão; aqui só atualizamos --tilt-x/--tilt-y conforme a posição
-     do cursor dentro do card, e o :hover no CSS cuida do --lift. */
+  /* Tilt 3D sutil nos cards de projeto, seguindo o mouse — só em
+     dispositivos com mouse de precisão e sem "reduzir movimento" ligado.
+     O CSS já define --tilt-x/--tilt-y/--lift com valor 0 por padrão; aqui
+     só atualizamos --tilt-x/--tilt-y conforme a posição do cursor dentro
+     do card, e o :hover no CSS cuida do --lift. */
   const prefersFinePointer = window.matchMedia('(pointer: fine)').matches;
   if (prefersFinePointer && !prefersReducedMotion) {
     const maxTiltDeg = 7;
-    document.querySelectorAll('.work-card, .shot-frame').forEach((card) => {
+    document.querySelectorAll('.work-card').forEach((card) => {
       card.addEventListener('pointermove', (event) => {
         const rect = card.getBoundingClientRect();
         const relX = (event.clientX - rect.left) / rect.width;

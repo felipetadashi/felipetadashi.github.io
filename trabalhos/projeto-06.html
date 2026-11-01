@@ -54,25 +54,29 @@
 <main id="main-content" tabindex="-1">
 
   <section class="case-hero container">
-    <div class="case-hero-grid">
-      <div class="case-hero-text">
-        <p class="eyebrow reveal" data-i18n="caseEyebrow">Case study</p>
+    <div class="case-hero-top reveal">
+      <p class="eyebrow reveal" data-i18n="caseEyebrow">Case study</p>
+      <div class="case-hero-intro">
         <h1 class="reveal" data-i18n="caseTitle">Workflow Builder</h1>
         <p class="hero-sub reveal" data-i18n="caseHeroSub">
           Painel interno pra gerenciar jornadas, workflows, intenções e variáveis das automações de WhatsApp da empresa —
           da busca de um asset específico até a publicação de uma nova versão seguindo um pipeline com aprovação e rollout controlado.
         </p>
-        <ul class="about-facts reveal">
-          <li><strong data-i18n="factRoleLabel">Função</strong><span data-i18n="factRoleValue">UX &amp; Product Design</span></li>
-          <li><strong data-i18n="factDurationLabel">Duração</strong><span data-i18n="factDurationValue">2025 – atual (contínuo)</span></li>
-          <li><strong data-i18n="factTeamLabel">Time</strong><span data-i18n="factTeamValue">Produto / Automação Conversacional</span></li>
-        </ul>
       </div>
+      <ul class="about-facts case-hero-duration reveal">
+        <li><strong data-i18n="factDurationLabel">Duração</strong><span data-i18n="factDurationValue">2025 – atual (contínuo)</span></li>
+      </ul>
+    </div>
 
-      <div class="case-hero-visual reveal">
-        <img src="../assets/figma/wb/wb-hero-painel.png" data-i18n-alt="heroShotAlt" alt="Print real do Workflow Builder: lista de agentes à esquerda com busca e filtro por Agentes, Jornadas e Workflows, e painel lateral à direita mostrando os workflows de um agente selecionado, organizados por ambiente (Dev, QA Interno, QA Externo, Produção).">
-        <p class="case-figcaption" data-i18n="heroShotCaption">Print direto do protótipo no Figma — lista de assets e painel de detalhe lado a lado, sem retoque.</p>
+    <div class="case-hero-media reveal">
+      <div class="case-hero-visual">
+        <img src="../assets/figma/wb/wb-hero-painel.png" data-i18n-alt="heroShotAlt" alt="Arte de capa do case Workflow Builder, com o título do projeto e a primeira etapa do fluxo de publicação: &quot;Para qual ambiente você quer publicar?&quot;, com as opções Dev, QA Interno, QA Externo e Produção — essa última destacada como &quot;requer aprovação&quot;.">
+        <p class="case-figcaption" data-i18n="heroShotCaption">Arte de capa feita a partir da primeira etapa real do fluxo de publicação do Workflow Builder.</p>
       </div>
+      <ul class="about-facts case-hero-meta">
+        <li><strong data-i18n="factRoleLabel">Função</strong><span data-i18n="factRoleValue">UX &amp; Product Design</span></li>
+        <li><strong data-i18n="factTeamLabel">Time</strong><span data-i18n="factTeamValue">Produto / Automação Conversacional</span></li>
+      </ul>
     </div>
 
     <div class="pillar-grid reveal">
@@ -170,6 +174,26 @@
             <span data-i18n="compareAfter5">Comentário fica anexado direto no workflow certo, com autor, ambiente e data — sem sair do contexto</span>
           </li>
         </ul>
+      </div>
+    </div>
+
+    <div class="wf-demo reveal">
+      <div class="wf-demo-head">
+        <h3 data-i18n="wfDemoHeading">Publicar sem medo de quebrar</h3>
+        <p data-i18n="wfDemoIntro">Cada etapa do pipeline é validada antes de ir pro ar. Clique em Publicar e veja o que acontece quando falta resolver uma pendência.</p>
+      </div>
+
+      <div class="wf-demo-panel">
+        <div class="wf-demo-steps" id="wf-steps"></div>
+        <div class="wf-demo-log" id="wf-log"></div>
+        <div class="wf-demo-actions">
+          <button type="button" class="wf-demo-publish" id="wf-publish"></button>
+          <p class="wf-demo-status" id="wf-status"></p>
+        </div>
+        <div class="wf-demo-footer">
+          <span class="wf-demo-env" id="wf-env"></span>
+          <button type="button" class="wf-demo-reset" id="wf-reset" data-i18n="wfDemoReset">↺ Recomeçar</button>
+        </div>
       </div>
     </div>
   </section>
@@ -641,5 +665,6 @@
 
 <script src="../js/i18n.js"></script>
 <script src="../js/script.js"></script>
+<script src="../js/workflow-builder.js"></script>
 </body>
 </html>

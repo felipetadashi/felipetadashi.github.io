@@ -35,13 +35,6 @@
     0 2px 4px rgba(0,0,0,0.4),
     0 34px 58px -26px rgba(0,0,0,0.65),
     0 16px 34px -14px var(--accent-soft);
-
-  /* Cinza neutro do "chrome de janela" nos prints da faixa — fixo (não
-     segue o tom quente do tema), pra parecer mesmo uma barra de navegador
-     por cima da captura de tela. */
-  --shotbar-bg: #3a3a40;
-  --shotbar-border: #28282d;
-  --shotbar-dot: #6c6c74;
 }
 
 [data-theme="light"] {
@@ -66,10 +59,6 @@
     0 2px 4px rgba(25,22,15,0.06),
     0 30px 50px -28px rgba(25,22,15,0.26),
     0 16px 30px -14px var(--accent-soft);
-
-  --shotbar-bg: #e2e2e6;
-  --shotbar-border: #cfcfd5;
-  --shotbar-dot: #a7a7b0;
 }
 
 * { box-sizing: border-box; }
@@ -341,36 +330,226 @@ a { color: inherit; text-decoration: none; }
 }
 
 /* ---------- Hero ---------- */
-.hero {
+/* ---------- Hero "Fluxo vivo" (header 1c) ----------
+   Módulo com um artboard de 1280x760 (nós/conexões em posição absoluta),
+   escalado por JS (hero-flow.js) pra caber em qualquer largura sem
+   distorcer. Abaixo de 860px vira uma pilha estática simples (ver media
+   query no fim do bloco).
+   Paleta: os neutros (fundo, cards, texto, bordas, pontos, linhas) seguem
+   os tokens do TEMA do site via color-mix — então o hero também troca com
+   o toggle claro/escuro — e só o laranja/verde (acento do fluxo e status
+   "online") ficam fixos nas duas cores de marca do diagrama. A grade de
+   pontos vive na seção inteira (não só no artboard escalado), por isso
+   cobre a largura toda, até a borda, em qualquer tamanho de tela. */
+.hero-flow {
+  --flow-bg: var(--bg);
+  --flow-dot: color-mix(in srgb, var(--text) 16%, var(--bg));
+  --flow-edge: color-mix(in srgb, var(--text) 30%, var(--bg));
+  --flow-card: var(--bg-elevated);
+  --flow-card-border: var(--border);
+  --flow-text: var(--text);
+  --flow-text-soft: var(--text-muted);
+  --flow-text-mid: color-mix(in srgb, var(--text) 58%, var(--bg));
+  --flow-text-dim: color-mix(in srgb, var(--text) 40%, var(--bg));
+  --flow-accent: #FF5A1F;
+  --flow-online: #3DDC84;
+  /* texto dos elementos "quentes" (nó Deploy) — fixo escuro, não o --flow-bg
+     do tema: no claro, --flow-bg vira um creme claro que perderia contraste
+     em cima do laranja. */
+  --flow-hot-text: #1A1410;
+  --flow-font-display: 'Bricolage Grotesque', var(--font-body);
   position: relative;
   z-index: 1;
-  padding: 140px 24px 100px;
-  max-width: 900px;
-  overflow: visible;
+  background:
+    radial-gradient(var(--flow-dot) 1.2px, transparent 1.2px) center / 24px 24px,
+    var(--flow-bg);
+  overflow: hidden;
+}
+.hero-flow-scaler {
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  position: relative;
+}
+.hero-flow-stage {
+  width: 1280px;
+  height: 760px;
+  position: relative;
+  transform-origin: top left;
+  user-select: none;
+}
+.flow-edges {
+  position: absolute;
+  inset: 0;
+  width: 1280px;
+  height: 760px;
+  pointer-events: none;
+}
+.flow-edges path { fill: none; stroke-width: 1.5px; }
+.flow-edges path.is-static { stroke: var(--flow-edge); }
+.flow-edges path.is-live {
+  stroke: var(--flow-accent);
+  stroke-dasharray: 4 6;
+  animation: flow-dash 1s linear infinite;
+}
+@keyframes flow-dash { to { stroke-dashoffset: -20; } }
+@keyframes flow-blink { 50% { opacity: .25; } }
+
+.flow-node {
+  position: absolute;
+  width: 176px;
+  height: 72px;
+  box-sizing: border-box;
+  padding: 12px 14px;
+  border-radius: 10px;
+  background: var(--flow-card);
+  border: 1px solid var(--flow-card-border);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: grab;
+  box-shadow: 0 10px 30px -10px rgba(0,0,0,.6);
+  touch-action: none;
+  transition: border-color 0.2s ease;
+}
+.flow-node:hover, .flow-node.is-dragging { border-color: var(--flow-accent); }
+.flow-node.is-dragging { cursor: grabbing; z-index: 5; }
+.flow-node-label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--flow-text-mid);
+}
+.flow-node-title {
+  font-family: var(--flow-font-display);
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--flow-text);
+}
+.flow-node-port {
+  position: absolute;
+  top: 31px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--flow-bg);
+  border: 1.5px solid var(--flow-text-dim);
+}
+.flow-node-port--l { left: -5px; }
+.flow-node-port--r { right: -5px; }
+
+.flow-node--hot {
+  background: var(--flow-accent);
+  border-color: var(--flow-accent);
+}
+.flow-node--hot .flow-node-label,
+.flow-node--hot .flow-node-title { color: var(--flow-hot-text); }
+
+.flow-topbar {
+  position: absolute;
+  left: 64px;
+  top: 36px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--flow-text-soft);
+}
+.flow-name {
+  font-family: var(--flow-font-display);
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--flow-text);
+}
+.flow-online {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--flow-online);
+  animation: flow-blink 1.6s ease-in-out infinite;
 }
 
-.hero-visual {
+.flow-headline {
   position: absolute;
-  top: 90px;
-  right: -20px;
-  width: 280px;
-  opacity: 0.95;
-  filter: drop-shadow(0 30px 60px rgba(0,0,0,0.25));
-  transform: rotate(4deg);
-  animation: hero-float 6s ease-in-out infinite;
+  left: 64px;
+  bottom: 64px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  pointer-events: none;
+  max-width: 620px;
 }
-@keyframes hero-float {
-  0%, 100% { transform: rotate(4deg) translateY(0); }
-  50% { transform: rotate(4deg) translateY(-14px); }
+.flow-headline h1 {
+  font-family: var(--flow-font-display);
+  font-size: 124px;
+  font-weight: 800;
+  line-height: 0.88;
+  letter-spacing: -0.045em;
+  color: var(--flow-text);
+  margin: 0;
 }
-.hero-visual svg {
-  width: 100%;
-  height: auto;
-  display: block;
-  border-radius: var(--radius);
+.flow-accent-text { color: var(--flow-accent); }
+.flow-headline p {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--flow-text-soft);
+  max-width: 520px;
+  margin: 0;
 }
-@media (max-width: 1180px) {
-  .hero-visual { display: none; }
+
+/* Ações/CV/contato restaurados do hero antigo, agora dentro do bloco de
+   headline — o pai tem pointer-events:none (só o texto é decorativo),
+   então reativamos aqui pra esses elementos continuarem clicáveis. */
+.flow-actions {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  align-items: center;
+  pointer-events: auto;
+}
+.flow-meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--flow-text-soft);
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  pointer-events: auto;
+}
+.flow-meta a { border-bottom: 1px solid var(--flow-card-border); }
+.flow-meta a:hover { border-color: var(--flow-accent); color: var(--flow-accent); }
+.flow-divider { opacity: 0.5; }
+
+.flow-footer {
+  position: absolute;
+  right: 64px;
+  bottom: 40px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--flow-text-dim);
+}
+
+@media (max-width: 860px) {
+  .hero-flow-scaler { height: auto !important; }
+  .hero-flow-stage {
+    width: 100%;
+    height: auto;
+    transform: none !important;
+    padding: 108px 24px 48px;
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+  }
+  .flow-edges, .flow-node { display: none; }
+  .flow-topbar, .flow-headline, .flow-footer {
+    position: static;
+    left: auto; top: auto; right: auto; bottom: auto;
+    max-width: none;
+  }
+  .flow-headline h1 { font-size: clamp(2.2rem, 10vw, 3.4rem); }
 }
 
 .eyebrow {
@@ -395,25 +574,11 @@ a { color: inherit; text-decoration: none; }
   border-radius: 50%;
 }
 
-.hero h1 {
-  font-size: clamp(2.4rem, 5.6vw, 4.2rem);
-  font-weight: 900;
-  letter-spacing: -0.01em;
-}
-.highlight { color: var(--accent); }
-
 .hero-sub {
   margin-top: 24px;
   font-size: 1.15rem;
   color: var(--text-muted);
   max-width: 620px;
-}
-
-.hero-actions {
-  display: flex;
-  gap: 16px;
-  margin-top: 36px;
-  flex-wrap: wrap;
 }
 
 /* Botões com uma física mais "saltitante" (easing com leve overshoot) no
@@ -476,19 +641,6 @@ a { color: inherit; text-decoration: none; }
   50% { transform: translateY(3px); }
 }
 
-.hero-meta {
-  margin-top: 40px;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  color: var(--text-muted);
-  font-family: var(--font-mono);
-  font-size: 0.85rem;
-}
-.hero-meta a { border-bottom: 1px solid var(--border); }
-.hero-meta a:hover { border-color: var(--accent); color: var(--accent); }
-.divider { opacity: 0.5; }
-
 /* ---------- Faixa "marquee" de destaques ---------- */
 .marquee {
   position: relative;
@@ -521,175 +673,550 @@ a { color: inherit; text-decoration: none; }
   to { transform: translateX(-50%); }
 }
 
-/* ---------- Faixa de prints reais (Design System, Time Brasil e outros) ----------
-   Cards "flutuantes" — raio generoso e sombra em camadas no lugar de moldura —
-   todos alinhados na mesma base e do mesmo tamanho. Cada card é um link de
-   verdade pro case study correspondente: zoom na imagem e legenda aparecem
-   no hover/foco, o carrossel pausa pra dar tempo de clicar, e o card segue
-   levemente o cursor (tilt 3D via --tilt-x/--tilt-y, atualizados por JS).
-   O fundo da faixa é um gradiente animado e lento com as cores do site, e as
-   bordas esquerda/direita usam mask-image pra as imagens "sumirem no
-   infinito" em vez de cortar seco na tela. */
-.shot-strip {
+/* ---------- Design System playground (case Design System) ----------
+   Componente de botão interativo: muda variante/tamanho/estado/ícone nas
+   pills da esquerda e vê o componente, as redlines de medida e o código
+   com tokens se atualizarem ao vivo (ver js/ds-playground.js). Mesmo
+   tratamento de fundo full-bleed das outras duas seções "spotlight" de
+   case (tokens do tema + pontos), com o painel de preview (stage + bloco
+   de código) em paleta fixa — é a vitrine de um componente real do DS,
+   não chrome do site, então os tokens de exemplo (#FF5A1F etc.) ficam os
+   mesmos em claro e escuro. */
+.playground {
+  --pg-bg: var(--bg);
+  --pg-dot: color-mix(in srgb, var(--text) 16%, var(--bg));
+  --pg-border: var(--border);
+  --pg-text: var(--text);
+  --pg-text-soft: var(--text-muted);
+  --pg-accent: #FF5A1F;
+  --pg-font-display: 'Bricolage Grotesque', var(--font-body);
   position: relative;
   z-index: 1;
-  overflow: hidden;
-  border-bottom: 1px solid var(--border);
-  background: var(--bg-elevated);
-  padding: 56px 0;
-  -webkit-mask-image: linear-gradient(to right, transparent, black 80px, black calc(100% - 80px), transparent);
-  mask-image: linear-gradient(to right, transparent, black 80px, black calc(100% - 80px), transparent);
-}
-.shot-strip::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: 0;
   background:
-    radial-gradient(640px 360px at 15% 25%, color-mix(in srgb, var(--accent) 22%, transparent), transparent 70%),
-    radial-gradient(640px 360px at 85% 75%, color-mix(in srgb, var(--accent-2) 18%, transparent), transparent 70%),
-    radial-gradient(520px 320px at 50% 50%, color-mix(in srgb, var(--accent-3) 14%, transparent), transparent 70%);
-  background-size: 180% 180%;
-  animation: shot-strip-aurora 24s ease-in-out infinite;
-  opacity: 0.8;
-}
-[data-theme="light"] .shot-strip::before { opacity: 0.45; }
-@keyframes shot-strip-aurora {
-  0%, 100% { background-position: 0% 0%, 100% 100%, 50% 50%; }
-  50% { background-position: 35% 20%, 65% 80%, 60% 35%; }
-}
-.shot-track {
-  position: relative;
-  z-index: 1;
-  display: flex;
-  align-items: flex-start;
-  gap: 26px;
-  width: max-content;
-  animation: shot-scroll 85s linear infinite;
-}
-.shot-strip:hover .shot-track,
-.shot-strip:focus-within .shot-track { animation-play-state: paused; }
-.shot-frame {
-  --tilt-x: 0deg;
-  --tilt-y: 0deg;
-  --lift: 0px;
-  flex-shrink: 0;
-  display: block;
-  width: 260px;
-  border-radius: var(--radius-card);
+    radial-gradient(var(--pg-dot) 1.2px, transparent 1.2px) center / 24px 24px,
+    var(--pg-bg);
+  border-bottom: 1px solid var(--border);
+  padding: 100px 24px;
   overflow: hidden;
-  background: var(--bg);
-  box-shadow: var(--shadow-card);
-  color: inherit;
-  text-decoration: none;
-  transform: perspective(900px) rotateX(var(--tilt-x)) rotateY(var(--tilt-y)) translateY(var(--lift));
-  transition: transform 0.2s ease, box-shadow var(--transition);
 }
-.shot-frame:hover,
-.shot-frame:focus-visible {
-  --lift: -6px;
-  box-shadow: var(--shadow-card-hover);
-}
-.shot-frame:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 
-/* Barrinha de "janela de navegador" no topo de cada print — 3 pontinhos
-   discretos, sem cor de semáforo, só pra reforçar a leitura de "tela de
-   produto" (como nos mockups de referência) sem competir com a imagem. */
-.shot-frame-bar {
+.playground-inner {
   position: relative;
   z-index: 1;
+  max-width: 1120px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(0, 460px) minmax(0, 1fr);
+  column-gap: 56px;
+  align-items: start;
+}
+
+.playground-intro {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  max-width: 460px;
+}
+.playground-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  color: var(--pg-text-soft);
+  letter-spacing: 0.02em;
+}
+.playground-heading {
+  font-family: var(--pg-font-display);
+  font-size: clamp(2rem, 3.6vw, 2.75rem);
+  font-weight: 800;
+  line-height: 0.96;
+  letter-spacing: -0.02em;
+  color: var(--pg-text);
+  margin: 0;
+}
+.pg-accent-text { color: var(--pg-accent); }
+.playground-sub {
+  color: var(--pg-text-soft);
+  font-size: 1rem;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.playground-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  margin-top: 6px;
+}
+.playground-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.playground-group-label {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--pg-text-soft);
+}
+.playground-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.playground-pill {
+  height: 36px;
+  padding: 0 16px;
+  border-radius: 18px;
+  border: 1px solid var(--pg-border);
+  background: transparent;
+  color: var(--pg-text-soft);
+  font-family: var(--font-body);
+  font-size: 0.88rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: border-color 0.2s ease, background 0.2s ease, color 0.2s ease;
+}
+.playground-pill:hover { border-color: var(--pg-accent); color: var(--pg-text); }
+.playground-pill:focus-visible { outline: 2px solid var(--pg-accent); outline-offset: 2px; }
+.playground-pill[aria-checked="true"] {
+  background: var(--pg-text);
+  color: var(--pg-bg);
+  border-color: var(--pg-text);
+}
+
+.playground-link {
+  display: inline-block;
+  width: fit-content;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--pg-text);
+  border-bottom: 1px solid var(--pg-accent);
+  padding-bottom: 2px;
+  transition: color var(--transition);
+}
+.playground-link:hover { color: var(--pg-accent); }
+
+/* Painel de preview: cores fixas de propósito (ver comentário no topo do
+   bloco .playground). */
+.playground-panel {
+  border-radius: 16px;
+  border: 1px solid #34332F;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+.playground-stage {
+  position: relative;
+  min-height: 300px;
+  box-sizing: border-box;
+  padding: 18px;
+  background: #EFE8DA;
+  background-image: radial-gradient(#D9D0BE 1px, transparent 1px);
+  background-size: 8px 8px;
   display: flex;
   align-items: center;
-  gap: 6px;
-  padding: 11px 14px;
-  background: var(--shotbar-bg);
-  border-bottom: 1px solid var(--shotbar-border);
+  justify-content: center;
+  flex-shrink: 0;
 }
-.shot-frame-dot {
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: var(--shotbar-dot);
-}
-
-.shot-frame-media {
-  position: relative;
-  display: block;
-  overflow: hidden;
-  border-radius: inherit;
-}
-.shot-frame-media img {
-  display: block;
-  width: 100%;
-  height: 190px;
-  object-fit: cover;
-  object-position: top center;
-  transition: transform 0.5s ease;
-}
-.shot-frame:hover .shot-frame-media img,
-.shot-frame:focus-visible .shot-frame-media img {
-  transform: scale(1.08);
-}
-
-.shot-frame-caption {
+.playground-stage-label,
+.playground-stage-grid {
   position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  padding: 16px 14px 12px;
-  background: linear-gradient(to top, rgba(5,4,2,0.82), rgba(5,4,2,0.35) 65%, transparent);
-  transform: translateY(100%);
-  opacity: 0;
-  transition: transform var(--transition), opacity var(--transition);
-}
-.shot-frame:hover .shot-frame-caption,
-.shot-frame:focus-visible .shot-frame-caption {
-  transform: translateY(0);
-  opacity: 1;
-}
-.shot-frame-caption-title {
-  display: block;
-  color: #fff;
-  font-weight: 600;
-  font-size: 0.86rem;
-}
-.shot-frame-caption-cta {
-  display: block;
-  margin-top: 3px;
-  color: rgba(255,255,255,0.8);
+  top: 16px;
   font-family: var(--font-mono);
-  font-size: 0.66rem;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  transition: transform 0.25s ease;
+  font-size: 11px;
+  color: #6B675E;
 }
-.shot-frame:hover .shot-frame-caption-cta { transform: translateX(4px); }
-@keyframes shot-scroll {
-  from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
+.playground-stage-label { left: 18px; }
+.playground-stage-grid { right: 18px; }
+
+.playground-component-wrap {
+  position: relative;
+  display: inline-flex;
 }
-@media (max-width: 640px) {
-  .shot-strip {
-    padding: 36px 0;
-    -webkit-mask-image: linear-gradient(to right, transparent, black 36px, black calc(100% - 36px), transparent);
-    mask-image: linear-gradient(to right, transparent, black 36px, black calc(100% - 36px), transparent);
+.playground-component {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  box-sizing: border-box;
+  border-style: solid;
+  border-width: 1.5px;
+  font-weight: 600;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+}
+.playground-redline {
+  position: absolute;
+  border: 1px solid var(--pg-accent);
+  transition: width 0.2s ease, height 0.2s ease;
+}
+.playground-redline-h {
+  left: -26px;
+  top: 0;
+  bottom: 0;
+  width: 6px;
+  border-right: none;
+}
+.playground-redline-px {
+  left: 0;
+  top: calc(100% + 12px);
+  height: 6px;
+  border-top: none;
+}
+.playground-redline-label {
+  position: absolute;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--pg-accent);
+  white-space: nowrap;
+}
+.playground-redline-h-label { left: -64px; top: 50%; transform: translateY(-50%); }
+.playground-redline-px-label { left: 0; top: calc(100% + 24px); }
+.playground-redline-r-label { right: 0; top: -28px; }
+
+.playground-code {
+  flex: 1;
+  min-height: 220px;
+  box-sizing: border-box;
+  background: #1B1B19;
+  padding: 20px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  line-height: 1.5;
+}
+.playground-code-line { display: flex; gap: 12px; min-height: 19px; }
+.playground-code-a { color: #EEECE6; white-space: pre; }
+.playground-code-b { color: #6B675E; }
+
+@media (max-width: 900px) {
+  .playground-inner { grid-template-columns: 1fr; row-gap: 40px; }
+  .playground-intro { max-width: none; }
+  .playground-heading { font-size: clamp(1.9rem, 7vw, 2.4rem); }
+  .playground-stage { min-height: 260px; }
+}
+@media (max-width: 480px) {
+  .playground { padding: 70px 20px; }
+  .playground-redline-h-label { left: -48px; font-size: 10px; }
+}
+
+/* ---------- Conversa ao vivo (case Time Brasil no WhatsApp) ----------
+   Substitui a antiga faixa de prints em molduras de navegador: uma
+   simulação de chat que roda sozinha (ver js/live-chat.js), com os
+   princípios de UX Writing acendendo conforme cada mensagem aparece.
+   O fundo da seção segue o mesmo tratamento full-bleed do hero (pontos +
+   tokens do tema, color-mix), mas o "aparelho" em si (moldura, header,
+   bolhas de mensagem) usa cores fixas de propósito — é o mockup de um
+   produto real, não chrome do site, então deve parecer sempre a mesma
+   captura de WhatsApp em qualquer tema. */
+.live-chat {
+  --chat-bg: var(--bg);
+  --chat-dot: color-mix(in srgb, var(--text) 16%, var(--bg));
+  --chat-border: var(--border);
+  --chat-text: var(--text);
+  --chat-text-soft: var(--text-muted);
+  --chat-text-dim: color-mix(in srgb, var(--text) 40%, var(--bg));
+  --chat-accent: #FF5A1F;
+  --chat-online: #3DDC84;
+  --chat-font-display: 'Bricolage Grotesque', var(--font-body);
+  position: relative;
+  z-index: 1;
+  background:
+    radial-gradient(var(--chat-dot) 1.2px, transparent 1.2px) center / 24px 24px,
+    var(--chat-bg);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: 100px 24px;
+  overflow: hidden;
+}
+
+.live-chat-inner {
+  position: relative;
+  z-index: 1;
+  max-width: 1120px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  grid-template-areas:
+    "intro phone"
+    "principles phone"
+    "link phone";
+  column-gap: 64px;
+  row-gap: 40px;
+  align-items: start;
+}
+
+.live-chat-intro {
+  grid-area: intro;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  max-width: 520px;
+}
+.live-chat-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  color: var(--chat-text-soft);
+  letter-spacing: 0.02em;
+}
+.live-chat-heading {
+  font-family: var(--chat-font-display);
+  font-size: clamp(2.2rem, 4.2vw, 3.2rem);
+  font-weight: 800;
+  line-height: 0.98;
+  letter-spacing: -0.02em;
+  color: var(--chat-text);
+  margin: 0;
+}
+.chat-accent-text { color: var(--chat-accent); }
+.live-chat-sub {
+  color: var(--chat-text-soft);
+  font-size: 1rem;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Lista de princípios de UX Writing — acende (número laranja + texto no
+   tom principal) conforme a nota da mensagem atual do bot, via JS
+   alternando .is-active no <li> com o data-tag correspondente. */
+.live-chat-principles {
+  grid-area: principles;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid var(--chat-border);
+  max-width: 520px;
+}
+.live-chat-principle {
+  display: flex;
+  align-items: baseline;
+  gap: 18px;
+  padding: 13px 0;
+  border-bottom: 1px solid var(--chat-border);
+}
+.live-chat-principle-num {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  width: 24px;
+  flex-shrink: 0;
+  color: var(--chat-text-dim);
+  transition: color 0.3s ease;
+}
+.live-chat-principle-text {
+  font-size: 1.02rem;
+  font-weight: 500;
+  color: var(--chat-text-dim);
+  transition: color 0.3s ease;
+}
+.live-chat-principle.is-active .live-chat-principle-num { color: var(--chat-accent); }
+.live-chat-principle.is-active .live-chat-principle-text { color: var(--chat-text); }
+
+.live-chat-link {
+  grid-area: link;
+  display: inline-block;
+  width: fit-content;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--chat-text);
+  border-bottom: 1px solid var(--chat-accent);
+  padding-bottom: 2px;
+  transition: color var(--transition);
+}
+.live-chat-link:hover { color: var(--chat-accent); }
+
+.live-chat-phone-wrap {
+  grid-area: phone;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+}
+
+.live-chat-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  align-self: flex-start;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--chat-text-soft);
+}
+.live-chat-toggle-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--chat-text-dim);
+  transition: background 0.2s ease;
+}
+.live-chat-toggle-dot.is-on {
+  background: var(--chat-online);
+  animation: flow-blink 1.6s ease-in-out infinite;
+}
+
+/* Mockup do telefone: cores fixas (não seguem --chat-* do tema) pra
+   parecer sempre a mesma captura real de WhatsApp — ver comentário no
+   topo do bloco .live-chat. */
+.live-chat-phone {
+  width: 100%;
+  max-width: 340px;
+  height: 600px;
+  box-sizing: border-box;
+  border-radius: 44px;
+  border: 10px solid #2A2A27;
+  background: #EFE8DA;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 40px 80px -30px rgba(0,0,0,.6);
+}
+.live-chat-phone-header {
+  flex-shrink: 0;
+  height: 64px;
+  box-sizing: border-box;
+  background: #1B1B19;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 16px 0;
+}
+.live-chat-avatar {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  background: var(--chat-accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--chat-font-display);
+  font-size: 13px;
+  font-weight: 700;
+  color: #111110;
+}
+.live-chat-phone-head-text { display: flex; flex-direction: column; gap: 1px; min-width: 0; }
+.live-chat-contact-name { font-size: 15px; font-weight: 600; color: #EEECE6; }
+.live-chat-status { font-family: var(--font-mono); font-size: 10px; color: #8E897E; }
+
+.live-chat-messages {
+  flex: 1;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 8px;
+  padding: 14px 12px;
+}
+.live-chat-bubble {
+  max-width: 78%;
+  font-size: 14px;
+  line-height: 1.4;
+  padding: 9px 12px;
+  color: #111110;
+  box-shadow: 0 1px 1px rgba(0,0,0,.08);
+  animation: chat-bubble-in 0.25s ease;
+}
+.live-chat-bubble.is-bot { align-self: flex-start; background: #FFFFFF; border-radius: 4px 14px 14px 14px; }
+.live-chat-bubble.is-user { align-self: flex-end; background: #FFD9C7; border-radius: 14px 4px 14px 14px; }
+@keyframes chat-bubble-in {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.live-chat-bubble.is-typing {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 12px 14px;
+}
+.live-chat-bubble.is-typing span {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #6B675E;
+  animation: chat-typing-dot 1s infinite;
+}
+.live-chat-bubble.is-typing span:nth-child(2) { animation-delay: .15s; }
+.live-chat-bubble.is-typing span:nth-child(3) { animation-delay: .3s; }
+@keyframes chat-typing-dot {
+  0%, 80%, 100% { opacity: .25; transform: translateY(0); }
+  40% { opacity: 1; transform: translateY(-3px); }
+}
+
+.live-chat-options {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 0 12px 12px;
+  min-height: 0;
+}
+.live-chat-option {
+  background: #fff;
+  border: none;
+  border-radius: 10px;
+  height: 40px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #C2410C;
+  cursor: pointer;
+  box-shadow: 0 1px 1px rgba(0,0,0,.08);
+  transition: background 0.2s ease;
+}
+.live-chat-option:hover, .live-chat-option:focus-visible { background: #FFE9DF; }
+.live-chat-option:focus-visible { outline: 2px solid var(--chat-accent); outline-offset: 2px; }
+
+.live-chat-input-bar {
+  flex-shrink: 0;
+  height: 52px;
+  box-sizing: border-box;
+  background: #F7F3EA;
+  display: flex;
+  align-items: center;
+  padding: 0 12px;
+  gap: 8px;
+  border-top: 1px solid #E2DACB;
+}
+.live-chat-input-field {
+  flex: 1;
+  height: 34px;
+  border-radius: 17px;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  padding: 0 14px;
+  font-size: 13px;
+  color: #8E897E;
+}
+.live-chat-input-send {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  background: var(--chat-accent);
+}
+
+@media (max-width: 900px) {
+  .live-chat-inner {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "intro"
+      "phone"
+      "principles"
+      "link";
+    row-gap: 32px;
   }
-  .shot-track { gap: 18px; }
-  .shot-frame { width: 200px; }
-  .shot-frame-bar { padding: 9px 11px; gap: 5px; }
-  .shot-frame-dot { width: 6px; height: 6px; }
-  .shot-frame-media img { height: 150px; }
-  .shot-frame-caption { padding: 12px 10px 10px; }
-  .shot-frame-caption-title { font-size: 0.78rem; }
+  .live-chat-intro, .live-chat-principles { max-width: none; }
+  .live-chat-phone-wrap { align-items: center; }
 }
-@media (hover: none) {
-  /* Em telas touch não há hover: mostra a legenda sempre, discreta,
-     pra manter o contexto de que os cards são clicáveis. */
-  .shot-frame-caption {
-    transform: translateY(0);
-    opacity: 1;
-    background: linear-gradient(to top, rgba(5,4,2,0.75), transparent);
-  }
+@media (max-width: 480px) {
+  .live-chat { padding: 70px 20px; }
+  .live-chat-phone { height: 520px; }
 }
 
 /* ---------- Sections ---------- */
@@ -828,21 +1355,13 @@ a { color: inherit; text-decoration: none; }
 }
 .about-facts span { font-weight: 600; }
 
-/* Tint alternado entre seções, pra dar mais ritmo à página.
-   Essa seção tem um .container aninhado dentro dela (em vez de acumular
-   as duas classes no mesmo elemento) para o fundo poder ir de ponta a
-   ponta da tela; por isso zeramos o padding horizontal duplicado aqui. */
+/* Essa seção tem um .container aninhado dentro dela (em vez de acumular
+   as duas classes no mesmo elemento) só pra poder zerar o padding horizontal
+   duplicado aqui — sem cor de fundo própria, então o mesmo fundo fixo do
+   resto do site (grão + grade de pontos + borrões de cor) aparece por trás,
+   igual às outras seções. */
 .section-tint {
-  /* Trama diagonal bem sutil por cima da cor sólida — essas faixas (servicos,
-     figma) ficam com overlay fixo escondido atrás (a cor delas é opaca), então
-     ganham textura própria em vez de ficarem lisas. */
-  background:
-    repeating-linear-gradient(135deg,
-      color-mix(in srgb, var(--text) 5%, transparent) 0,
-      color-mix(in srgb, var(--text) 5%, transparent) 1px,
-      transparent 1px,
-      transparent 23px),
-    var(--bg-elevated);
+  background: transparent;
   padding-left: 0;
   padding-right: 0;
 }
@@ -998,7 +1517,10 @@ a { color: inherit; text-decoration: none; }
   margin-top: 48px;
 }
 .figma-card {
-  background: var(--bg);
+  /* bg-elevated, não bg: a seção em volta não tem mais cor de fundo própria
+     (usa o mesmo fundo do resto do site), então o card precisa da sua própria
+     camada pra continuar se destacando. */
+  background: var(--bg-elevated);
   border: 1px solid var(--border);
   border-radius: var(--radius);
   padding: 28px;
@@ -1033,7 +1555,9 @@ a { color: inherit; text-decoration: none; }
 }
 
 .service-card {
-  background: var(--bg);
+  /* mesma lógica do .figma-card: sem tint próprio na seção, o card usa
+     bg-elevated pra continuar se destacando do fundo. */
+  background: var(--bg-elevated);
   border: 1px solid var(--border);
   border-radius: var(--radius);
   padding: 28px;
@@ -1269,7 +1793,10 @@ html.js .work-card.reveal.is-visible {
 .case-hero {
   position: relative;
   padding: 100px 24px 60px;
-  max-width: 760px;
+  /* Era 760px (coluna só de texto, com uma imagem pequena do lado); agora
+     a arte de capa é o elemento principal da seção, então a seção usa a
+     largura cheia do container pra ela caber grande. */
+  max-width: var(--container);
 }
 .case-hero h1 {
   margin-top: 16px;
@@ -1449,6 +1976,685 @@ html.js .work-card.reveal.is-visible {
 .flow-step h3 { margin-top: 10px; font-size: 1rem; }
 .flow-step p { margin-top: 6px; color: var(--text-muted); font-size: 0.88rem; }
 
+/* Variante com 5 etapas (processo de UX: Entendimento → Teste) */
+.flow-grid.is-five { grid-template-columns: repeat(5, 1fr); }
+@media (max-width: 1100px) {
+  .flow-grid.is-five { grid-template-columns: repeat(3, 1fr); }
+}
+@media (max-width: 860px) {
+  .flow-grid.is-five { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 480px) {
+  .flow-grid.is-five { grid-template-columns: 1fr; }
+}
+
+/* ---------- Guia de estilo nativo (paleta de cores + escala tipográfica) ---------- */
+.styleguide-block { margin-top: 36px; }
+.styleguide-block:first-child { margin-top: 0; }
+.styleguide-block h3 {
+  font-size: 1.1rem;
+  margin-bottom: 14px;
+}
+.swatch-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+.swatch {
+  flex: 1 1 160px;
+  min-width: 140px;
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: 1px solid var(--border);
+  background: var(--bg-elevated);
+}
+.swatch-color {
+  height: 64px;
+  border-bottom: 1px solid var(--border);
+}
+.swatch-meta {
+  padding: 10px 14px;
+}
+.swatch-meta .swatch-name {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+.swatch-meta .swatch-hex {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+.type-scale-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 4px;
+  font-size: 0.9rem;
+}
+.type-scale-table th,
+.type-scale-table td {
+  text-align: left;
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--border);
+}
+.type-scale-table th {
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  font-weight: 600;
+}
+.type-scale-table td:first-child { font-weight: 600; }
+.type-scale-table tbody tr:last-child td { border-bottom: none; }
+@media (max-width: 600px) {
+  .type-scale-table { font-size: 0.82rem; }
+  .type-scale-table th, .type-scale-table td { padding: 8px 10px; }
+}
+
+/* ---------- Comparador interativo (case Single Page Survey) ----------
+   Dois mockups de celular lado a lado — "várias páginas" x "página única" —
+   jogáveis de verdade (ver js/survey-compare.js). As telas dos celulares
+   em si usam cores fixas (não seguem --accent/--text do tema), porque
+   representam a UI real do produto da pesquisa (mesma lógica das cores
+   fixas do mockup de WhatsApp em .live-chat-phone), incluindo o roxo
+   #8465FF documentado no guia de estilo logo abaixo nesta página. */
+.survey-demo { margin-top: 56px; }
+.survey-demo-head h3 { font-size: 1.1rem; margin-bottom: 8px; }
+.survey-demo-head p { color: var(--text-muted); font-size: 0.95rem; max-width: 620px; }
+
+.survey-demo-stats { margin-top: 28px; max-width: 620px; }
+.survey-demo-stats-row {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr 1fr;
+  align-items: baseline;
+  gap: 8px;
+  padding: 11px 0;
+  border-bottom: 1px solid var(--border);
+}
+.survey-demo-stats-head {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+.survey-demo-stats-head .is-accent { color: var(--accent); }
+.survey-demo-stats-row:not(.survey-demo-stats-head) span:first-child {
+  font-weight: 500;
+  color: var(--text);
+  font-size: 0.95rem;
+}
+.survey-demo-stats-row:not(.survey-demo-stats-head) span:not(:first-child) {
+  font-family: var(--font-mono);
+  font-size: 1.1rem;
+  color: var(--text);
+}
+.survey-demo-verdict {
+  margin-top: 16px;
+  min-height: 2.8em;
+  font-size: 0.92rem;
+  line-height: 1.5;
+  color: var(--text-muted);
+}
+.survey-demo-verdict.is-ready { color: var(--text); font-weight: 500; }
+
+.survey-demo-phones {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  margin-top: 36px;
+}
+.survey-demo-phone-col { display: flex; flex-direction: column; align-items: center; gap: 14px; }
+.survey-demo-phone-label {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+.survey-demo-phone-label.is-accent { color: var(--accent); }
+
+.survey-demo-phone {
+  width: 280px;
+  height: 560px;
+  box-sizing: border-box;
+  border-radius: 42px;
+  border: 10px solid #2A2A27;
+  background: #F4F3F7;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 30px 60px -24px rgba(0,0,0,.4);
+}
+.survey-demo-phone-header {
+  flex-shrink: 0;
+  box-sizing: border-box;
+  background: #FFFFFF;
+  padding: 0 18px 12px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 8px;
+  min-height: 66px;
+}
+.survey-demo-phone-title-row { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; }
+.survey-demo-phone-title { font-size: 14px; font-weight: 600; color: #1B1B19; }
+.survey-demo-phone-meta { font-family: var(--font-mono); font-size: 10px; color: #6B675E; white-space: nowrap; }
+.survey-demo-progress { height: 4px; border-radius: 2px; background: #ECE8F7; overflow: hidden; }
+.survey-demo-progress-bar { height: 100%; background: #8465FF; transition: width .4s ease; }
+
+.survey-demo-phone-body {
+  flex: 1;
+  box-sizing: border-box;
+  padding: 14px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  position: relative;
+  overflow: hidden;
+}
+.survey-demo-phone-body.is-stack { padding-bottom: 0; }
+
+.survey-demo-stack { display: flex; flex-direction: column; gap: 16px; transition: transform .5s cubic-bezier(.6,0,.2,1); }
+
+.survey-demo-card {
+  flex-shrink: 0;
+  box-sizing: border-box;
+  background: #FFFFFF;
+  border-radius: 16px;
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  box-shadow: 0 1px 2px rgba(0,0,0,.06);
+  transition: opacity .3s ease;
+}
+.survey-demo-card.is-dim { opacity: .35; }
+.survey-demo-card-num { font-family: var(--font-mono); font-size: 10px; color: #8E897E; }
+.survey-demo-card-q { font-size: 15px; font-weight: 600; line-height: 1.3; color: #1B1B19; }
+
+.survey-demo-opts-scale { display: grid; grid-template-columns: repeat(6, 1fr); gap: 6px; }
+.survey-demo-opt-scale {
+  height: 32px;
+  border-radius: 8px;
+  border: none;
+  background: #F1EEFA;
+  color: #3B3355;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 0;
+}
+.survey-demo-opt-scale.is-on { background: #8465FF; color: #fff; }
+.survey-demo-opt-scale.is-blank { visibility: hidden; }
+
+.survey-demo-opts-emoji { display: flex; justify-content: space-between; }
+.survey-demo-opt-emoji {
+  width: 38px;
+  height: 40px;
+  border-radius: 12px;
+  border: none;
+  background: #F1EEFA;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 21px;
+  cursor: pointer;
+  padding: 0;
+}
+.survey-demo-opt-emoji.is-on { background: #8465FF; }
+
+.survey-demo-opts-check { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+.survey-demo-opt-check {
+  height: 32px;
+  border-radius: 8px;
+  border: none;
+  background: #F1EEFA;
+  color: #3B3355;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 10px;
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  text-align: left;
+}
+.survey-demo-opt-check.is-on { background: #8465FF; color: #fff; }
+.survey-demo-opt-check-box {
+  width: 11px;
+  height: 11px;
+  border-radius: 3px;
+  border: 1.5px solid currentColor;
+  flex-shrink: 0;
+  background: transparent;
+}
+.survey-demo-opt-check-box.is-on { background: #fff; }
+
+.survey-demo-opts-star { display: flex; gap: 8px; }
+.survey-demo-opt-star {
+  background: none;
+  border: none;
+  font-size: 28px;
+  line-height: 1;
+  color: #DAD5E6;
+  cursor: pointer;
+  padding: 0;
+}
+.survey-demo-opt-star.is-on { color: #F5B400; }
+
+.survey-demo-hint { font-size: 12px; line-height: 1.4; color: #6B675E; }
+.survey-demo-send {
+  height: 40px;
+  border-radius: 10px;
+  border: none;
+  background: #8465FF;
+  color: #fff;
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.survey-demo-continue {
+  height: 32px;
+  border-radius: 8px;
+  border: none;
+  background: #CFC8E6;
+  color: #fff;
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 600;
+  cursor: default;
+}
+.survey-demo-continue.is-ready { background: #8465FF; cursor: pointer; }
+
+.survey-demo-loading { flex: 1; display: flex; flex-direction: column; gap: 10px; animation: soft-pulse 1s infinite; }
+.survey-demo-loading-box { height: 220px; border-radius: 16px; background: #E4E2EA; }
+.survey-demo-loading-text { font-family: var(--font-mono); font-size: 11px; color: #6B675E; text-align: center; }
+
+.survey-demo-done {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  text-align: center;
+}
+.survey-demo-done.is-overlay { position: absolute; inset: 0; background: #F4F3F7; }
+.survey-demo-done-title { font-size: 20px; font-weight: 700; color: #1B1B19; }
+.survey-demo-done-sub { font-size: 13px; color: #6B675E; max-width: 220px; }
+
+.survey-demo-nav { flex-shrink: 0; display: flex; gap: 8px; padding: 0 12px 16px; box-sizing: border-box; }
+.survey-demo-nav-btn {
+  flex: 1;
+  height: 44px;
+  border-radius: 10px;
+  border: 1.5px solid #CFCBD9;
+  background: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 600;
+  color: #B8B3C6;
+  cursor: default;
+}
+.survey-demo-nav-btn.is-active { color: #1B1B19; cursor: pointer; }
+.survey-demo-nav-btn.is-primary { flex: 1.4; border: none; background: #CFC8E6; color: #fff; }
+.survey-demo-nav-btn.is-primary.is-ready { background: #8465FF; cursor: pointer; }
+
+.survey-demo-actions { margin-top: 28px; display: flex; justify-content: center; }
+
+@media (max-width: 680px) {
+  .survey-demo-phones { justify-content: center; }
+}
+@media (max-width: 500px) {
+  .survey-demo-stats-row { grid-template-columns: 1.1fr 1fr 1fr; gap: 4px; }
+  .survey-demo-stats-row:not(.survey-demo-stats-head) span:not(:first-child) { font-size: 0.98rem; }
+  .survey-demo-phone { width: 100%; max-width: 300px; }
+}
+
+/* ---------- Comparador interativo: pipeline de publicação (case Workflow
+   Builder) ----------
+   Painel único (não telefone) porque representa um dashboard interno, não
+   um app de celular. Cores fixas, como os outros comparadores jogáveis da
+   página (ver comentário em .survey-demo acima) — é a UI do próprio
+   produto, não o tema do site. */
+.wf-demo { margin-top: 56px; }
+.wf-demo-head h3 { font-size: 1.1rem; margin-bottom: 8px; }
+.wf-demo-head p { color: var(--text-muted); font-size: 0.95rem; max-width: 620px; }
+
+.wf-demo-panel {
+  margin-top: 28px;
+  background: #111110;
+  border: 1px solid #262622;
+  border-radius: var(--radius-card);
+  padding: 28px;
+  box-shadow: 0 20px 50px -24px rgba(0,0,0,.5);
+}
+
+.wf-demo-steps { display: flex; align-items: center; }
+.wf-demo-step-card {
+  flex: 1;
+  box-sizing: border-box;
+  background: #1B1B19;
+  border: 1.5px solid #34332F;
+  border-radius: 12px;
+  padding: 16px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  position: relative;
+  min-height: 90px;
+  justify-content: center;
+  transition: border-color .3s ease;
+}
+.wf-demo-step-card.is-checking { border-color: #EEECE6; }
+.wf-demo-step-card.is-success { border-color: #3DDC84; }
+.wf-demo-step-card.is-error { border-color: #FF5A1F; }
+.wf-demo-step-k { font-family: var(--font-mono); font-size: 11px; color: #8E897E; }
+.wf-demo-step-t { font-size: 15px; font-weight: 600; color: #EEECE6; line-height: 1.3; }
+.wf-demo-step-badge {
+  position: absolute;
+  right: -9px;
+  top: -9px;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 700;
+  color: #111110;
+}
+.wf-demo-step-badge.is-checking { background: #B9B5AB; animation: soft-pulse 1s infinite; }
+.wf-demo-step-badge.is-success { background: #3DDC84; }
+.wf-demo-step-badge.is-error { background: #FF5A1F; }
+.wf-demo-fix {
+  margin-top: 2px;
+  align-self: flex-start;
+  height: 30px;
+  padding: 0 14px;
+  border-radius: 8px;
+  border: none;
+  background: #FF5A1F;
+  color: #111110;
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.wf-demo-connector {
+  width: 32px;
+  height: 2px;
+  flex-shrink: 0;
+  background: #34332F;
+  transition: background .3s ease;
+}
+.wf-demo-connector.is-done { background: #3DDC84; }
+
+.wf-demo-log {
+  margin-top: 20px;
+  background: #1B1B19;
+  border: 1px solid #34332F;
+  border-radius: 10px;
+  padding: 14px 18px;
+  min-height: 150px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 5px;
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  overflow: hidden;
+}
+.wf-demo-log-line { white-space: pre-wrap; line-height: 1.5; }
+
+.wf-demo-actions { margin-top: 22px; display: flex; align-items: center; gap: 18px; flex-wrap: wrap; }
+.wf-demo-publish {
+  flex-shrink: 0;
+  height: 50px;
+  padding: 0 28px;
+  border-radius: 25px;
+  border: none;
+  font-family: var(--font-body);
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  background: #FF5A1F;
+  color: #111110;
+  transition: background .3s ease, color .3s ease;
+}
+.wf-demo-publish.is-busy { background: #34332F; color: #B9B5AB; cursor: default; }
+.wf-demo-publish.is-live { background: #3DDC84; color: #111110; cursor: default; }
+.wf-demo-status { font-size: 13.5px; color: #B9B5AB; margin: 0; flex: 1; min-width: 200px; }
+
+.wf-demo-footer {
+  margin-top: 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding-top: 16px;
+  border-top: 1px solid #262622;
+}
+.wf-demo-env { display: inline-flex; align-items: center; gap: 8px; font-family: var(--font-mono); font-size: 12px; color: #8E897E; }
+.wf-demo-env.is-live { color: #EEECE6; }
+.wf-demo-env-dot { width: 8px; height: 8px; border-radius: 50%; background: #6B675E; }
+.wf-demo-env-dot.is-live { background: #3DDC84; }
+.wf-demo-reset {
+  background: none;
+  border: none;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: #8E897E;
+  cursor: pointer;
+  padding: 0;
+  transition: color .2s ease;
+}
+.wf-demo-reset:hover { color: #EEECE6; }
+
+@media (max-width: 700px) {
+  .wf-demo-panel { padding: 20px; }
+  .wf-demo-steps { flex-direction: column; align-items: stretch; }
+  .wf-demo-connector { width: 2px; height: 20px; align-self: center; }
+}
+
+/* ---------- Trabalhos: diagrama "conecte os cases" (2a) ----------
+   Elemento decorativo/explorável: um nó de perfil ligado aos 4 cases por
+   setas arrastáveis (mesma mecânica de arraste/reescala de .hero-flow,
+   em js/work-flow.js), com um painel de preview ao lado que mostra o
+   print, categoria, descrição e o link real do case ativo.
+   É um elemento nativo do site (não a reprodução de uma tela de produto
+   real), então os tokens de cor são locais ao componente e derivados do
+   tema via color-mix — ao contrário do hex fixo usado em
+   .live-chat-phone / .survey-demo-phone / .wf-demo-panel, que
+   representam a UI de um produto externo real. Some abaixo de 860px
+   (mesmo breakpoint do hero-flow): o .work-grid estático abaixo continua
+   sendo o jeito acessível de navegar pelos cases nessa largura. */
+.work-flow {
+  --wflow-card: var(--bg-elevated);
+  --wflow-card-border: var(--border);
+  --wflow-text: var(--text);
+  --wflow-text-soft: var(--text-muted);
+  --wflow-text-mid: color-mix(in srgb, var(--text) 58%, var(--bg));
+  --wflow-accent: #FF5A1F;
+  --wflow-font-display: 'Bricolage Grotesque', var(--font-body);
+  margin: 28px 0 40px;
+  border: 1px solid var(--wflow-card-border);
+  border-radius: var(--radius-card, 20px);
+  background: color-mix(in srgb, var(--wflow-card) 55%, transparent);
+  padding: 28px;
+  overflow: hidden;
+}
+.work-flow-hint {
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  color: var(--wflow-text-soft);
+  margin: 0 0 18px;
+}
+.work-flow-body {
+  display: flex;
+  gap: 24px;
+  align-items: stretch;
+}
+.work-flow-scaler {
+  flex: 1 1 auto;
+  min-width: 0;
+  max-width: 1200px;
+  position: relative;
+}
+.work-flow-stage {
+  width: 1200px;
+  height: 460px;
+  position: relative;
+  transform-origin: top left;
+  user-select: none;
+}
+.wflow-edges {
+  position: absolute;
+  inset: 0;
+  width: 1200px;
+  height: 460px;
+  pointer-events: none;
+}
+.wflow-edges path {
+  fill: none;
+  stroke-width: 2px;
+  stroke: var(--wflow-accent);
+  stroke-dasharray: 4 6;
+  animation: flow-dash 1s linear infinite;
+}
+
+.wflow-node {
+  position: absolute;
+  width: 260px;
+  height: 92px;
+  box-sizing: border-box;
+  padding: 14px 18px;
+  border-radius: 12px;
+  background: var(--wflow-card);
+  border: 1px solid var(--wflow-card-border);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2px;
+  text-align: left;
+  cursor: grab;
+  touch-action: none;
+  transition: border-color .2s ease, box-shadow .2s ease;
+  box-shadow: 0 10px 24px -12px rgba(0,0,0,.35);
+}
+.wflow-node:hover, .wflow-node.is-dragging { border-color: var(--wflow-accent); }
+.wflow-node.is-active {
+  border-color: var(--wflow-accent);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--wflow-accent) 25%, transparent);
+}
+.wflow-node.is-dragging { cursor: grabbing; z-index: 5; }
+.wflow-node:focus-visible { outline: 2px solid var(--wflow-accent); outline-offset: 2px; }
+.wflow-node-label {
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  color: var(--wflow-text-mid);
+}
+.wflow-node-title {
+  font-family: var(--wflow-font-display);
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--wflow-text);
+  line-height: 1.22;
+}
+.wflow-node.is-root {
+  background: var(--wflow-accent);
+  border-color: var(--wflow-accent);
+  flex-direction: row;
+  align-items: center;
+  gap: 14px;
+  cursor: default;
+}
+.wflow-node.is-root .wflow-node-title { color: #1A1410; font-size: 19px; }
+.wflow-node.is-root:hover, .wflow-node.is-root.is-dragging { border-color: #1A1410; }
+.wflow-node-avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: #1A1410;
+  color: #FF5A1F;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--wflow-font-display);
+  font-weight: 700;
+  font-size: 16px;
+  flex: none;
+}
+
+.wflow-preview {
+  flex: 0 0 280px;
+  border: 1px solid var(--wflow-card-border);
+  border-radius: 14px;
+  background: var(--wflow-card);
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.wflow-preview-thumb {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  border-radius: 10px;
+  background-size: cover;
+  background-position: top center;
+  border: 1px solid var(--wflow-card-border);
+}
+.wflow-preview-cat {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--wflow-accent);
+  text-transform: uppercase;
+  letter-spacing: .03em;
+}
+.wflow-preview-title {
+  font-family: var(--wflow-font-display);
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--wflow-text);
+  margin: 0;
+}
+.wflow-preview-desc {
+  font-size: 13.5px;
+  line-height: 1.5;
+  color: var(--wflow-text-soft);
+  margin: 0;
+  flex: 1;
+}
+.wflow-preview-link {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--wflow-accent);
+  align-self: flex-start;
+}
+.wflow-preview-link:hover { text-decoration: underline; }
+
+@media (max-width: 860px) {
+  .work-flow { display: none; }
+}
+
 /* Links "continue explorando" no fim do case, antes do contato */
 .case-more-grid {
   display: flex;
@@ -1501,28 +2707,67 @@ html.js .work-card.reveal.is-visible {
 .case-wide + .case-wide,
 .case-wide + .section { border-top: 1px solid var(--border); padding-top: 90px; }
 
-/* ---------- Case hero com ilustração ---------- */
-.case-hero-grid {
+/* ---------- Case hero: título + lede corridos, duração logo abaixo,
+   e a arte de capa grande (agora o elemento principal, não mais um
+   thumbnail lateral de 280px) ao lado do restante da leitura. ---------- */
+.case-hero-intro {
   display: flex;
-  align-items: flex-start;
-  gap: 48px;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 40px;
+  margin-top: 18px;
+  /* Deixa a borda direita livre pro post-it (quando a página tem um) não
+     encostar no parágrafo — ver .postit--safe-top no case-hero-top. */
+  max-width: 900px;
 }
-.case-hero-grid > .case-hero-text { flex: 1; min-width: 0; }
+.case-hero-intro h1 { flex: 0 1 460px; min-width: 260px; margin: 0; }
+.case-hero-intro .hero-sub { flex: 1 1 420px; margin-top: 0; max-width: 560px; }
+@media (max-width: 860px) {
+  .case-hero-intro { flex-direction: column; align-items: flex-start; gap: 16px; }
+}
+
+.case-hero-media {
+  display: flex;
+  align-items: center;
+  gap: 44px;
+  margin-top: 48px;
+}
 .case-hero-visual {
-  flex-shrink: 0;
-  width: 280px;
-  margin-top: 8px;
+  flex: 1 1 auto;
+  min-width: 0;
+  max-width: 820px;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: calc(var(--radius-card, 20px) + 4px);
+  padding: 18px;
 }
-.case-hero-visual svg,
 .case-hero-visual img {
   width: 100%;
   height: auto;
   display: block;
-  border-radius: 6px;
-  filter: drop-shadow(0 24px 48px rgba(0,0,0,0.18));
+  border-radius: calc(var(--radius-card, 20px) - 2px);
+  filter: drop-shadow(0 28px 56px rgba(0,0,0,0.22));
 }
-@media (max-width: 1100px) {
-  .case-hero-visual { display: none; }
+.case-hero-media .about-facts.case-hero-meta {
+  flex: 0 0 200px;
+  flex-direction: column;
+  gap: 24px;
+  margin-top: 0;
+  padding-top: 0;
+  border-top: none;
+}
+.case-hero-media .about-facts.case-hero-meta li {
+  border-bottom: none;
+  padding: 0;
+}
+@media (max-width: 900px) {
+  .case-hero-media { flex-direction: column; align-items: stretch; }
+  .case-hero-media .about-facts.case-hero-meta {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 24px;
+    width: 100%;
+  }
 }
 
 /* ---------- Mockup de conversa (ilustrativo, não é print real) ---------- */
